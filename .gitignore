@@ -1,0 +1,4 @@
+# The gitignore of this repository itself (!)
+!.gitignore
+
+.DS_Store
