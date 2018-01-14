@@ -77,7 +77,6 @@ PACKAGES=(
     terminal-notifier
     tree
     tmux
-    terminal-notifier
     python
     neovim
     wget
