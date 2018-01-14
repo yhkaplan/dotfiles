@@ -22,6 +22,9 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Swift completion
 Plug 'mitsuse/autocomplete-swift'
 
+" Go-lang completion (erroring out....)
+"Plug 'zchee/deoplete-go', { 'do': 'make'}
+
 " Airline status bar below
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
