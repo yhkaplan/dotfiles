@@ -30,18 +30,11 @@ brew install findutils
 brew install gnu-sed --with-default-names
 
 # Bash 4
-# Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before running `chsh`.
 brew install bash
 
 brew install bash-completion
 brew install homebrew/completions/brew-cask-completion
 
-# We installed the new shell, now we have to activate it
-echo "Adding the newly installed shell to the list of allowed shells"
-# Prompts for password
-sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
-# Change to the new shell, prompts for password
-chsh -s /usr/local/bin/bash
 # Install `wget` with IRI support.
 brew install wget --with-iri
 
@@ -96,7 +89,14 @@ brew install ${PACKAGES[@]}
 echo "Cleaning up..."
 brew cleanup
 
-# Remove outdated versions from the cellar
-brew cleanup
+# We installed the new shells, now we have to activate them
+echo "Adding newly installed shells to the list of allowed shells and making fish the default"
+
+# Prompts for password
+sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
+sudo bash -c 'echo /usr/local/bin/fish >> /etc/shells'
+
+# Make Fish the default shell
+chsh -s /usr/local/bin/fish
 
 echo "Bootstrapping complete"
