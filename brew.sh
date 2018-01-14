@@ -64,11 +64,11 @@ PACKAGES=(
     carthage
     bash-completion
   	fish
-	  pkg-config
+    pkg-config
     go
     git
     hub
-	  cloc
+	cloc
     ncdu # find where your diskspace went
     trash
     fastlane
@@ -80,7 +80,7 @@ PACKAGES=(
     mas
   	rbenv
     ruby-build
-	  swiftgen
+    swiftgen
     terminal-notifier
     tree
     tmux
