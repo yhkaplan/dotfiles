@@ -56,7 +56,8 @@ PACKAGES=(
     openssl
     carthage
     bash-completion
-  	fish
+  	fzf
+	fish
     pkg-config
     go
     git
