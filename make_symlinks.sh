@@ -8,6 +8,7 @@ ln -sv ~/.dotfiles/tmux/.tmux.conf ~/
 
 # Fish 
 ln -sv ~/.dotfiles/fish/config.fish ~/.config/fish/
+ln -sv ~/.dotfiles/fish/fish_prompt.fish ~/.config/fish/functions/
 
 # Bash
 ln -sv ~/.dotfiles/bash/.bash_profile ~/
@@ -19,5 +20,5 @@ ln -sv ~/.dotfiles/gem/Gemfile ~/
 # Gitignore (optimized for iOS development)
 ln -sv ~/.dotfiles/git/.gitignore ~/
 
-# Fastlane
-
+# Themes
+ln -sv ~/.dotfiles/themes/gotham/gotham.sh ~/.config/gotham/
