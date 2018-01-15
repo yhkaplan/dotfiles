@@ -51,27 +51,28 @@ brew install homebrew/dupes/grep
 brew install homebrew/dupes/screen
 
 PACKAGES=(
-    atom
     autoconf
     openssl
-    carthage
+    cask
     bash-completion
-  	fish
+    fish
     pkg-config
     go
     git
     hub
-	cloc
-    ncdu # find where your diskspace went
+    httpie
+    cloc
+    ncdu
     trash
     fastlane
     pv
     rename
     zopfli
+    jq
     the_silver_searcher
     git
     mas
-  	rbenv
+    rbenv
     ruby-build
     swiftgen
     terminal-notifier
@@ -79,7 +80,6 @@ PACKAGES=(
     tmux
     python
     neovim
-    wget
 )
 
 echo "Installing packages..."
