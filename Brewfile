@@ -16,6 +16,7 @@ brew "cloc"
 brew "coreutils"
 brew "findutils"
 brew "fish"
+brew "fzf"
 brew "gnu-sed", args: ["with-default-names"]
 brew "go"
 brew "grep"
