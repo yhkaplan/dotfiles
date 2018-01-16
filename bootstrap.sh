@@ -33,6 +33,10 @@ grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra echo "Cleaning up..."
 
 brew cleanup
 
+# Adding dependency for Deoplete plugin for Neovim
+# Should prob move this to vim file...
+pip3 install --upgrade neovim
+
 # We installed the new shells, now we have to activate them
 echo "Adding newly installed shells to the list of allowed shells and making fish the default"
 
