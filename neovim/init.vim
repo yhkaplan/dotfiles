@@ -25,6 +25,9 @@ Plug 'mitsuse/autocomplete-swift'
 " Go-lang completion (erroring out....)
 "Plug 'zchee/deoplete-go', { 'do': 'make'}
 
+" FZF (through Homebrew)
+Plug '/usr/local/opt/fzf'
+
 " Airline status bar below
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
