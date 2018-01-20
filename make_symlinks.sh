@@ -49,3 +49,5 @@ ln -sv ~/.dotfiles/themes/gotham/gotham.sh ~/.config/gotham/
 mkdir -p ~/.config/nvim
 mkdir -p ~/.config/nvim/colors
 ln -sv ~/.dotfiles/themes/toothpaste.vim ~/.config/nvim/colors/
+
+ln -sv ~/.dotfiles/themes/panic.vim ~/.config/nvim/colors/

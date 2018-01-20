@@ -43,7 +43,9 @@ call plug#end()
 
 " This is activated by default by syntastic
 syntax on
-color gotham
+color toothpaste 
+
+set termguicolors
 
 " Line numbers
 set number
@@ -64,8 +66,8 @@ autocmd InsertEnter * highlight  CursorLine ctermbg=Black ctermfg=None
 " Revert Color to default when leaving Insert Mode
 autocmd InsertLeave * highlight  CursorLine ctermbg=White ctermfg=Black
 
-"let g:airline_theme='minimalist'
-let g:gotham_airline_emphasised_insert = 0
+let g:airline_theme='minimalist'
+"let g:gotham_airline_emphasised_insert = 0
 
 " Turns off annoying behavior of auto-inserting comments
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
