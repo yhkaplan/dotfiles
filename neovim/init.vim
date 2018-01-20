@@ -77,7 +77,7 @@ set showmatch
 let g:deoplete#enable_at_startup = 1
 
 " Xcode style tabs
-set expandtab
+"set expandtab
 "set tabstop=4 "not working correctly doubled?
 
 " Fixes cursor 
