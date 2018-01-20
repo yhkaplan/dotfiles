@@ -29,6 +29,8 @@ ln -sv ~/.dotfiles/tmux/.tmux.conf ~/
 
 # Fish 
 ln -sv ~/.dotfiles/fish/config.fish ~/.config/fish/
+mkdir -p ~/.config/fish/functions
+ln -sv ~/.dotfiles/fish/git.fish ~/.config/fish/functions/
 
 # Bash
 ln -sv ~/.dotfiles/bash/.bash_profile ~/
