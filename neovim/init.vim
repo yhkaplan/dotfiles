@@ -42,11 +42,39 @@ call plug#end()
 syntax on
 color gotham
 
+" Line numbers
+set number
+
+" Enables powerline for airline
+let g:airline_powerline_fonts = 1
+
+" Enable CursorLine
+set cursorline
+
+" Default Colors for CursorLine
+highlight  CursorLine ctermbg=White ctermfg=Black
+
+" Change Color when entering Insert Mode
+autocmd InsertEnter * highlight  CursorLine ctermbg=Black ctermfg=None
+
+" Revert Color to default when leaving Insert Mode
+autocmd InsertLeave * highlight  CursorLine ctermbg=White ctermfg=Black
+
+"let g:airline_theme='minimalist'
+let g:gotham_airline_emphasised_insert = 0
+
+" Turns off annoying behavior of auto-inserting comments
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Show matching brackets
+set showmatch
+
 " Enable Neoplete
 let g:deoplete#enable_at_startup = 1
 
 " Xcode style tabs
-set tabstop=4
+set expandtab
+"set tabstop=4 "not working correctly doubled?
 
 " Fixes cursor 
 set guicursor=
