@@ -19,6 +19,9 @@ Plug 'https://github.com/scrooloose/nerdtree.git'
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
+" Git integration
+Plug 'https://github.com/tpope/vim-fugitive.git'
+
 " Swift completion
 Plug 'mitsuse/autocomplete-swift'
 
@@ -46,8 +49,9 @@ color gotham
 set number
 
 " Enables powerline for airline
+let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
-
+let g:airline_section_y = '%-0.10{getcwd()}'
 " Enable CursorLine
 set cursorline
 
