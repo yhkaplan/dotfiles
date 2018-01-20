@@ -12,3 +12,6 @@ set -g -x PATH /usr/local/bin $PATH
 # For Golang
 export GOPATH=$HOME/go/
 # set -xg GOPATH $HOME/go
+
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
