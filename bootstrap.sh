@@ -37,6 +37,10 @@ brew cleanup
 # Should prob move this to vim file...
 pip3 install --upgrade neovim
 
+# Two good git aliases
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.last 'log -1 HEAD'
+
 # We installed the new shells, now we have to activate them
 echo "Adding newly installed shells to the list of allowed shells and making fish the default"
 
