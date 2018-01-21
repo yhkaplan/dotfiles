@@ -22,6 +22,9 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Git integration
 Plug 'https://github.com/tpope/vim-fugitive.git'
 
+" Git diff integration
+Plug 'airblade/vim-gitgutter'
+
 " Swift completion
 Plug 'mitsuse/autocomplete-swift'
 
