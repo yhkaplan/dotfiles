@@ -72,6 +72,10 @@ let g:airline_theme='one'
 " Line numbers
 set number
 
+" Turn off GitGutter by default
+" Enable w/ :GitGutterToggle
+let g:gitgutter_enabled = 0
+
 " Enables powerline for airline
 let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
