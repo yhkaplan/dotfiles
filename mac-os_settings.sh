@@ -9,5 +9,7 @@
 #Show date in menu bar alongside time
 # To add
 
+#  Edit > Preferences, click Devices, then select “Prevent iPods, iPhones, and iPads from syncing automatically.”
+
 # Put dock on the left
 defaults write com.apple.dock orientation -string left
