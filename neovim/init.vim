@@ -25,11 +25,16 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 " Git diff integration
 Plug 'airblade/vim-gitgutter'
 
-" Swift completion
+" Swift completion (not clear if it's working)
 Plug 'mitsuse/autocomplete-swift'
 
+" Python autocomplete
+Plug 'zchee/deoplete-jedi'
+
 " Go-lang completion (erroring out....)
-"Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'fatih/vim-go' " May conflict w/ deoplete-go
 
 " FZF (through Homebrew)
 Plug '/usr/local/opt/fzf'
@@ -92,21 +97,24 @@ autocmd InsertEnter * highlight  CursorLine ctermbg=Black ctermfg=None
 " Revert Color to default when leaving Insert Mode
 autocmd InsertLeave * highlight  CursorLine ctermbg=White ctermfg=Black
 
-"let g:airline_theme='minimalist'
-"let g:gotham_airline_emphasised_insert = 0
-
 " Turns off annoying behavior of auto-inserting comments
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Show matching brackets
 set showmatch
 
-" Enable Neoplete
+" Enable Deoplete
 let g:deoplete#enable_at_startup = 1
 
+" Golang deoplete settings
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode' " May be incorrect
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+
+" Makes sure Swift files are recognized as such
+autocmd BufNewFile,BufRead *.swift set filetype=swift
+
 " Xcode style tabs
-"set expandtab
-"set tabstop=4 "not working correctly doubled?
+setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
 
 " Fixes cursor 
 set guicursor=
