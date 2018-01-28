@@ -50,8 +50,7 @@ Plug 'dracula/vim'
 
 call plug#end()
 
-" This is activated by default by syntastic
-"syntax on
+" ############ TMUX COLOR SUPPORT #################
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -68,6 +67,8 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
+
+" ############ THEMING #################
 
 " color toothpaste
 set background=dark " for the dark version
@@ -103,13 +104,6 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Show matching brackets
 set showmatch
 
-" Enable Deoplete
-let g:deoplete#enable_at_startup = 1
-
-" Golang deoplete settings
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode' " May be incorrect
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-
 " Makes sure Swift files are recognized as such
 autocmd BufNewFile,BufRead *.swift set filetype=swift
 
@@ -118,3 +112,23 @@ setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
 
 " Fixes cursor 
 set guicursor=
+
+" ############ AUTOCOMPLETE #################
+
+" Enable Deoplete
+let g:deoplete#enable_at_startup = 1
+
+" Golang deoplete settings
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode' " May be incorrect
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+
+" To prevent VimGo from conflicting w/ syntastic
+let g:syntastic_go_checkers = ['golint', 'govet', 'gometalinter']
+let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+
+" Another issue with `vim-go` and `syntastic` is that the location list window
+" that contains the output of commands such as `:GoBuild` and `:GoTest` might
+" not appear.  To resolve this:
+let g:go_list_type = "quickfix"
+
