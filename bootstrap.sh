@@ -26,16 +26,15 @@ echo "Installing packages..."
 # The Brewfile is generated automatically through 'brew bundle dump'
 cd ~/.dotfiles/
 brew bundle
+brew cleanup
+brew cask cleanup
 
 # Setting for RBENV/Ruby
 LINE='eval "$(rbenv init -)"'
 grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra echo "Cleaning up..."
 
-brew cleanup
-
-# Adding dependency for Deoplete plugin for Neovim
-# Should prob move this to vim file...
-pip3 install --upgrade neovim
+# Dependencies for Deoplete on other Pythonic stuff
+pip3 install -r pip-requirements.txt
 
 # 3 good git aliases
 git config --global alias.unstage 'reset HEAD --'

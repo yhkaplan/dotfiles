@@ -75,6 +75,8 @@ set background=dark " for the dark version
 colorscheme one
 let g:airline_theme='one'
 
+" ########## GENERAL SETTINGS ###########
+
 " Line numbers
 set number
 
