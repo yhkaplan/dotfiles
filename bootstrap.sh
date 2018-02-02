@@ -36,6 +36,9 @@ grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra echo "Cleaning up..."
 # Dependencies for Deoplete on other Pythonic stuff
 pip3 install -r pip-requirements.txt
 
+# Make iTerm/Terminal "Last login:" message from Login utility stop appearing
+touch ~/.hushlogin
+
 # 3 good git aliases
 git config --global alias.unstage 'reset HEAD --'
 git config --global alias.last 'log -1 --stat HEAD'
