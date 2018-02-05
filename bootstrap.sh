@@ -24,6 +24,7 @@ echo "Installing packages..."
 
 # Select directory and run brewfile
 # The Brewfile is generated automatically through 'brew bundle dump'
+mv ~/dotfiles ~/.dotfiles
 cd ~/.dotfiles/
 brew bundle
 brew cleanup
