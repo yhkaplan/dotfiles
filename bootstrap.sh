@@ -45,22 +45,27 @@ git config --global alias.last 'log -1 --stat HEAD'
 git config --global alias.shortlog 'log -4 --pretty --oneline'
 
 # We installed the new shells, now we have to activate them
-echo "Adding newly installed shells to the list of allowed shells and making fish the default"
+echo "Adding newly installed shells to the list of allowed shells"
 
 # Prompts for password
 sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
 sudo bash -c 'echo /usr/local/bin/fish >> /etc/shells'
 
-echo "Setting up Fish"
+# Gives user choice for preferred shell
 
-# Make Fish the default shell
-chsh -s /usr/local/bin/fish
+while true; do
+    read -p "Do you want Fish to be your default shell? " yn
+    case $yn in
+        [Yy]* )
+            chsh -s /usr/local/bin/fish
+            # Open fish and install useful utilities/themes
+        
+            curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+            echo "Bootstrapping complete"
+            fish
+            break;;
+        [Nn]* ) echo "Bootstrapping complete"; exit;;
+        * ) echo "Please input yes or no";;
+    esac 
+done
 
-# Open fish and install useful utilities/themes
-fish
-curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
-fisher omf/theme-edan
-
-fish_update_completions
-
-echo "Bootstrapping complete"
