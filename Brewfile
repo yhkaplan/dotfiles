@@ -51,6 +51,7 @@ brew "trash"
 brew "tree"
 brew "vim", args: ["with-override-system-vi"]
 brew "wget"
+brew "xctool"
 brew "zopfli"
 brew "kateinoigakukun/tap/iblinter"
 brew "mono0926/license-plist/license-plist"
