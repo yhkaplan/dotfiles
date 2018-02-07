@@ -82,6 +82,9 @@ let g:airline_theme='one'
 " Line numbers
 set number
 
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " Turn off GitGutter by default
 " Enable w/ :GitGutterToggle
 let g:gitgutter_enabled = 0
