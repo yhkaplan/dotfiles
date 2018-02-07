@@ -29,7 +29,7 @@ if status --is-interactive
     abbr -a gpl git pull
     abbr -a gps git push
     abbr -a ga git add -A
-    abbr -a gc git commit -m "
+    abbr -a gc git commit -m
     abbr -a gco git checkout
     abbr -a gs git status -s
     abbr -a gf git fetch
@@ -43,7 +43,7 @@ if status --is-interactive
     abbr -a gclean git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d
 
     # Other abbreviations
-    abbr -a ow open *.xcworkspace/
+    abbr --add ow 'open *.xcworkspace/'
     abbr -a nv nvim
     abbr -a trel tree -L 2
 
