@@ -21,6 +21,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Git integration
 Plug 'https://github.com/tpope/vim-fugitive.git'
+" GitHub integration w/ above
+Plug 'https://github.com/tpope/vim-rhubarb.git'
 
 " Git diff integration
 Plug 'airblade/vim-gitgutter'
