@@ -44,6 +44,7 @@ touch ~/.hushlogin
 git config --global alias.unstage 'reset HEAD --'
 git config --global alias.last 'log -1 --stat HEAD'
 git config --global alias.shortlog 'log -4 --pretty --oneline'
+git config --global alias.current 'rev-parse --abbrev-ref HEAD'
 
 # We installed the new shells, now we have to activate them
 echo "Adding newly installed shells to the list of allowed shells"
