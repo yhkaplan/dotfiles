@@ -8,6 +8,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 echo "Starting bootstrapping"
 
+############ Homebrew ###############
+
 # Check for Homebrew, install if we don't have it
 if test ! $(which brew); then
     echo "Installing homebrew..."
@@ -16,7 +18,6 @@ fi
 
 # Make sure we’re using the latest Homebrew
 brew update
-
 # Upgrade any already-installed formulae
 brew upgrade
 
@@ -30,9 +31,15 @@ brew bundle
 brew cleanup
 brew cask cleanup
 
+############ Ruby ###############
+
 # Setting for RBENV/Ruby
 LINE='eval "$(rbenv init -)"'
 grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra echo "Cleaning up..."
+
+sudo gem install bundler
+
+########## Other ################
 
 # Dependencies for Deoplete on other Pythonic stuff
 pip3 install -r pip-requirements.txt
@@ -40,7 +47,7 @@ pip3 install -r pip-requirements.txt
 # Make iTerm/Terminal "Last login:" message from Login utility stop appearing
 touch ~/.hushlogin
 
-# 3 good git aliases
+# Git aliases
 git config --global alias.unstage 'reset HEAD --'
 git config --global alias.last 'log -1 --stat HEAD'
 git config --global alias.shortlog 'log -4 --pretty --oneline'
