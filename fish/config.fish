@@ -43,8 +43,9 @@ if status --is-interactive
     abbr -a gclean git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d
 
     # Other abbreviations
-    abbr --add ow 'open *.xcworkspace/'
+    abbr -a ow 'open *.xcworkspace/'
     abbr -a nv nvim
     abbr -a trel tree -L 2
+    abbr -a formatswift 'swiftlint autocorrect --config .swiftlint.yml --path ' 
 
 end
