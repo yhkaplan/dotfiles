@@ -51,6 +51,7 @@ Plug 'https://github.com/rakr/vim-one.git'
 Plug 'dracula/vim'
 Plug 'iCyMind/NeoSolarized'
 Plug 'nightsense/vimspectr'
+Plug 'mhartington/oceanic-next'
 
 call plug#end()
 
