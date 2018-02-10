@@ -49,6 +49,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'whatyouhide/vim-gotham'
 Plug 'https://github.com/rakr/vim-one.git'
 Plug 'dracula/vim'
+Plug 'iCyMind/NeoSolarized'
+Plug 'nightsense/vimspectr'
 
 call plug#end()
 
@@ -59,8 +61,8 @@ call plug#end()
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
 if (empty($TMUX))
   if (has("nvim"))
-  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   endif
   "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
   "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
@@ -72,7 +74,6 @@ endif
 
 " ############ THEMING #################
 
-" color toothpaste
 set background=dark " for the dark version
 colorscheme one
 let g:airline_theme='one'
@@ -92,7 +93,13 @@ let g:gitgutter_enabled = 0
 " Enables powerline for airline
 let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_section_y = '%-0.10{getcwd()}'
+"let g:airline#extensions#syntastic#enabled = 0 "Disables syntastic integration
+let g:airline#extensions#syntastic#error_symbol = 'E:'
+let g:airline#extensions#syntastic#warning_symbol = 'W:'
+
+let g:airline#extensions#whitespace#show_message = 0
+"let g:airline_section_error = '%-0.10{getcwd()}'
+"let g:airline_section_warning = '%t'
 " Enable CursorLine
 set cursorline
 
