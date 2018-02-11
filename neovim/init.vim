@@ -91,8 +91,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Enable w/ :GitGutterToggle
 let g:gitgutter_enabled = 0
 
-" Enables powerline for airline
+" ########## AIRLINE SETTINGS ###########
+
 let g:airline#extensions#branch#enabled = 1
+
+" Enables powerline for airline
 let g:airline_powerline_fonts = 1
 "let g:airline#extensions#syntastic#enabled = 0 "Disables syntastic integration
 let g:airline#extensions#syntastic#error_symbol = 'E:'
@@ -118,6 +121,9 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Show matching brackets
 set showmatch
+
+" Use macOS pasteboard
+set clipboard=unnamed
 
 " Makes sure Swift files are recognized as such
 autocmd BufNewFile,BufRead *.swift set filetype=swift
