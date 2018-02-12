@@ -49,3 +49,4 @@ if status --is-interactive
     abbr -a formatswift 'swiftlint autocorrect --config .swiftlint.yml --path ' 
 
 end
+

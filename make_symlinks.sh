@@ -16,7 +16,6 @@ mv ~/.config/fish/config.fish ~/.old_dotfiles/
 mv ~/.bash_profile ~/.old_dotfiles/
 mv ~/Gemfile ~/.old_dotfiles/
 mv ~/.gitignore ~/.old_dotfiles/
-mv ~/.config/gotham/gotham.sh ~/.old_dotfiles/
 
 echo "Generating symlinks"
 
@@ -41,10 +40,6 @@ ln -sv ~/.dotfiles/gem/Gemfile ~/
 
 # Gitignore (optimized for iOS development)
 ln -sv ~/.dotfiles/git/.gitignore ~/
-
-# Themes
-mkdir -p ~/.config/gotham
-ln -sv ~/.dotfiles/themes/gotham/gotham.sh ~/.config/gotham/
 
 mkdir -p ~/.config/nvim
 mkdir -p ~/.config/nvim/colors
