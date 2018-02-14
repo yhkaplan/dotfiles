@@ -38,8 +38,9 @@ ln -sv ~/.dotfiles/bash/.bash_profile ~/
 ln -sv ~/.dotfiles/gem/Gemfile ~/
 # Add Gemfile.lock??
 
-# Gitignore (optimized for iOS development)
-ln -sv ~/.dotfiles/git/.gitignore ~/
+# Gitignore (optimized for iOS and Go development on macOS)
+ln -sv ~/.dotfiles/git/.gitignore_global ~/
+git config --global core.excludesfile ~/.gitignore_global
 
 mkdir -p ~/.config/nvim
 mkdir -p ~/.config/nvim/colors
