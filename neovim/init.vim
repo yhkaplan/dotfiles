@@ -19,6 +19,9 @@ Plug 'https://github.com/scrooloose/nerdtree.git'
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+
 " Git integration
 Plug 'https://github.com/tpope/vim-fugitive.git'
 " GitHub integration w/ above
@@ -155,7 +158,16 @@ set guicursor=
 
 " Enable Deoplete
 let g:deoplete#enable_at_startup = 1
+" Use smartcase.
+let g:deoplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:deoplete#sources#syntax#min_keyword_length = 2
 
+" For Snippets (not working right now)
+"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"xmap <C-k>     <Plug>(neosnippet_expand_target)
+"
 " Golang deoplete settings
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode' " May be incorrect
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
