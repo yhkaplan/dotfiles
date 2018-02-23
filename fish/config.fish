@@ -1,8 +1,8 @@
 # Start TMUX at launch
-#if status is-interactive
-#and not set -q TMUX
-#    exec tmux
-#end
+if status is-interactive
+and not set -q TMUX
+    exec tmux
+end
 
 # Sets path for things installed w/ Homebrew
 set -g -x PATH /usr/local/bin $PATH
