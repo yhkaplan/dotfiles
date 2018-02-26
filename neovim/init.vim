@@ -19,9 +19,6 @@ Plug 'https://github.com/scrooloose/nerdtree.git'
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-
 " Git integration
 Plug 'https://github.com/tpope/vim-fugitive.git'
 " GitHub integration w/ above
@@ -40,6 +37,10 @@ Plug 'zchee/deoplete-jedi'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'fatih/vim-go' " May conflict w/ deoplete-go
+
+" Better markdown support 
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 " FZF (through Homebrew)
 Plug '/usr/local/opt/fzf'
