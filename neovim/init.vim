@@ -76,6 +76,10 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
+" ###### MARKDOWN SETTINGS #############
+let g:vim_markdown_folding_disabled = 1
+set conceallevel=2
+
 " ############ THEMING #################
 
 set background=dark " for the dark version
