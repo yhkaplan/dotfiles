@@ -16,6 +16,9 @@ Plug 'https://github.com/keith/swift.vim.git'
 " Nerdtree (file directory browser)
 Plug 'https://github.com/scrooloose/nerdtree.git'
 
+" Bracket and quote completion
+Plug 'https://github.com/tpope/vim-surround.git'
+
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
