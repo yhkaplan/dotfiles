@@ -80,6 +80,7 @@ endif
 " ###### MARKDOWN SETTINGS #############
 let g:vim_markdown_folding_disabled = 1
 set conceallevel=2
+autocmd FileType markdown setlocal indentexpr=
 
 " ############ THEMING #################
 
@@ -163,6 +164,9 @@ setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
 
 " Fixes cursor 
 set guicursor=
+
+" ############ Swift Settting ###############
+autocmd FileType swift setlocal ts=4 sw=4 sts=0 expandtab
 
 " ############ AUTOCOMPLETE #################
 
