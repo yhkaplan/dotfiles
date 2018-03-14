@@ -34,9 +34,16 @@ brew cask cleanup
 ############ Ruby ###############
 
 # Setting for RBENV/Ruby
+echo "Setting up Ruby. Please make sure to check that the version of bundler matches the version installed by rbenv"
+
 LINE='eval "$(rbenv init -)"'
 grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra echo "Cleaning up..."
 
+echo "Installing Ruby 2.4.1"
+rbenv install 2.4.1
+
+# Installs bundler for system version of Ruby, may cause
+# headaches and issues if the rbenv version doesn't have bundler installed
 sudo gem install bundler
 
 ########## Other ################

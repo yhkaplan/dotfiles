@@ -56,7 +56,6 @@ brew "the_silver_searcher"
 brew "tmux"
 brew "trash"
 brew "tree"
-brew "vim", args: ["with-override-system-vi"]
 brew "wget"
 brew "xctool"
 brew "youtube-dl"
