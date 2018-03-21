@@ -93,19 +93,50 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-" ########## GENERAL SETTINGS ###########
+" ########## Shortcut SETTINGS ###########
+" TODO: probably don't need silent for all these
+" Set default mapleader (Leader) to spacebar
+let mapleader = "\<Space>"
 
+nnoremap <silent> <leader>v :vsplit<CR>
+nnoremap <silent> <leader>tn :tabnew<CR>
+"tab next
+nnoremap <silent> <leader>t :tabn<CR> 
+" Sane defaults for split switching
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>h <C-w>h 
+nnoremap <leader>l <C-w>l
+
+nnoremap <silent> <leader>n :NERDTreeToggle<CR>
+" d for diff
+nnoremap <silent> <leader>d :GitGutterToggle<CR>
+nnoremap <silent> <leader>s :FZF<CR>
+" s for search
+" Setting this to begin with space f because I mostly plan on 
+" using it to find functions
+nnoremap <silent> <leader>f :BTags<CR> 
+" gl for git log
+nnoremap <silent> <leader>gl :Commits<CR>
+" c for commands
+nnoremap <silent> <leader>c :History:<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gr <Plug>(go-run)
+au FileType go nmap <Leader>gb <Plug>(go-build)
+au FileType go nmap <Leader>gt <Plug>(go-test)
+
+" ########## GENERAL SETTINGS ###########
+" Make nerdtree show hidden files by default
+let NERDTreeShowHidden=1
 " Line numbers
 set number
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" Map NERDTreeToggle to ctrl n
-map <C-n> :NERDTreeToggle<CR>
 " Turn off GitGutter by default
 " Enable w/ :GitGutterToggle
 let g:gitgutter_enabled = 0
-" Map C-s to FZF command (showing files in current working dir by default)
-map <C-s> :FZF<CR>
 " Enable CursorLine
 set cursorline
 " Default Colors for CursorLine
@@ -133,7 +164,7 @@ set copyindent      " copy indent from the previous line
 
 " ########### ALE SETTINGS ###############
 " Error and warning signs.
-let g:ale_sign_error = '⤫'
+"let g:ale_sign_error = '⤫'
 "let g:ale_sign_warning = '-'
 
 " ########## AIRLINE SETTINGS ###########
@@ -170,6 +201,8 @@ let g:deoplete#sources#swift#daemon_autostart = 1
 " Golang deoplete settings
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode' " May be incorrect
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+
+" ######## Tag Support w/ FZF ########
 
 function! s:align_lists(lists)
   let maxes = {}

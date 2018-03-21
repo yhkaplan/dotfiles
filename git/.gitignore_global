@@ -3,6 +3,7 @@
 *~
 .*.swp
 .DS_Store
+tags # Not really macOS, but ctags output
 
 ########### Go Development #########
 
