@@ -161,6 +161,12 @@ let g:deoplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:deoplete#sources#syntax#min_keyword_length = 2
 
+" Swift settings
+" Jump to the first placeholder by typing `<C-k>`.
+autocmd FileType swift imap <buffer> <C-k> <Plug>(autocomplete_swift_jump_to_placeholder)
+let g:deoplete#sources#swift#source_kitten_binary = '/usr/local/bin/sourcekitten'
+let g:deoplete#sources#swift#daemon_autostart = 1
+
 " Golang deoplete settings
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode' " May be incorrect
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
