@@ -19,6 +19,9 @@ mv ~/.gitignore ~/.old_dotfiles/
 
 echo "Generating symlinks"
 
+# Ctags
+ln -sv ~/.dotfiles/ctags/.ctags ~/
+
 # NeoVim file (contains autoinstall script)
 mkdir -p ~/.config/nvim
 ln -sv ~/.dotfiles/neovim/init.vim ~/.config/nvim/
