@@ -24,6 +24,10 @@ test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shel
 # Support for rbenv
 status --is-interactive; and source (rbenv init -|psub)
 
+# Alias
+
+alias ctags="/usr/local/bin/ctags" # Use Homebrew ctags
+
 ############# ABBREVIATIONS #################
 
 if status --is-interactive

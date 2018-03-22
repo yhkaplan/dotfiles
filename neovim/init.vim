@@ -7,51 +7,39 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-" General syntax highlighting
-Plug 'https://github.com/vim-syntastic/syntastic.git'
-
 " Swift syntax highlighting
 Plug 'https://github.com/keith/swift.vim.git'
-
 " Nerdtree (file directory browser)
 Plug 'https://github.com/scrooloose/nerdtree.git'
-
 " Bracket and quote completion
 Plug 'https://github.com/tpope/vim-surround.git'
-
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
 " Git integration
 Plug 'https://github.com/tpope/vim-fugitive.git'
 " GitHub integration w/ above
 Plug 'https://github.com/tpope/vim-rhubarb.git'
-
 " Git diff integration
 Plug 'airblade/vim-gitgutter'
-
 " Swift completion (not clear if it's working)
 Plug 'mitsuse/autocomplete-swift'
-
 " Python autocomplete
 Plug 'zchee/deoplete-jedi'
-
 " Go-lang completion (erroring out....)
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'fatih/vim-go' " May conflict w/ deoplete-go
-
 " Better markdown support 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-
 " FZF (through Homebrew)
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-
 " Airline status bar below
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" ALE Linting for Go, Swift, etc
+Plug 'w0rp/ale'
 
 " Themes
 Plug 'whatyouhide/vim-gotham'
@@ -66,7 +54,6 @@ call plug#end()
 " ############ TMUX COLOR SUPPORT #################
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
@@ -78,10 +65,11 @@ if (has("termguicolors"))
 endif
 
 " ###### MARKDOWN SETTINGS #############
+
 let g:vim_markdown_folding_disabled = 1
 set conceallevel=2
 autocmd FileType markdown setlocal indentexpr=
-autocmd FileType markdown setlocal ts=4 sw=4 sts=0 expandtab
+autocmd FileType markdown setlocal ts=4 sw=4 sts=0 expandtab " probably unneeded
 
 " ############ THEMING #################
 
@@ -105,69 +93,95 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-" ########## GENERAL SETTINGS ###########
+" ########## Shortcut SETTINGS ###########
+" TODO: probably don't need silent for all these
+" Set default mapleader (Leader) to spacebar
+let mapleader = "\<Space>"
 
+nnoremap <silent> <leader>v :vsplit<CR>
+nnoremap <silent> <leader>tn :tabnew<CR>
+"tab next
+nnoremap <silent> <leader>t :tabn<CR> 
+" Sane defaults for split switching
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>h <C-w>h 
+nnoremap <leader>l <C-w>l
+
+nnoremap <silent> <leader>n :NERDTreeToggle<CR>
+" d for diff
+nnoremap <silent> <leader>d :GitGutterToggle<CR>
+nnoremap <silent> <leader>s :FZF<CR>
+" s for search
+" Setting this to begin with space f because I mostly plan on 
+" using it to find functions
+nnoremap <silent> <leader>f :BTags<CR> 
+" gl for git log
+nnoremap <silent> <leader>gl :Commits<CR>
+" c for commands
+nnoremap <silent> <leader>c :History:<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gr <Plug>(go-run)
+au FileType go nmap <Leader>gb <Plug>(go-build)
+au FileType go nmap <Leader>gt <Plug>(go-test)
+
+" ########## GENERAL SETTINGS ###########
+" Make nerdtree show hidden files by default
+let NERDTreeShowHidden=1
 " Line numbers
 set number
-
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" Map NERDTreeToggle to ctrl n
-map <C-n> :NERDTreeToggle<CR>
-
 " Turn off GitGutter by default
 " Enable w/ :GitGutterToggle
 let g:gitgutter_enabled = 0
+" Enable CursorLine
+set cursorline
+" Default Colors for CursorLine
+highlight  CursorLine ctermbg=White ctermfg=Black
+" Change Color when entering Insert Mode
+autocmd InsertEnter * highlight  CursorLine ctermbg=Black ctermfg=None
+" Revert Color to default when leaving Insert Mode
+autocmd InsertLeave * highlight  CursorLine ctermbg=White ctermfg=Black
+" Turns off annoying behavior of auto-inserting comments
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" Show matching brackets
+set showmatch
+" Use macOS pasteboard
+set clipboard=unnamed
+" Fixes cursor 
+set guicursor=
 
-" Map C-s to FZF command (showing files in current working dir by default)
-map <C-s> :FZF<CR>
+" ########### Proper tabs ###############
+set tabstop=4       " number of visual spaces per TAB
+set softtabstop=4   " number of spaces in tab when editing
+set shiftwidth=4    " number of spaces to use for autoindent
+set expandtab       " tabs are space
+set autoindent
+set copyindent      " copy indent from the previous line
+
+" ########### ALE SETTINGS ###############
+" Error and warning signs.
+"let g:ale_sign_error = '⤫'
+"let g:ale_sign_warning = '-'
 
 " ########## AIRLINE SETTINGS ###########
 
 let g:airline#extensions#branch#enabled = 1
-
 " Enables powerline for airline
 let g:airline_powerline_fonts = 1
-"let g:airline#extensions#syntastic#enabled = 0 "Disables syntastic integration
-let g:airline#extensions#syntastic#error_symbol = 'E:'
-let g:airline#extensions#syntastic#warning_symbol = 'W:'
-
 let g:airline#extensions#whitespace#show_message = 0
-"let g:airline_section_error = '%-0.10{getcwd()}'
-"let g:airline_section_warning = '%t'
-" Enable CursorLine
-set cursorline
 
-" Default Colors for CursorLine
-highlight  CursorLine ctermbg=White ctermfg=Black
+" ############ Swift Settings ###############
 
-" Change Color when entering Insert Mode
-autocmd InsertEnter * highlight  CursorLine ctermbg=Black ctermfg=None
-
-" Revert Color to default when leaving Insert Mode
-autocmd InsertLeave * highlight  CursorLine ctermbg=White ctermfg=Black
-
-" Turns off annoying behavior of auto-inserting comments
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" Show matching brackets
-set showmatch
-
-" Use macOS pasteboard
-set clipboard=unnamed
-
-
-" Fixes cursor 
-set guicursor=
-
-" ############ Swift Settting ###############
 " Makes sure Swift files are recognized as such
 autocmd BufNewFile,BufRead *.swift set filetype=swift
 
-" Xcode style tabs
-setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4 " This is probably unnecessary
-autocmd FileType swift setlocal ts=4 sw=4 sts=0 expandtab
+" ############ Golang Settings ##############
+
+let g:ale_linters = {'go': ['gofmt', 'gotype', 'govet']}
 
 " ############ AUTOCOMPLETE #################
 
@@ -178,22 +192,59 @@ let g:deoplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:deoplete#sources#syntax#min_keyword_length = 2
 
-" For Snippets (not working right now)
-"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"xmap <C-k>     <Plug>(neosnippet_expand_target)
-"
+" Swift settings
+" Jump to the first placeholder by typing `<C-k>`.
+autocmd FileType swift imap <buffer> <C-k> <Plug>(autocomplete_swift_jump_to_placeholder)
+let g:deoplete#sources#swift#source_kitten_binary = '/usr/local/bin/sourcekitten'
+let g:deoplete#sources#swift#daemon_autostart = 1
+
 " Golang deoplete settings
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode' " May be incorrect
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
-" To prevent VimGo from conflicting w/ syntastic
-let g:syntastic_go_checkers = ['golint', 'govet', 'gometalinter']
-let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+" ######## Tag Support w/ FZF ########
 
-" Another issue with `vim-go` and `syntastic` is that the location list window
-" that contains the output of commands such as `:GoBuild` and `:GoTest` might
-" not appear.  To resolve this:
-let g:go_list_type = "quickfix"
+function! s:align_lists(lists)
+  let maxes = {}
+  for list in a:lists
+    let i = 0
+    while i < len(list)
+      let maxes[i] = max([get(maxes, i, 0), len(list[i])])
+      let i += 1
+    endwhile
+  endfor
+  for list in a:lists
+    call map(list, "printf('%-'.maxes[v:key].'s', v:val)")
+  endfor
+  return a:lists
+endfunction
 
+function! s:btags_source()
+  let lines = map(split(system(printf(
+    \ 'ctags -f - --sort=no --excmd=number --language-force=%s %s',
+    \ &filetype, expand('%:S'))), "\n"), 'split(v:val, "\t")')
+  if v:shell_error
+    throw 'failed to extract tags'
+  endif
+  return map(s:align_lists(lines), 'join(v:val, "\t")')
+endfunction
+
+function! s:btags_sink(line)
+  execute split(a:line, "\t")[2]
+endfunction
+
+function! s:btags()
+  try
+    call fzf#run({
+    \ 'source':  s:btags_source(),
+    \ 'options': '+m -d "\t" --with-nth 1,4.. -n 1 --tiebreak=index',
+    \ 'down':    '40%',
+    \ 'sink':    function('s:btags_sink')})
+  catch
+    echohl WarningMsg
+    echom v:exception
+    echohl None
+  endtry
+endfunction
+
+command! BTags call s:btags()
