@@ -42,3 +42,6 @@ alias tr='tree -L 2'
 # Adding Go path
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+
+# Rbenv support
+eval "$(rbenv init -)"
