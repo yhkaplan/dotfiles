@@ -52253,13 +52253,13 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>134 74 689 421 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>272 219 918 381 0 0 1280 777 </string>
+	<string>632 475 918 401 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>322 93 1221 684 0 0 1280 777 </string>
-	<key>NSWindow Frame iTerm Window 1</key>
 	<string>640 0 640 777 0 0 1280 777 </string>
+	<key>NSWindow Frame iTerm Window 1</key>
+	<string>630 0 647 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>430 110 850 667 0 0 1280 777 </string>
+	<string>665 0 612 777 0 0 1280 777 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -52574,7 +52574,7 @@
 				<real>0.093450725078582764</real>
 			</dict>
 			<key>Cursor Type</key>
-			<integer>1</integer>
+			<integer>2</integer>
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
@@ -53751,7 +53751,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-02-11T02:19:00Z</date>
+	<date>2018-03-18T23:20:32Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SmartPlacement</key>
