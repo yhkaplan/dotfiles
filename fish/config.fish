@@ -48,7 +48,7 @@ if status --is-interactive
     abbr -a gsl git log -8 --pretty --oneline
     abbr -a ggui git log --graph --decorate --oneline
     abbr -a gdel git branch -d
-    abbr -a gclean git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d
+    abbr -a gclean 'git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
     abbr -a gpr git pull-request -m
 
     # Other abbreviations
