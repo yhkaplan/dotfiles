@@ -23,6 +23,8 @@ test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shel
 # MAKE SURE THIS IS LOWEST LINE THAT MODIFIES PATH
 # Support for rbenv
 status --is-interactive; and source (rbenv init -|psub)
+# Support for swiftenv
+if which swiftenv > /dev/null; status --is-interactive; and source (swiftenv init -|psub); end
 
 # Alias
 
