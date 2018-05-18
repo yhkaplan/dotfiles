@@ -9,8 +9,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Swift syntax highlighting
 Plug 'https://github.com/keith/swift.vim.git'
-" Nerdtree (file directory browser)
-Plug 'https://github.com/scrooloose/nerdtree.git'
 " Bracket and quote completion
 Plug 'https://github.com/tpope/vim-surround.git'
 " Completion
@@ -128,12 +126,8 @@ au FileType go nmap <Leader>gb <Plug>(go-build)
 au FileType go nmap <Leader>gt <Plug>(go-test)
 
 " ########## GENERAL SETTINGS ###########
-" Make nerdtree show hidden files by default
-let NERDTreeShowHidden=1
 " Line numbers
 set number
-" close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Turn off GitGutter by default
 " Enable w/ :GitGutterToggle
 let g:gitgutter_enabled = 0
@@ -201,6 +195,22 @@ let g:deoplete#sources#swift#daemon_autostart = 1
 " Golang deoplete settings
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode' " May be incorrect
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+
+" ######## Netrw settings ############
+
+" Set to tree style
+let g:netrw_liststyle = 3
+" Remove useless banner
+let g:netrw_banner = 0
+" Open files in horizontal split by default
+" 1 - open files in a new horizontal split
+" 2 - open files in a new vertical split
+" 3 - open files in a new tab
+" 4 - open in previous window
+let g:netrw_browse_split = 4
+" Set width to 25%
+let g:netrw_winsize = 25
+let g:netrw_altv = 1
 
 " ######## Tag Support w/ FZF ########
 
