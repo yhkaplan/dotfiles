@@ -1,0 +1,37 @@
+"*":
+  core:
+    audioBeep: false
+    disabledPackages: [
+      "background-tips"
+      "tree-view-git-status"
+      "build-xcodebuild"
+      "github"
+    ]
+    telemetryConsent: "no"
+  editor:
+    fontSize: 12
+    softWrap: true
+  "exception-reporting":
+    userId: "73cb0d3b-f75a-46c9-b6e9-61d86e39c71b"
+  "linter-swiftlint":
+    configurationPath: "/Users/josh/dev/minne/ios/.swiftlint.yml"
+  "linter-ui-default":
+    alwaysTakeMinimumSpace: true
+    panelHeight: -29
+  minimap:
+    displayMinimapOnLeft: true
+  "vim-mode-plus":
+    keymapBackslashToInnerCommentOrParagraphWhenToggleLineCommentsIsPending: true
+    keymapCCToChangeInnerSmartWord: true
+    keymapPToPutWithAutoIndent: true
+    keymapSToSelect: true
+    keymapSemicolonToConfirmOnFindInput: true
+    keymapSemicolonToInnerAnyPairInOperatorPendingMode: true
+    keymapSemicolonToInnerAnyPairInVisualMode: true
+    keymapUnderscoreToReplaceWithRegister: true
+    keymapYToYankToLastCharacterOfLine: true
+  welcome:
+    showOnStartup: false
+".source.swift":
+  editor:
+    tabLength: 4

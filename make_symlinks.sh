@@ -16,6 +16,7 @@ mv ~/.config/fish/config.fish ~/.old_dotfiles/
 mv ~/.bash_profile ~/.old_dotfiles/
 mv ~/Gemfile ~/.old_dotfiles/
 mv ~/.gitignore ~/.old_dotfiles/
+mv ~/.atom ~/.old_dotfiles/
 
 echo "Generating symlinks"
 
@@ -40,6 +41,9 @@ ln -sv ~/.dotfiles/bash/.bash_profile ~/
 # Gem
 ln -sv ~/.dotfiles/gem/Gemfile ~/
 # Add Gemfile.lock??
+
+# Atom
+ln -sv ~/.dotfiles/atom/.atom ~/
 
 # Gitignore (optimized for iOS and Go development on macOS)
 ln -sv ~/.dotfiles/git/.gitignore_global ~/
