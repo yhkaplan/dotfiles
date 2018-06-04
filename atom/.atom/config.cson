@@ -13,6 +13,9 @@
     softWrap: true
   "exception-reporting":
     userId: "73cb0d3b-f75a-46c9-b6e9-61d86e39c71b"
+  "format-shell":
+    formatOnSave: true
+    indent: 4
   "linter-swiftlint":
     configurationPath: "/Users/josh/dev/minne/ios/.swiftlint.yml"
   "linter-ui-default":
@@ -32,6 +35,8 @@
     keymapYToYankToLastCharacterOfLine: true
   welcome:
     showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnlyLines: true
 ".source.swift":
   editor:
     tabLength: 4
