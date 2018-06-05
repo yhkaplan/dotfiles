@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # grab dracula and gotham themes for xcode, vim, terminal, and atom
 mkdir -p ~/Downloads/themes
 cd ~/Downloads/themes/

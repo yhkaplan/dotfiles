@@ -1,3 +1,4 @@
+#!/bin/bash
 
 #make Finder show list of files by default instead of icons
 # To add
