@@ -49,8 +49,3 @@ ln -sv ~/.dotfiles/atom/.atom ~/
 ln -sv ~/.dotfiles/git/.gitignore_global ~/
 git config --global core.excludesfile ~/.gitignore_global
 
-mkdir -p ~/.config/nvim
-mkdir -p ~/.config/nvim/colors
-ln -sv ~/.dotfiles/themes/toothpaste.vim ~/.config/nvim/colors/
-
-ln -sv ~/.dotfiles/themes/panic.vim ~/.config/nvim/colors/
