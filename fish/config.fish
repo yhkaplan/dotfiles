@@ -52,6 +52,7 @@ if status --is-interactive
     abbr -a gdel git branch -d
     abbr -a gclean 'git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
     abbr -a gpr git pull-request -m
+    abbr -a gh 'git log --pretty=format:%H -1 | pbcopy'
 
     # Other abbreviations
     abbr -a ow 'open *.xcworkspace/'
