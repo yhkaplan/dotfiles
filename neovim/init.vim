@@ -133,7 +133,7 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()<Paste>
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " ########## GENERAL SETTINGS ###########
 " Line numbers
