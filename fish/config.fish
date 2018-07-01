@@ -46,7 +46,8 @@ if status --is-interactive
     abbr -a gb git branch
     abbr -a gm git merge
     abbr -a gd git diff
-    abbr -a gl git log -1 HEAD
+    abbr -a gl git log --oneline
+    abbr -a gy git log --oneline --since=yesterday
     abbr -a gsl git log -8 --pretty --oneline
     abbr -a ggui git log --graph --decorate --oneline
     abbr -a gdel git branch -d
