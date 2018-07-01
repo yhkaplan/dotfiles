@@ -1,5 +1,5 @@
 " auto-install vim-plug
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim')) 
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
   \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync
@@ -27,7 +27,7 @@ Plug 'zchee/deoplete-jedi'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'fatih/vim-go' " May conflict w/ deoplete-go
-" Better markdown support 
+" Better markdown support
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 " FZF (through Homebrew)
@@ -99,11 +99,11 @@ let mapleader = "\<Space>"
 nnoremap <silent> <leader>v :vsplit<CR>
 nnoremap <silent> <leader>tn :tabnew<CR>
 "tab next
-nnoremap <silent> <leader>t :tabn<CR> 
+nnoremap <silent> <leader>t :tabn<CR>
 " Sane defaults for split switching
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
-nnoremap <leader>h <C-w>h 
+nnoremap <leader>h <C-w>h
 nnoremap <leader>l <C-w>l
 
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
@@ -111,9 +111,9 @@ nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <leader>d :GitGutterToggle<CR>
 nnoremap <silent> <leader>s :FZF<CR>
 " s for search
-" Setting this to begin with space f because I mostly plan on 
+" Setting this to begin with space f because I mostly plan on
 " using it to find functions
-nnoremap <silent> <leader>f :BTags<CR> 
+nnoremap <silent> <leader>f :BTags<CR>
 " gl for git log
 nnoremap <silent> <leader>gl :Commits<CR>
 " c for commands
@@ -155,7 +155,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set showmatch
 " Use macOS pasteboard
 set clipboard=unnamed
-" Fixes cursor 
+" Fixes cursor
 set guicursor=
 
 " ########### Proper tabs ###############
@@ -167,6 +167,8 @@ set autoindent
 set copyindent      " copy indent from the previous line
 
 " ########### ALE SETTINGS ###############
+"keep the sign gutter open at all times
+let g:ale_sign_column_always = 1
 " Error and warning signs.
 "let g:ale_sign_error = '⤫'
 "let g:ale_sign_warning = '-'
