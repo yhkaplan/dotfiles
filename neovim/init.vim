@@ -10,7 +10,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Swift syntax highlighting
 Plug 'https://github.com/keith/swift.vim.git'
 " Bracket and quote completion
-Plug 'https://github.com/tpope/vim-surround.git'
+Plug 'https://github.com/jiangmiao/auto-pairs.git'
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Git integration
