@@ -191,6 +191,8 @@ autocmd BufNewFile,BufRead *.swift set filetype=swift
 " ############ Golang Settings ##############
 
 let g:ale_linters = {'go': ['gofmt', 'gotype', 'govet']}
+" Auto-import on save
+let g:go_fmt_command = "goimports"
 
 " ############ AUTOCOMPLETE #################
 
