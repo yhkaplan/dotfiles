@@ -120,6 +120,9 @@ nnoremap <silent> <leader>gl :Commits<CR>
 nnoremap <silent> <leader>c :History:<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 
+" Pastes buffer into newline
+nnoremap  <silent> <leader>p :pu<CR>
+
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gr <Plug>(go-run)
 au FileType go nmap <Leader>gb <Plug>(go-build)
