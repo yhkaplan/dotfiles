@@ -39,8 +39,11 @@ echo "Setting up Ruby. Please make sure to check that the version of bundler mat
 LINE='eval "$(rbenv init -)"'
 grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra echo "Cleaning up..."
 
-echo "Installing Ruby 2.4.1"
+echo "Installing Ruby 2.4.3"
 rbenv install 2.4.1
+
+echo "Installing Ruby 2.5.1"
+rbenv install 2.5.1
 
 # Installs bundler for system version of Ruby, may cause
 # headaches and issues if the rbenv version doesn't have bundler installed
@@ -75,13 +78,13 @@ while true; do
         [Yy]* )
             chsh -s /usr/local/bin/fish
             # Open fish and install useful utilities/themes
-        
+
             curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
             echo "Bootstrapping complete"
             fish
             break;;
         [Nn]* ) echo "Bootstrapping complete"; exit;;
         * ) echo "Please input yes or no";;
-    esac 
+    esac
 done
 
