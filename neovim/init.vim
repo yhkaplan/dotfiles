@@ -119,9 +119,10 @@ nnoremap <silent> <leader>gl :Commits<CR>
 " c for commands
 nnoremap <silent> <leader>c :History:<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
-
 " Pastes buffer into newline
 nnoremap  <silent> <leader>p :pu<CR>
+" Splits line at cursor
+nnoremap <silent> <leader>j :<C-u>call BreakHere()<CR>
 
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gr <Plug>(go-run)
@@ -160,6 +161,12 @@ set showmatch
 set clipboard=unnamed
 " Fixes cursor
 set guicursor=
+
+" ########### Split func ###############
+function! BreakHere()
+    s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
+    call histdel("/", -1)
+endfunction
 
 " ########### Proper tabs ###############
 set tabstop=4       " number of visual spaces per TAB
