@@ -7,6 +7,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Xcodebuild, run, etc
+Plug 'gfontenot/vim-xcode'
 " Swift syntax highlighting
 Plug 'https://github.com/keith/swift.vim.git'
 " Bracket and quote completion
@@ -197,6 +199,11 @@ let g:airline#extensions#whitespace#show_message = 0
 
 " Makes sure Swift files are recognized as such
 autocmd BufNewFile,BufRead *.swift set filetype=swift
+
+" ############ vim-xcode ###################
+let g:xcode_default_simulator = 'iPhone 8'
+" Set default shell to Bash (needed for Xcodebuild)
+:set shell=/usr/local/bin/bash
 
 " ############ Golang Settings ##############
 
