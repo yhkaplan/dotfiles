@@ -45,3 +45,6 @@ export PATH=$PATH:$GOPATH/bin
 
 # Rbenv support
 eval "$(rbenv init -)"
+
+# Swiftenv
+if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
