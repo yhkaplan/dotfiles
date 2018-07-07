@@ -121,8 +121,8 @@ nnoremap <silent> <leader>c :History:<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 " Pastes buffer into newline
 nnoremap  <silent> <leader>p :pu<CR>
-" Splits line at cursor
-nnoremap <silent> <leader>j :<C-u>call BreakHere()<CR>
+" Splits line at cursor (u for unjoin)
+nnoremap <silent> <leader>u :<C-u>call BreakHere()<CR>
 
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gr <Plug>(go-run)
