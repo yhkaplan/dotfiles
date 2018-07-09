@@ -144,6 +144,8 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " ########## GENERAL SETTINGS ###########
 " Line numbers
 set number
+" Live preview of search and replace
+set inccommand=nosplit
 " Turn off GitGutter by default
 " Enable w/ :GitGutterToggle
 let g:gitgutter_enabled = 0
