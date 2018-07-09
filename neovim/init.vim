@@ -203,7 +203,7 @@ autocmd BufNewFile,BufRead *.swift set filetype=swift
 " ############ vim-xcode ###################
 let g:xcode_default_simulator = 'iPhone 8'
 " Set default shell to Bash (needed for Xcodebuild)
-:set shell=/usr/local/bin/bash
+set shell=/usr/local/bin/bash
 
 au FileType swift nmap <Leader>xr :Xrun <CR>
 au FileType swift nmap <Leader>xb :Xbuild <CR>
