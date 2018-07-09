@@ -205,6 +205,12 @@ let g:xcode_default_simulator = 'iPhone 8'
 " Set default shell to Bash (needed for Xcodebuild)
 :set shell=/usr/local/bin/bash
 
+au FileType swift nmap <Leader>xr :Xrun <CR>
+au FileType swift nmap <Leader>xb :Xbuild <CR>
+au FileType swift nmap <Leader>xt :Xtest <CR>
+" Open in Xcode
+au FileType swift nmap <Leader>xo :Xopen <CR>
+
 " ############ Golang Settings ##############
 
 let g:ale_linters = {'go': ['gofmt', 'gotype', 'govet']}
