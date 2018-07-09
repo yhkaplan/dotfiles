@@ -47,7 +47,8 @@ rbenv install 2.5.1
 
 # Installs bundler for system version of Ruby, may cause
 # headaches and issues if the rbenv version doesn't have bundler installed
-sudo gem install bundler
+# XCPretty required for vim-xcode and nice for running xcodebuild in command line
+sudo gem install bundler xcpretty
 
 ########## Other ################
 
