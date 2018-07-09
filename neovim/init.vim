@@ -133,6 +133,10 @@ nnoremap <silent> <leader>ga :Gwrite<CR>
 nnoremap <silent> <leader>gc :Gcommit<CR>
 " gp git push
 nnoremap <silent> <leader>gp :Gpush<CR>
+" gd git diff
+nnoremap <silent> <leader>gd :Gdiff<CR>
+" gs git status
+nnoremap <silent> <leader>gs :Gstatus<CR>
 
 " Golang
 au FileType go nmap <Leader>gd <Plug>(go-doc)
