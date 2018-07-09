@@ -126,6 +126,15 @@ nnoremap  <silent> <leader>p :pu<CR>
 " Splits line at cursor (u for unjoin)
 nnoremap <silent> <leader>u :<C-u>call BreakHere()<CR>
 
+" vim-fugitive/git
+" ga for git add
+nnoremap <silent> <leader>ga :Gwrite<CR>
+" gc git commit
+nnoremap <silent> <leader>gc :Gcommit<CR>
+" gp git push
+nnoremap <silent> <leader>gp :Gpush<CR>
+
+" Golang
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gr <Plug>(go-run)
 au FileType go nmap <Leader>gb <Plug>(go-build)
