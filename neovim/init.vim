@@ -121,8 +121,10 @@ nnoremap <silent> <leader>gl :Commits<CR>
 " c for commands
 nnoremap <silent> <leader>c :History:<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
-" Pastes buffer into newline
+" Pastes buffer into newline below
 nnoremap  <silent> <leader>p :pu<CR>
+" Pastes buffer into newline above
+nnoremap  <silent> <leader>P :pu!<CR>
 " Splits line at cursor (u for unjoin)
 nnoremap <silent> <leader>u :<C-u>call BreakHere()<CR>
 
