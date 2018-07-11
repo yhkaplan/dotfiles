@@ -64,6 +64,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
+let g:xcode_scheme_ignore_pattern = "/demo|Demo|Example|example/d"
 " ###### MARKDOWN SETTINGS #############
 
 let g:vim_markdown_folding_disabled = 1
