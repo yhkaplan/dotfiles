@@ -162,6 +162,8 @@ endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " ########## GENERAL SETTINGS ###########
+" Make $ not pickup newlines by mapping to similar binding
+nmap $ g_
 " Line numbers
 set number
 " Live preview of search and replace
