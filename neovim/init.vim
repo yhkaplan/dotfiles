@@ -128,6 +128,10 @@ nnoremap  <silent> <leader>p :pu<CR>
 nnoremap  <silent> <leader>P :pu!<CR>
 " Splits line at cursor (u for unjoin)
 nnoremap <silent> <leader>u :<C-u>call BreakHere()<CR>
+" Yank to end of line
+nnoremap <silent> <leader>y yg_
+" Pastes at end
+nnoremap <silent> <leader>a $p
 
 " vim-fugitive/git
 " ga for git add
