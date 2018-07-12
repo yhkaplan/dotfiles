@@ -34,7 +34,7 @@ alias ctags="/usr/local/bin/ctags" # Use Homebrew ctags
 
 if status --is-interactive
     set -g fish_user_abbreviations
-    
+
     # Git-related abbreviations
     abbr -a gpl git pull
     abbr -a gps git push
@@ -57,9 +57,10 @@ if status --is-interactive
 
     # Other abbreviations
     abbr -a ow 'open *.xcworkspace/'
+    abbr -a op 'open *.xcodeproj'
     abbr -a nv nvim
     abbr -a trel tree -L 2
-    abbr -a formatswift 'swiftlint autocorrect --config .swiftlint.yml --path ' 
+    abbr -a formatswift 'swiftlint autocorrect --config .swiftlint.yml --path '
 
 end
 
