@@ -13,6 +13,10 @@ Plug 'gfontenot/vim-xcode'
 Plug 'https://github.com/keith/swift.vim.git'
 " Bracket and quote completion
 Plug 'https://github.com/jiangmiao/auto-pairs.git'
+" Surrounding with quote, bracket, etc
+Plug 'tpope/vim-surround'
+" Control Tmux
+Plug 'benmills/vimux'
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Git integration
