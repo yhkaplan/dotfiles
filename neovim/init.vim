@@ -15,6 +15,8 @@ Plug 'https://github.com/keith/swift.vim.git'
 Plug 'https://github.com/jiangmiao/auto-pairs.git'
 " Surrounding with quote, bracket, etc
 Plug 'tpope/vim-surround'
+" Commenting out
+Plug 'tpope/vim-commentary'
 " Control Tmux
 Plug 'benmills/vimux'
 " Completion
@@ -119,7 +121,7 @@ nnoremap <silent> <leader>f :BTags<CR>
 " gl for git log
 nnoremap <silent> <leader>gl :Commits<CR>
 " c for commands
-nnoremap <silent> <leader>c :History:<CR>
+nnoremap <silent> <leader>H :History:<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 " Pastes buffer into newline below
 nnoremap  <silent> <leader>p :pu<CR>
@@ -131,6 +133,8 @@ nnoremap <silent> <leader>u :<C-u>call BreakHere()<CR>
 nnoremap <silent> <leader>y yg_
 " Pastes at end
 nnoremap <silent> <leader>a $p
+" Map vim-commentary to IDE-like mapping
+nnoremap <silent> <leader>/ :Commentary<CR>
 
 " vim-fugitive/git
 " ga for git add
