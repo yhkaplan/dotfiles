@@ -61,6 +61,7 @@ if status --is-interactive
     abbr -a nv nvim
     abbr -a trel tree -L 2
     abbr -a formatswift 'swiftlint autocorrect --config .swiftlint.yml --path '
+    abbr -a pipupdate 'pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U'
 
 end
 
