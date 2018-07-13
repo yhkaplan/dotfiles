@@ -10,9 +10,9 @@ call plug#begin('~/.config/nvim/plugged')
 " Xcodebuild, run, etc
 Plug 'gfontenot/vim-xcode'
 " Swift syntax highlighting
-Plug 'https://github.com/keith/swift.vim.git'
+Plug 'keith/swift.vim'
 " Bracket and quote completion
-Plug 'https://github.com/jiangmiao/auto-pairs.git'
+Plug 'jiangmiao/auto-pairs'
 " Surrounding with quote, bracket, etc
 Plug 'tpope/vim-surround'
 " Commenting out
@@ -22,9 +22,9 @@ Plug 'benmills/vimux'
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Git integration
-Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'tpope/vim-fugitive'
 " GitHub integration w/ above
-Plug 'https://github.com/tpope/vim-rhubarb.git'
+Plug 'tpope/vim-rhubarb'
 " Git diff integration
 Plug 'airblade/vim-gitgutter'
 " Swift completion (not clear if it's working)
@@ -48,7 +48,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
 
 " Theme(s)
-Plug 'https://github.com/rakr/vim-one.git'
+Plug 'rakr/vim-one'
 
 call plug#end()
 
