@@ -41,13 +41,8 @@ Plug 'vim-airline/vim-airline-themes'
 " ALE Linting for Go, Swift, etc
 Plug 'w0rp/ale'
 
-" Themes
-Plug 'whatyouhide/vim-gotham'
+" Theme(s)
 Plug 'https://github.com/rakr/vim-one.git'
-Plug 'dracula/vim'
-Plug 'iCyMind/NeoSolarized'
-Plug 'nightsense/vimspectr'
-Plug 'mhartington/oceanic-next'
 
 call plug#end()
 
