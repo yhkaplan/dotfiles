@@ -110,9 +110,6 @@ nnoremap <leader>k <C-w>k
 nnoremap <leader>h <C-w>h
 nnoremap <leader>l <C-w>l
 
-nnoremap <silent> <leader>n :NERDTreeToggle<CR>
-" d for diff
-nnoremap <silent> <leader>d :GitGutterToggle<CR>
 nnoremap <silent> <leader>s :FZF<CR>
 " s for search
 " Setting this to begin with space f because I mostly plan on
@@ -149,6 +146,7 @@ nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent> <leader>gp :Gpush<CR>
 " gd git diff
 nnoremap <silent> <leader>gd :Gdiff<CR>
+nnoremap <silent> <leader>gg :GitGutterToggle<CR>
 " gs git status
 nnoremap <silent> <leader>gs :Gstatus<CR>
 
