@@ -136,6 +136,10 @@ nnoremap <silent> <leader>/ :Commentary<CR>
 nnoremap <silent> <leader>o o<Esc>k
 " Insert newline above
 nnoremap <silent> <leader>O O<Esc>j
+" Insert space after
+nnoremap <silent> <leader>n i<space><esc>
+" Insert space before
+nnoremap <silent> <leader>N hi<space><esc>
 
 " vim-fugitive/git
 " ga for git add
