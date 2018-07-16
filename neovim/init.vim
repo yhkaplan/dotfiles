@@ -7,6 +7,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Directory brower, replacement for netrw
+Plug 'ap/vim-readdir'
 " Xcodebuild, run, etc
 Plug 'gfontenot/vim-xcode'
 " Swift syntax highlighting
@@ -110,8 +112,6 @@ nnoremap <leader>l <C-w>l
 
 " s for search
 nnoremap <silent> <leader>s :FZF<CR>
-" n for Nerdtree (the plugin I used before netrw)
-nnoremap <silent> <leader>n :Vex<CR>
 " Setting this to begin with space f because I mostly plan on
 " using it to find functions
 nnoremap <silent> <leader>f :BTags<CR>
@@ -297,19 +297,9 @@ let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const
 
 " ######## Netrw settings ############
 
-" Set to tree style
-let g:netrw_liststyle = 3
-" Remove useless banner
-let g:netrw_banner = 0
-" Open files in horizontal split by default
-" 1 - open files in a new horizontal split
-" 2 - open files in a new vertical split
-" 3 - open files in a new tab
-" 4 - open in previous window
-let g:netrw_browse_split = 4
-" Set width to 25%
-let g:netrw_winsize = 25
-let g:netrw_altv = 1
+" Prevent netrw from loading
+let g:loaded_netrw       = 1
+let g:loaded_netrwPlugin = 1
 
 " ######## Tag Support w/ FZF ########
 
