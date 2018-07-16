@@ -169,6 +169,8 @@ endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " ########## GENERAL SETTINGS ###########
+" Hide mode menu
+set noshowmode
 " Make $ not pickup newlines by mapping to similar binding
 nmap $ g_
 " Line numbers
