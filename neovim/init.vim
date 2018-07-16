@@ -36,7 +36,9 @@ Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'fatih/vim-go' " May conflict w/ deoplete-go
 " Better markdown support
-Plug 'godlygeek/tabular'
+" Tabular is a dependency for vim-markdown, and is set to load
+" Only when there's a markdown file to speed up launch time (because it's slow)
+Plug 'godlygeek/tabular', { 'for': 'markdown' }
 Plug 'plasticboy/vim-markdown'
 " FZF (through Homebrew)
 Plug '/usr/local/opt/fzf'
