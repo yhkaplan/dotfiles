@@ -93,6 +93,7 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 " ########## Shortcut SETTINGS ###########
+
 " TODO: probably don't need silent for all these
 " Set default mapleader (Leader) to spacebar
 let mapleader = "\<Space>"
@@ -107,8 +108,10 @@ nnoremap <leader>k <C-w>k
 nnoremap <leader>h <C-w>h
 nnoremap <leader>l <C-w>l
 
-nnoremap <silent> <leader>s :FZF<CR>
 " s for search
+nnoremap <silent> <leader>s :FZF<CR>
+" n for Nerdtree (the plugin I used before netrw)
+nnoremap <silent> <leader>n :Vex<CR>
 " Setting this to begin with space f because I mostly plan on
 " using it to find functions
 nnoremap <silent> <leader>f :BTags<CR>
@@ -134,9 +137,9 @@ nnoremap <silent> <leader>o o<Esc>k
 " Insert newline above
 nnoremap <silent> <leader>O O<Esc>j
 " Insert space after
-nnoremap <silent> <leader>n i<space><esc>
+nnoremap <silent> <leader>i i<space><esc>
 " Insert space before
-nnoremap <silent> <leader>N hi<space><esc>
+nnoremap <silent> <leader>I hi<space><esc>
 
 " vim-fugitive/git
 " ga for git add
