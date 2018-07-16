@@ -39,8 +39,8 @@ Plug 'gabrielelana/vim-markdown'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 " Airline status bar below
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+Plug 'maximbaz/lightline-ale'
 " ALE Linting for Go, Swift, etc
 Plug 'w0rp/ale'
 
@@ -75,7 +75,6 @@ autocmd FileType markdown setlocal ts=4 sw=4 sts=0 expandtab " probably unneeded
 
 set background=dark " for the dark version
 colorscheme one
-let g:airline_theme='one'
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -221,13 +220,37 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 "let g:ale_sign_error = '⤫'
 "let g:ale_sign_warning = '-'
 
-" ########## AIRLINE SETTINGS ###########
+" ########## LIGHTLINE SETTINGS ###########
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \  'right': [ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
 
-let g:airline#extensions#branch#enabled = 1
-" Enables powerline for airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#whitespace#show_message = 0
+let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
 
+let g:lightline.component_type = {
+      \     'linter_checking': 'left',
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \     'linter_ok': 'left',
+      \ }
+
+" let g:lightline#ale#indicator_checking = "\uf110"
+" let g:lightline#ale#indicator_warnings = "\uf071"
+" let g:lightline#ale#indicator_errors = "\uf05e"
+" let g:lightline#ale#indicator_ok = "\uf00c"
 " ############ Swift Settings ###############
 
 " Makes sure Swift files are recognized as such
