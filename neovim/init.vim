@@ -36,10 +36,7 @@ Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'fatih/vim-go' " May conflict w/ deoplete-go
 " Better markdown support
-" Tabular is a dependency for vim-markdown, and is set to load
-" Only when there's a markdown file to speed up launch time (because it's slow)
-Plug 'godlygeek/tabular', { 'for': 'markdown' }
-Plug 'plasticboy/vim-markdown'
+Plug 'gabrielelana/vim-markdown'
 " FZF (through Homebrew)
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -70,7 +67,8 @@ endif
 let g:xcode_scheme_ignore_pattern = "/demo|Demo|Example|example/d"
 " ###### MARKDOWN SETTINGS #############
 
-let g:vim_markdown_folding_disabled = 1
+let g:markdown_enable_spell_checking = 0
+let g:markdown_enable_conceal = 1
 set conceallevel=2
 autocmd FileType markdown setlocal indentexpr=
 autocmd FileType markdown setlocal ts=4 sw=4 sts=0 expandtab " probably unneeded
