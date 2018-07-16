@@ -23,8 +23,6 @@ Plug 'benmills/vimux'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Git integration
 Plug 'tpope/vim-fugitive'
-" GitHub integration w/ above
-Plug 'tpope/vim-rhubarb'
 " Git diff integration
 Plug 'airblade/vim-gitgutter'
 " Swift completion (not clear if it's working)
