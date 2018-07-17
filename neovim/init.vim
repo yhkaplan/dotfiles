@@ -100,7 +100,7 @@ let g:fzf_colors =
 " Set default mapleader (Leader) to spacebar
 let mapleader = "\<Space>"
 
-nnoremap <silent> <leader>v :vsplit<CR>
+nnoremap <silent> <leader>v :vsplit<CR><C-w>l
 nnoremap <silent> <leader>tn :tabnew<CR>
 "tab next, tab to the right
 nnoremap <silent> <leader>tl :tabn<CR>
