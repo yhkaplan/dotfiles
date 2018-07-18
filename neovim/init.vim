@@ -161,6 +161,7 @@ au FileType go nmap <Leader>gb <Plug>(go-build)
 au FileType go nmap <Leader>gt <Plug>(go-test)
 
 " ########## Strip trailing whitespaces ###########
+
 fun! <SID>StripTrailingWhitespaces()
     let l = line(".")
     let c = col(".")
@@ -217,12 +218,14 @@ set clipboard=unnamed
 set guicursor=
 
 " ########### Split func ###############
+
 function! BreakHere()
     s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
     call histdel("/", -1)
 endfunction
 
 " ########### Proper tabs ###############
+
 set tabstop=4       " number of visual spaces per TAB
 set softtabstop=4   " number of spaces in tab when editing
 set shiftwidth=4    " number of spaces to use for autoindent
@@ -231,6 +234,7 @@ set autoindent
 set copyindent      " copy indent from the previous line
 
 " ########### ALE SETTINGS ###############
+
 "keep the sign gutter open at all times
 let g:ale_sign_column_always = 1
 " Keybindings for jumping to next/previous error
@@ -241,6 +245,7 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 "let g:ale_sign_warning = '-'
 
 " ########## LIGHTLINE SETTINGS ###########
+
 let g:lightline = {
       \ 'colorscheme': 'one',
       \ 'active': {
@@ -277,6 +282,7 @@ let g:lightline.component_type = {
 autocmd BufNewFile,BufRead *.swift set filetype=swift
 
 " ############ vim-xcode ###################
+
 let g:xcode_default_simulator = 'iPhone 8'
 " Set default shell to Bash (needed for Xcodebuild)
 set shell=/usr/local/bin/bash
