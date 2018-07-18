@@ -171,7 +171,7 @@ endfun
 
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
-" ########## Filetype detection ###########
+" ########## Filetype/syntax detection ###########
 
 " The reason to not set filetype is that
 " swiftlint gets filled w/ errors
@@ -276,6 +276,7 @@ let g:lightline.component_type = {
 " let g:lightline#ale#indicator_warnings = "\uf071"
 " let g:lightline#ale#indicator_errors = "\uf05e"
 " let g:lightline#ale#indicator_ok = "\uf00c"
+
 " ############ Swift Settings ###############
 
 " Makes sure Swift files are recognized as such
