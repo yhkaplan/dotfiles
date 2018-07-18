@@ -31,10 +31,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mitsuse/autocomplete-swift'
 " Python autocomplete
 Plug 'zchee/deoplete-jedi'
-" Go-lang completion (erroring out....)
+" Go-lang completion
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-Plug 'fatih/vim-go' " May conflict w/ deoplete-go
+Plug 'fatih/vim-go'
 " Better markdown support
 Plug 'gabrielelana/vim-markdown'
 " FZF (through Homebrew)
