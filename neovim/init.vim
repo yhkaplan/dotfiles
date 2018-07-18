@@ -64,7 +64,6 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-let g:xcode_scheme_ignore_pattern = "/demo|Demo|Example|example/d"
 " ###### MARKDOWN SETTINGS #############
 
 let g:markdown_enable_spell_checking = 0
@@ -285,6 +284,8 @@ autocmd BufNewFile,BufRead *.swift set filetype=swift
 " ############ vim-xcode ###################
 
 let g:xcode_default_simulator = 'iPhone 8'
+" Prefer schemes that don't have below pattern
+let g:xcode_scheme_ignore_pattern = "/demo|Demo|Example|example/d"
 " Set default shell to Bash (needed for Xcodebuild)
 set shell=/usr/local/bin/bash
 
