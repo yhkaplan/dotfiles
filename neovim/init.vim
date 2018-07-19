@@ -285,7 +285,7 @@ autocmd BufNewFile,BufRead *.swift set filetype=swift
 
 let g:xcode_default_simulator = 'iPhone 8'
 " Prefer schemes that don't have below pattern
-let g:xcode_scheme_ignore_pattern = "/demo|Demo|Example|example/d"
+let g:xcode_scheme_ignore_pattern = "/demo|Demo|Example|example|Package/d"
 " Set default shell to Bash (needed for Xcodebuild)
 set shell=/usr/local/bin/bash
 
