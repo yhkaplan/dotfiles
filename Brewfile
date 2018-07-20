@@ -39,6 +39,7 @@ brew "git-extras"
 brew "gnu-sed", args: ["with-default-names"]
 brew "go"
 brew "grep"
+brew "hadolint"
 brew "heroku"
 brew "python"
 brew "httpie"
@@ -62,6 +63,7 @@ brew "rbenv"
 brew "reattach-to-user-namespace"
 brew "rename"
 brew "screen"
+brew "shellcheck"
 brew "shfmt"
 brew "sourcekitten"
 brew "sourcery"
@@ -75,6 +77,7 @@ brew "tmux"
 brew "trash"
 brew "tree"
 brew "xctool"
+brew "yamllint"
 brew "youtube-dl"
 brew "zopfli"
 brew "zsh-autosuggestions"
@@ -134,5 +137,6 @@ mas "Reeder", id: 880001334
 mas "Slack", id: 803453959
 mas "Spark", id: 1176895641
 mas "The Unarchiver", id: 425424353
+mas "Things3", id: 904280696
 mas "Xcode", id: 497799835
 mas "XLIFFTool", id: 1074282695
