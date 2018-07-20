@@ -173,8 +173,9 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " ########## Filetype/syntax detection ###########
 
 " The reason to not set filetype is that
-" swiftlint gets filled w/ errors
+" linter gets filled w/ errors
 au BufRead,BufNewFile *.stencil set syntax=swift
+au BufRead,BufNewFile Brewfile set syntax=ruby
 
 " Set the filetype based on the file's extension, but only if
 " 'filetype' has not already been set
