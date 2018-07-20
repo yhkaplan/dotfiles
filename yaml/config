@@ -18,16 +18,11 @@ rules:
     max-spaces-before: 0
     min-spaces-after: 1
     max-spaces-after: 1
-  comments:
-    level: warning
-    require-starting-space: true
-    min-spaces-from-content: 2
+  comments: disable
   comments-indentation:
     level: warning
   document-end: disable
-  document-start:
-    level: warning
-    present: true
+  document-start: disable
   empty-lines:
     max: 2
     max-start: 0
