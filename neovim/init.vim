@@ -176,16 +176,16 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " linter gets filled w/ errors
 au BufRead,BufNewFile *.stencil set syntax=swift
 au BufRead,BufNewFile Brewfile set syntax=ruby
+au BufRead,BufNewFile Deliverfile set syntax=ruby
+au BufRead,BufNewFile Fastfile set syntax=ruby
+au BufRead,BufNewFile Gymfile set syntax=ruby
+au BufRead,BufNewFile Rakefile set syntax=ruby
+au BufRead,BufNewFile Gemfile set syntax=ruby
+au BufRead,BufNewFile Podfile set syntax=ruby
 
 " Set the filetype based on the file's extension, but only if
 " 'filetype' has not already been set
 au BufRead,BufNewFile Dangerfile setfiletype ruby
-au BufRead,BufNewFile Deliverfile setfiletype ruby
-au BufRead,BufNewFile Fastfile setfiletype ruby
-au BufRead,BufNewFile Gymfile setfiletype ruby
-au BufRead,BufNewFile Rakefile setfiletype ruby
-au BufRead,BufNewFile Gemfile setfiletype ruby
-au BufRead,BufNewFile Podfile setfiletype ruby
 
 " ########## GENERAL SETTINGS ###########
 
