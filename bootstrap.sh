@@ -39,10 +39,8 @@ echo "Setting up Ruby. Please make sure to check that the version of bundler mat
 LINE='eval "$(rbenv init -)"'
 grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra echo "Cleaning up..."
 
-echo "Installing Ruby 2.4.3"
+echo "Installing Ruby versions"
 rbenv install 2.4.1
-
-echo "Installing Ruby 2.5.1"
 rbenv install 2.5.1
 
 # Installs bundler for system version of Ruby, may cause
@@ -54,6 +52,9 @@ sudo gem install bundler xcpretty
 
 # Dependencies for Deoplete on other Pythonic stuff
 pip3 install -r pip-requirements.txt
+
+# requires atom commandline tools
+apm install --packages-file ~/.atom/package.list
 
 # Make iTerm/Terminal "Last login:" message from Login utility stop appearing
 touch ~/.hushlogin
@@ -72,7 +73,6 @@ sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
 sudo bash -c 'echo /usr/local/bin/fish >> /etc/shells'
 
 # Gives user choice for preferred shell
-
 while true; do
     read -p "Do you want Fish to be your default shell? " yn
     case $yn in
