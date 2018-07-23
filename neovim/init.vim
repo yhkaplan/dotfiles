@@ -182,6 +182,7 @@ au BufRead,BufNewFile Gymfile set syntax=ruby
 au BufRead,BufNewFile Rakefile set syntax=ruby
 au BufRead,BufNewFile Gemfile set syntax=ruby
 au BufRead,BufNewFile Podfile set syntax=ruby
+au BufRead,BufNewFile Cartfile set syntax=ruby
 au BufRead,BufNewFile *.podspec set syntax=ruby
 
 " Set the filetype based on the file's extension, but only if
