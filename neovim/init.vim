@@ -197,8 +197,14 @@ au BufRead,BufNewFile Dangerfile setfiletype ruby
 set noshowmode
 " Make $ not pickup newlines by mapping to similar binding
 nmap $ g_
-" Line numbers
-set number
+" Hybrid relative line numbers
+set number relativenumber
+" Switch between line number schemes depending on mode
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 " Live preview of search and replace
 set inccommand=nosplit
 " Turn off GitGutter by default
