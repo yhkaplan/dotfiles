@@ -229,6 +229,8 @@ set showmatch
 set clipboard=unnamed
 " Fixes cursor
 set guicursor=
+" Set max line length indicator
+set colorcolumn=100
 
 " ########### Split func ###############
 
