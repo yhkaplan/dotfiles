@@ -297,6 +297,15 @@ let g:lightline.component_type = {
 " Makes sure Swift files are recognized as such
 autocmd BufNewFile,BufRead *.swift set filetype=swift
 
+function AddMark ()
+    let a:line_number=line('.')
+    normal! i// MARK: -
+endfunction
+
+nmap <silent><leader>xm :call AddMark()<CR>
+
+" A function for changing declaration/call like getItem(a: aLongName, b: anotherLongName)
+" into a multiline declaration/call
 function BreakLines ()
     let a:line_number=line('.')
     let a:indent_number=indent(a:line_number)
