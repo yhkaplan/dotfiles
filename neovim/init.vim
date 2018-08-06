@@ -297,6 +297,33 @@ let g:lightline.component_type = {
 " Makes sure Swift files are recognized as such
 autocmd BufNewFile,BufRead *.swift set filetype=swift
 
+function BreakLines ()
+    let a:line_number=line('.')
+    let a:indent_number=indent(a:line_number)
+
+    " Replace ( and comma w/ ( newline
+    execute a:line_number . ',' . a:line_number . 's/\((\|,\s\)/\1\r/g'
+
+    " Get new line number
+    let a:new_line_number=line('.')
+    execute a:new_line_number . ',' . a:new_line_number . 's/)/\r)'
+
+    " Indent between line and newline
+    let a:start_line=a:line_number + 1
+    let a:finish_line=a:new_line_number
+    let a:range=a:finish_line - a:start_line
+
+    " let a:i = 0
+    " while a:i <= a:indent_number
+        " a:range v
+        " >
+        " a:i += 1
+    " endwhile
+    "execute a:line_number . ',' . a:new_line_number . 's/)/\r)'
+endfunction
+
+nmap <silent><leader>B :call BreakLines()<CR>
+
 " ############ vim-xcode ###################
 
 let g:xcode_default_simulator = 'iPhone 8'
