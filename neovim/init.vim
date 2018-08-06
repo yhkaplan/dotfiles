@@ -120,7 +120,7 @@ nnoremap <silent> <leader>f :BTags<CR>
 nnoremap <silent> <leader>gl :Commits<CR>
 " c for commands
 nnoremap <silent> <leader>H :History:<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>B :Buffers<CR>
 " Pastes buffer into newline below
 nnoremap  <silent> <leader>p :pu<CR>
 " Pastes buffer into newline above
@@ -322,7 +322,7 @@ function BreakLines ()
     "execute a:line_number . ',' . a:new_line_number . 's/)/\r)'
 endfunction
 
-nmap <silent><leader>B :call BreakLines()<CR>
+nmap <silent><leader>b :call BreakLines()<CR>
 
 " ############ vim-xcode ###################
 
