@@ -57,12 +57,12 @@ call plug#end()
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-if (has("nvim"))
+if (has('nvim'))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
-if (has("termguicolors"))
+if (has('termguicolors'))
   set termguicolors
 endif
 
@@ -167,8 +167,8 @@ au FileType go nmap <Leader>gt <Plug>(go-test)
 " ########## Strip trailing whitespaces ###########
 
 fun! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
+    let l = line('.')
+    let c = col('.')
     %s/\s\+$//e
     call cursor(l, c)
 endfun
@@ -236,7 +236,7 @@ set colorcolumn=100
 
 function! BreakHere()
     s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
-    call histdel("/", -1)
+    call histdel('/', -1)
 endfunction
 
 " ########### Proper tabs ###############
@@ -337,7 +337,7 @@ nmap <silent><leader>b :call BreakLines()<CR>
 
 let g:xcode_default_simulator = 'iPhone 8'
 " Prefer schemes that don't have below pattern
-let g:xcode_scheme_ignore_pattern = "/Demo|Example|Package|AFNetworking|Bitlyzer|Kit|Bolts|GPUImage|Growthbeat|libwebp|View|lottie-ios/d"
+let g:xcode_scheme_ignore_pattern = '/Demo|Example|Package|AFNetworking|Bitlyzer|Kit|Bolts|GPUImage|Growthbeat|libwebp|View|lottie-ios/d'
 " Set default shell to Bash (needed for Xcodebuild)
 set shell=/usr/local/bin/bash
 
@@ -351,7 +351,7 @@ au FileType swift nmap <Leader>xo :Xopen <CR>
 
 let g:ale_linters = {'go': ['gofmt', 'gotype', 'govet']}
 " Auto-import on save
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = 'goimports'
 
 " ############ AUTOCOMPLETE #################
 
