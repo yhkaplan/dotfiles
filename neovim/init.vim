@@ -74,6 +74,14 @@ set conceallevel=2
 autocmd FileType markdown setlocal indentexpr=
 autocmd FileType markdown setlocal ts=4 sw=4 sts=0 expandtab " probably unneeded
 
+" Formats URLs taken from furik to markdown nicely
+function FormatURL ()
+    let a:line_number=line('.')
+    execute a:line_number ',' . a:line_number . 's/\[.*\]\((.*)\): \(.*\)\s(.*/[\2]\1/g'
+endfunction
+
+vnoremap <silent><leader>fu :call FormatURL()<CR>
+
 " ############ THEMING #################
 
 set background=dark " for the dark version
