@@ -316,7 +316,7 @@ nmap <silent><leader>xm :call AddMark()<CR>
 " into a multiline declaration/call
 function BreakLines ()
     let a:line_number=line('.')
-    let a:indent_number=indent(a:line_number)
+    "let a:indent_number=indent(a:line_number)
 
     " Replace ( and comma w/ ( newline
     execute a:line_number . ',' . a:line_number . 's/\((\|,\s\)/\1\r/g'
@@ -326,9 +326,9 @@ function BreakLines ()
     execute a:new_line_number . ',' . a:new_line_number . 's/)/\r)'
 
     " Indent between line and newline
-    let a:start_line=a:line_number + 1
-    let a:finish_line=a:new_line_number
-    let a:range=a:finish_line - a:start_line
+    "let a:start_line=a:line_number + 1
+    "let a:finish_line=a:new_line_number
+    "let a:range=a:finish_line - a:start_line
 
     " let a:i = 0
     " while a:i <= a:indent_number
