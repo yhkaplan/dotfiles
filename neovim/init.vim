@@ -133,9 +133,6 @@ nnoremap <silent> <leader>O O<Esc>j
 nnoremap <silent> <leader>i i<space><esc>
 " Insert space before
 nnoremap <silent> <leader>I hi<space><esc>
-" Indent current line
-nnoremap <silent> <leader>> V><esc>
-nnoremap <silent> <leader>< V<<esc>
 
 " vim-fugitive/git
 " ga for git add
