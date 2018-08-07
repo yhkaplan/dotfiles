@@ -66,22 +66,6 @@ if (has('termguicolors'))
   set termguicolors
 endif
 
-" ###### MARKDOWN SETTINGS #############
-
-let g:markdown_enable_spell_checking = 0
-let g:markdown_enable_conceal = 1
-set conceallevel=2
-autocmd FileType markdown setlocal indentexpr=
-autocmd FileType markdown setlocal ts=4 sw=4 sts=0 expandtab " probably unneeded
-
-" Formats URLs taken from furik to markdown nicely
-function FormatURL ()
-    let a:line_number=line('.')
-    execute a:line_number ',' . a:line_number . 's/\[.*\]\((.*)\): \(.*\)\s(.*/[\2]\1/g'
-endfunction
-
-vnoremap <silent><leader>fu :call FormatURL()<CR>
-
 " ############ THEMING #################
 
 set background=dark " for the dark version
@@ -299,6 +283,22 @@ let g:lightline.component_type = {
 " let g:lightline#ale#indicator_warnings = "\uf071"
 " let g:lightline#ale#indicator_errors = "\uf05e"
 " let g:lightline#ale#indicator_ok = "\uf00c"
+
+" ###### MARKDOWN SETTINGS #############
+
+let g:markdown_enable_spell_checking = 0
+let g:markdown_enable_conceal = 1
+set conceallevel=2
+autocmd FileType markdown setlocal indentexpr=
+autocmd FileType markdown setlocal ts=4 sw=4 sts=0 expandtab " probably unneeded
+
+" Formats URLs taken from furik to markdown nicely
+function FormatURL ()
+    let a:line_number=line('.')
+    execute a:line_number ',' . a:line_number . 's/\[.*\]\((.*)\): \(.*\)\s(.*/[\2]\1/g'
+endfunction
+
+vnoremap <silent><leader>fu :call FormatURL()<CR>
 
 " ############ Swift Settings ###############
 
