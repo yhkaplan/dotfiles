@@ -41,8 +41,7 @@
     keymapYToYankToLastCharacterOfLine: true
   welcome:
     showOnStartup: false
-  whitespace:
-    ignoreWhitespaceOnlyLines: true
+  whitespace: {}
 ".source.swift":
   editor:
     tabLength: 4
