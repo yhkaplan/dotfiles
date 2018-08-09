@@ -372,6 +372,8 @@ let g:go_fmt_command = 'goimports'
 
 " Enable Deoplete
 let g:deoplete#enable_at_startup = 1
+" Set bracket autocompletion (might not be working)
+call deoplete#custom#source('_', 'converters', ['converter_auto_paren'])
 " Use smartcase.
 let g:deoplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
