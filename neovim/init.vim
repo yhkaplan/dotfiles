@@ -21,8 +21,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 " Commenting out
 Plug 'tpope/vim-commentary'
-" Control Tmux
-Plug 'benmills/vimux'
+" Detect indent type etc
+Plug 'tpope/vim-sleuth'
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Git integration
