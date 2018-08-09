@@ -16,6 +16,7 @@ Plug 'gfontenot/vim-xcode'
 " Swift syntax highlighting
 Plug 'keith/swift.vim'
 " Bracket and quote completion
+Plug 'Shougo/neopairs.vim'
 Plug 'jiangmiao/auto-pairs'
 " Surrounding with quote, bracket, etc
 Plug 'tpope/vim-surround'
