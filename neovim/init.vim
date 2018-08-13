@@ -9,18 +9,21 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Directory brower, replacement for netrw
 Plug 'ap/vim-readdir'
+" Running swift test, gotest, etc
+Plug 'janko-m/vim-test'
 " Xcodebuild, run, etc
 Plug 'gfontenot/vim-xcode'
 " Swift syntax highlighting
 Plug 'keith/swift.vim'
 " Bracket and quote completion
+Plug 'Shougo/neopairs.vim'
 Plug 'jiangmiao/auto-pairs'
 " Surrounding with quote, bracket, etc
 Plug 'tpope/vim-surround'
 " Commenting out
 Plug 'tpope/vim-commentary'
-" Control Tmux
-Plug 'benmills/vimux'
+" Detect indent type etc
+Plug 'tpope/vim-sleuth'
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Git integration
@@ -55,22 +58,14 @@ call plug#end()
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-if (has("nvim"))
+if (has('nvim'))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
-if (has("termguicolors"))
+if (has('termguicolors'))
   set termguicolors
 endif
-
-" ###### MARKDOWN SETTINGS #############
-
-let g:markdown_enable_spell_checking = 0
-let g:markdown_enable_conceal = 1
-set conceallevel=2
-autocmd FileType markdown setlocal indentexpr=
-autocmd FileType markdown setlocal ts=4 sw=4 sts=0 expandtab " probably unneeded
 
 " ############ THEMING #################
 
@@ -118,7 +113,7 @@ nnoremap <silent> <leader>f :BTags<CR>
 nnoremap <silent> <leader>gl :Commits<CR>
 " c for commands
 nnoremap <silent> <leader>H :History:<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>B :Buffers<CR>
 " Pastes buffer into newline below
 nnoremap  <silent> <leader>p :pu<CR>
 " Pastes buffer into newline above
@@ -162,8 +157,8 @@ au FileType go nmap <Leader>gt <Plug>(go-test)
 " ########## Strip trailing whitespaces ###########
 
 fun! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
+    let l = line('.')
+    let c = col('.')
     %s/\s\+$//e
     call cursor(l, c)
 endfun
@@ -182,6 +177,8 @@ au BufRead,BufNewFile Gymfile set syntax=ruby
 au BufRead,BufNewFile Rakefile set syntax=ruby
 au BufRead,BufNewFile Gemfile set syntax=ruby
 au BufRead,BufNewFile Podfile set syntax=ruby
+au BufRead,BufNewFile Cartfile set syntax=ruby
+au BufRead,BufNewFile *.podspec set syntax=ruby
 
 " Set the filetype based on the file's extension, but only if
 " 'filetype' has not already been set
@@ -189,12 +186,28 @@ au BufRead,BufNewFile Dangerfile setfiletype ruby
 
 " ########## GENERAL SETTINGS ###########
 
+" Referenced https://robots.thoughtbot.com/faster-grepping-in-vim
+if executable('ag')
+  "Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+  " bind K to grep word under cursor
+  nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+  " bind \ (backward slash) to grep shortcut
+  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+  nnoremap \ :Ag<SPACE>
+endif
 " Hide mode menu
 set noshowmode
 " Make $ not pickup newlines by mapping to similar binding
 nmap $ g_
-" Line numbers
-set number
+" Hybrid relative line numbers
+set number relativenumber
+" Switch between line number schemes depending on mode
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 " Live preview of search and replace
 set inccommand=nosplit
 " Turn off GitGutter by default
@@ -216,12 +229,14 @@ set showmatch
 set clipboard=unnamed
 " Fixes cursor
 set guicursor=
+" Set max line length indicator
+set colorcolumn=100
 
 " ########### Split func ###############
 
 function! BreakHere()
     s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
-    call histdel("/", -1)
+    call histdel('/', -1)
 endfunction
 
 " ########### Proper tabs ###############
@@ -277,16 +292,68 @@ let g:lightline.component_type = {
 " let g:lightline#ale#indicator_errors = "\uf05e"
 " let g:lightline#ale#indicator_ok = "\uf00c"
 
+" ###### MARKDOWN SETTINGS #############
+
+let g:markdown_enable_spell_checking = 0
+let g:markdown_enable_conceal = 1
+set conceallevel=2
+autocmd FileType markdown setlocal indentexpr=
+autocmd FileType markdown setlocal ts=4 sw=4 sts=0 expandtab " probably unneeded
+
+" Formats URLs taken from furik to markdown nicely
+function FormatURL ()
+    let a:line_number=line('.')
+    execute a:line_number ',' . a:line_number . 's/\[.*\]\((.*)\): \(.*\)\s(.*/[\2]\1/g'
+endfunction
+
+vnoremap <silent><leader>fu :call FormatURL()<CR>
+
 " ############ Swift Settings ###############
 
 " Makes sure Swift files are recognized as such
 autocmd BufNewFile,BufRead *.swift set filetype=swift
 
+function AddMark ()
+    let a:line_number=line('.')
+    normal! i// MARK: -
+endfunction
+
+nmap <silent><leader>xm :call AddMark()<CR>
+
+" A function for changing declaration/call like getItem(a: aLongName, b: anotherLongName)
+" into a multiline declaration/call
+function BreakLines ()
+    let a:line_number=line('.')
+    "let a:indent_number=indent(a:line_number)
+
+    " Replace ( and comma w/ ( newline
+    execute a:line_number . ',' . a:line_number . 's/\((\|,\s\)/\1\r/g'
+
+    " Get new line number
+    let a:new_line_number=line('.')
+    execute a:new_line_number . ',' . a:new_line_number . 's/)/\r)'
+
+    " Indent between line and newline
+    "let a:start_line=a:line_number + 1
+    "let a:finish_line=a:new_line_number
+    "let a:range=a:finish_line - a:start_line
+
+    " let a:i = 0
+    " while a:i <= a:indent_number
+        " a:range v
+        " >
+        " a:i += 1
+    " endwhile
+    "execute a:line_number . ',' . a:new_line_number . 's/)/\r)'
+endfunction
+
+nmap <silent><leader>b :call BreakLines()<CR>
+
 " ############ vim-xcode ###################
 
 let g:xcode_default_simulator = 'iPhone 8'
 " Prefer schemes that don't have below pattern
-let g:xcode_scheme_ignore_pattern = "/demo|Demo|Example|example|Package/d"
+let g:xcode_scheme_ignore_pattern = '/Demo|Example|Package|AFNetworking|Bitlyzer|Kit|Bolts|GPUImage|Growthbeat|libwebp|View|lottie-ios/d'
 " Set default shell to Bash (needed for Xcodebuild)
 set shell=/usr/local/bin/bash
 
@@ -300,12 +367,14 @@ au FileType swift nmap <Leader>xo :Xopen <CR>
 
 let g:ale_linters = {'go': ['gofmt', 'gotype', 'govet']}
 " Auto-import on save
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = 'goimports'
 
 " ############ AUTOCOMPLETE #################
 
 " Enable Deoplete
 let g:deoplete#enable_at_startup = 1
+" Set bracket autocompletion (might not be working)
+call deoplete#custom#source('_', 'converters', ['converter_auto_paren'])
 " Use smartcase.
 let g:deoplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
