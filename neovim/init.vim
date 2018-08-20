@@ -338,7 +338,12 @@ function BreakLines ()
     " Get new line number
     let a:new_line_number=line('.')
     execute a:new_line_number . ',' . a:new_line_number . 's/)/\r)'
+endfunction
 
+" A function to change a func into a computed var
+function FuncToVar ()
+    let a:line_number=line('.')
+    execute a:line_number . ',' . a:line_number . 's/func \(.*\)(.*) -> \(.*\)\s/var \1: \2 /g'
 endfunction
 
 nmap <silent><leader>b :call BreakLines()<CR>
