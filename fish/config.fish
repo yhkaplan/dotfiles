@@ -58,6 +58,7 @@ if status --is-interactive
     # Other abbreviations
     abbr -a ow 'open *.xcworkspace/'
     abbr -a ox 'open *.xcodeproj'
+    abbr -a pi 'bundle exec pod install'
     abbr -a nv nvim
     abbr -a trel tree -L 2
     abbr -a formatswift 'swiftlint autocorrect --config .swiftlint.yml --path '
