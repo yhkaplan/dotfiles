@@ -52252,14 +52252,18 @@
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>134 74 689 421 0 0 1280 777 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>308 288 620 392 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>632 475 918 401 0 0 1920 1057 </string>
+	<string>272 214 918 512 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>640 0 640 777 0 0 1280 777 </string>
+	<string>617 0 640 777 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>630 0 647 777 0 0 1280 777 </string>
+	<string>640 0 640 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>665 0 612 777 0 0 1280 777 </string>
+	<string>430 110 850 667 0 0 1280 777 </string>
+	<key>NSWindow Frame iTerm Window 3</key>
+	<string>194 4 850 667 0 0 1280 777 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -53751,7 +53755,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-03-18T23:20:32Z</date>
+	<date>2018-07-27T15:22:04Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SmartPlacement</key>
@@ -53768,8 +53772,10 @@
 	<integer>0</integer>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.1.5</string>
+	<string>3.1.7</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>6</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
