@@ -95,6 +95,7 @@ let g:fzf_colors =
 let mapleader = "\<Space>"
 
 nnoremap <silent> <leader>v :vsplit<CR><C-w>l
+nnoremap <silent> <leader>H :split<CR><C-w>j
 nnoremap <silent> <leader>tn :tabnew<CR>
 "tab next, tab to the right
 nnoremap <silent> <leader>tl :tabn<CR>
@@ -112,7 +113,7 @@ nnoremap <silent> <leader>f :BTags<CR>
 " gl for git log
 nnoremap <silent> <leader>gl :Commits<CR>
 " c for commands
-nnoremap <silent> <leader>H :History:<CR>
+nnoremap <silent> <leader>c :History:<CR>
 nnoremap <silent> <leader>B :Buffers<CR>
 " Pastes buffer into newline below
 nnoremap  <silent> <leader>p :pu<CR>
@@ -153,6 +154,12 @@ au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gr <Plug>(go-run)
 au FileType go nmap <Leader>gb <Plug>(go-build)
 au FileType go nmap <Leader>gt <Plug>(go-test)
+
+" Switch to h file of same name (useful for c++, obj-c, etc)
+" go to header
+nnoremap <silent> <leader>gh :e %<.h<CR>
+" go to implementation file
+nnoremap <silent> <leader>gm :e %<.m<CR>
 
 " ########## Strip trailing whitespaces ###########
 
