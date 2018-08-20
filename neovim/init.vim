@@ -358,8 +358,8 @@ let g:xcode_scheme_ignore_pattern = '/Demo|Example|Package|AFNetworking|Bitlyzer
 set shell=/usr/local/bin/bash
 
 au FileType swift nmap <Leader>xr :Xrun <CR>
-au FileType swift nmap <Leader>xb :Xbuild <CR>
-au FileType swift nmap <Leader>xt :Xtest <CR>
+au FileType swift nmap <Leader>xb :split <CR> :Xbuild <CR>
+au FileType swift nmap <Leader>xt :split <CR> :Xtest <CR>
 " Open in Xcode
 au FileType swift nmap <Leader>xo :Xopen <CR>
 
