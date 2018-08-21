@@ -188,6 +188,7 @@ au BufRead,BufNewFile Gemfile set syntax=ruby
 au BufRead,BufNewFile Podfile set syntax=ruby
 au BufRead,BufNewFile Cartfile set syntax=ruby
 au BufRead,BufNewFile *.podspec set syntax=ruby
+au BufRead,BufNewFile *.fish set syntax=vim
 
 " Set the filetype based on the file's extension, but only if
 " 'filetype' has not already been set
