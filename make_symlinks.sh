@@ -14,6 +14,7 @@ mv ~/.config/nvim/init.vim ~/.old_dotfiles/
 mv ~/.tmux.conf ~/.old_dotfiles/
 mv ~/.config/fish/config.fish ~/.old_dotfiles/
 mv ~/.bash_profile ~/.old_dotfiles/
+mv ~/.bashrc ~/.old_dotfiles/
 mv ~/Gemfile ~/.old_dotfiles/
 mv ~/.gitignore ~/.old_dotfiles/
 mv ~/.atom ~/.old_dotfiles/
@@ -42,6 +43,7 @@ ln -sv ~/.dotfiles/fish/git.fish ~/.config/fish/functions/
 
 # Bash
 ln -sv ~/.dotfiles/bash/.bash_profile ~/
+ln -sv ~/.dotfiles/bash/.bashrc ~/
 
 # Gem
 ln -sv ~/.dotfiles/gem/Gemfile ~/
