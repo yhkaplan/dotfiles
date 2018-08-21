@@ -4,6 +4,14 @@ and not set -q TMUX
     exec tmux
 end
 
+# FZF
+# Runs a tmux-friendly version of fzf instead.
+set -U FZF_TMUX 1
+# Use fd for better performance, skip .git, show hidden files, and follow symlinks
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+# To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 # Sets path for things installed w/ Homebrew
 set -g -x PATH /usr/local/bin $PATH
 
@@ -26,8 +34,17 @@ status --is-interactive; and source (rbenv init -|psub)
 # Support for swiftenv
 if which swiftenv > /dev/null; status --is-interactive; and source (swiftenv init -|psub); end
 
-# Alias
+# Custom fish functions
+source ~/.dotfiles/fish/fzf-funcs.fish
+source ~/.dotfiles/fish/git.fish
 
+# Source envar secrets
+set -l envar_path "$HOME/.secrets/tokens"
+if test -e "$envar_path"
+    source "$envar_path"
+end
+
+# Alias
 alias ctags="/usr/local/bin/ctags" # Use Homebrew ctags
 
 ############# ABBREVIATIONS #################
@@ -46,18 +63,20 @@ if status --is-interactive
     abbr -a gb git branch
     abbr -a gm git merge
     abbr -a gd git diff
+    abbr -a gv git diff develop
     abbr -a gl git log --oneline
     abbr -a gy git log --oneline --since=yesterday
     abbr -a gsl git log -8 --pretty --oneline
     abbr -a ggui git log --graph --decorate --oneline
-    abbr -a gdel git branch -d
     abbr -a gclean 'git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
     abbr -a gpr git pull-request -m
     abbr -a gh 'git log --pretty=format:%H -1 | pbcopy'
 
     # Other abbreviations
     abbr -a ow 'open *.xcworkspace/'
-    abbr -a op 'open *.xcodeproj'
+    abbr -a ox 'open *.xcodeproj'
+    abbr -a pi 'bundle exec pod install'
+    abbr -a bm 'xcodebuild -workspace minne.xcworkspace/ -scheme minne | xcpretty'
     abbr -a nv nvim
     abbr -a trel tree -L 2
     abbr -a formatswift 'swiftlint autocorrect --config .swiftlint.yml --path '

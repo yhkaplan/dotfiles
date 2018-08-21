@@ -95,6 +95,7 @@ let g:fzf_colors =
 let mapleader = "\<Space>"
 
 nnoremap <silent> <leader>v :vsplit<CR><C-w>l
+nnoremap <silent> <leader>H :split<CR><C-w>j
 nnoremap <silent> <leader>tn :tabnew<CR>
 "tab next, tab to the right
 nnoremap <silent> <leader>tl :tabn<CR>
@@ -112,7 +113,7 @@ nnoremap <silent> <leader>f :BTags<CR>
 " gl for git log
 nnoremap <silent> <leader>gl :Commits<CR>
 " c for commands
-nnoremap <silent> <leader>H :History:<CR>
+nnoremap <silent> <leader>c :History:<CR>
 nnoremap <silent> <leader>B :Buffers<CR>
 " Pastes buffer into newline below
 nnoremap  <silent> <leader>p :pu<CR>
@@ -134,6 +135,8 @@ nnoremap <silent> <leader>O O<Esc>j
 nnoremap <silent> <leader>i i<space><esc>
 " Insert space before
 nnoremap <silent> <leader>I hi<space><esc>
+" Find and replace word
+nnoremap <silent> <leader>r :%s/\<<C-r><C-w>\>//g<left><left>
 
 " vim-fugitive/git
 " ga for git add
@@ -153,6 +156,12 @@ au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gr <Plug>(go-run)
 au FileType go nmap <Leader>gb <Plug>(go-build)
 au FileType go nmap <Leader>gt <Plug>(go-test)
+
+" Switch to h file of same name (useful for c++, obj-c, etc)
+" go to header
+nnoremap <silent> <leader>gh :e %<.h<CR>
+" go to implementation file
+nnoremap <silent> <leader>gm :e %<.m<CR>
 
 " ########## Strip trailing whitespaces ###########
 
@@ -179,6 +188,7 @@ au BufRead,BufNewFile Gemfile set syntax=ruby
 au BufRead,BufNewFile Podfile set syntax=ruby
 au BufRead,BufNewFile Cartfile set syntax=ruby
 au BufRead,BufNewFile *.podspec set syntax=ruby
+au BufRead,BufNewFile *.fish set syntax=vim
 
 " Set the filetype based on the file's extension, but only if
 " 'filetype' has not already been set
@@ -324,7 +334,6 @@ nmap <silent><leader>xm :call AddMark()<CR>
 " into a multiline declaration/call
 function BreakLines ()
     let a:line_number=line('.')
-    "let a:indent_number=indent(a:line_number)
 
     " Replace ( and comma w/ ( newline
     execute a:line_number . ',' . a:line_number . 's/\((\|,\s\)/\1\r/g'
@@ -332,22 +341,17 @@ function BreakLines ()
     " Get new line number
     let a:new_line_number=line('.')
     execute a:new_line_number . ',' . a:new_line_number . 's/)/\r)'
+endfunction
 
-    " Indent between line and newline
-    "let a:start_line=a:line_number + 1
-    "let a:finish_line=a:new_line_number
-    "let a:range=a:finish_line - a:start_line
-
-    " let a:i = 0
-    " while a:i <= a:indent_number
-        " a:range v
-        " >
-        " a:i += 1
-    " endwhile
-    "execute a:line_number . ',' . a:new_line_number . 's/)/\r)'
+" A function to change a func into a computed var
+function FuncToVar ()
+    let a:line_number=line('.')
+    execute a:line_number . ',' . a:line_number . 's/func \(.*\)(.*) -> \(.*\)\s/var \1: \2 /g'
 endfunction
 
 nmap <silent><leader>b :call BreakLines()<CR>
+" tv for transform to var
+nnoremap <silent> <leader>tv :<C-u>call FuncToVar()<CR>
 
 " ############ vim-xcode ###################
 
@@ -358,8 +362,8 @@ let g:xcode_scheme_ignore_pattern = '/Demo|Example|Package|AFNetworking|Bitlyzer
 set shell=/usr/local/bin/bash
 
 au FileType swift nmap <Leader>xr :Xrun <CR>
-au FileType swift nmap <Leader>xb :Xbuild <CR>
-au FileType swift nmap <Leader>xt :Xtest <CR>
+au FileType swift nmap <Leader>xb :split <CR> :Xbuild <CR>
+au FileType swift nmap <Leader>xt :split <CR> :Xtest <CR>
 " Open in Xcode
 au FileType swift nmap <Leader>xo :Xopen <CR>
 
