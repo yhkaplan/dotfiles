@@ -53,6 +53,9 @@ sudo gem install bundler xcpretty
 # Dependencies for Deoplete on other Pythonic stuff
 pip3 install -r pip-requirements.txt
 
+# Golang dependencies
+python3 go/install.py
+
 # requires atom commandline tools
 apm install --packages-file ~/.atom/package.list
 

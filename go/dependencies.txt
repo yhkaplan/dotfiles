@@ -1,0 +1,17 @@
+golang.org/x/tools/cmd/godoc
+golang.org/x/tools/cmd/goimports
+golang.org/x/tools/cmd/eg
+golang.org/x/tools/cmd/gorename
+golang.org/x/tools/cmd/guru
+golang.org/x/tools/cmd/cover
+golang.org/x/tools/cmd/gotype
+github.com/nsf/gocode
+github.com/alecthomas/gometalinter
+github.com/zmb3/gogetdoc
+github.com/tools/godep
+github.com/monochromegane/dragon-imports
+github.com/rogpeppe/godef
+github.com/jstemmer/gotags
+github.com/davecgh/go-spew/spew
+github.com/motemen/ghq
+github.com/motemen/gore
