@@ -52253,11 +52253,11 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>134 74 689 421 0 0 1280 777 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>308 288 620 392 0 0 1280 777 </string>
+	<string>330 288 620 392 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>272 214 918 512 0 0 1280 777 </string>
+	<string>272 248 918 452 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>617 0 640 777 0 0 1280 800 </string>
+	<string>640 0 640 777 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>640 0 640 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -52980,7 +52980,7 @@
 			<key>Thin Strokes</key>
 			<integer>0</integer>
 			<key>Transparency</key>
-			<real>0.031854774746192895</real>
+			<real>0.0</real>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -53755,7 +53755,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-07-27T15:22:04Z</date>
+	<date>2018-08-17T05:06:05Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SmartPlacement</key>
@@ -53775,7 +53775,7 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.1.7</string>
+	<string>3.2.0</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>6</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
