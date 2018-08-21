@@ -30,6 +30,12 @@ if which swiftenv > /dev/null; status --is-interactive; and source (swiftenv ini
 source ~/.dotfiles/fish/fzf-funcs.fish
 source ~/.dotfiles/fish/git.fish
 
+# Source envar secrets
+set -l envar_path "$HOME/.secrets/tokens"
+if test -e "$envar_path"
+    source "$envar_path"
+end
+
 # Alias
 alias ctags="/usr/local/bin/ctags" # Use Homebrew ctags
 
