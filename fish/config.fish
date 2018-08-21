@@ -26,8 +26,11 @@ status --is-interactive; and source (rbenv init -|psub)
 # Support for swiftenv
 if which swiftenv > /dev/null; status --is-interactive; and source (swiftenv init -|psub); end
 
-# Alias
+# Custom fish functions
+source ~/.dotfiles/fish/fzf-funcs.fish
+source ~/.dotfiles/fish/git.fish
 
+# Alias
 alias ctags="/usr/local/bin/ctags" # Use Homebrew ctags
 
 ############# ABBREVIATIONS #################
