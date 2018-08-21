@@ -39,7 +39,9 @@ alias ls='ls -GFh'
 
 alias tr='tree -L 2'
 
-# Adding Go path
+# Golang
+# GoRoot path for Homebrew/macOS
+export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
