@@ -1,4 +1,5 @@
 import subprocess
+from pathlib import Path
 
 def get_shell_output(args_string):
     args = args_string.split()
@@ -8,7 +9,9 @@ def get_shell_output(args_string):
     return stdout
 
 
-f = open("dependencies.txt", "r")
+p = str(Path.home()) + "/.dotfiles/go/dependencies.txt"
+f = open(p)
+
 lines = f.readlines()
 for l in lines:
     print(f"Installing {l}")
