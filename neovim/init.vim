@@ -135,6 +135,8 @@ nnoremap <silent> <leader>O O<Esc>j
 nnoremap <silent> <leader>i i<space><esc>
 " Insert space before
 nnoremap <silent> <leader>I hi<space><esc>
+" Find and replace word
+nnoremap <silent> <leader>r :%s/\<<C-r><C-w>\>//g<left><left>
 
 " vim-fugitive/git
 " ga for git add
