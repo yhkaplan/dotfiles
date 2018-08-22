@@ -318,6 +318,12 @@ endfunction
 
 vnoremap <silent><leader>fu :call FormatURL()<CR>
 
+function AddNumbers ()
+  execute "normal! I" . line('.') . ". \<esc>"
+endfunction
+
+vnoremap <silent><leader>n :call AddNumbers()<CR>
+
 " ############ Swift Settings ###############
 
 " Makes sure Swift files are recognized as such
