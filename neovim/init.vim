@@ -114,6 +114,8 @@ nnoremap <silent> <leader>f :BTags<CR>
 nnoremap <silent> <leader>gl :Commits<CR>
 " c for commands
 nnoremap <silent> <leader>c :History:<CR>
+" r for recent
+nnoremap <silent> <leader>r :Hist<CR>
 nnoremap <silent> <leader>B :Buffers<CR>
 " Pastes buffer into newline below
 nnoremap  <silent> <leader>p :pu<CR>
@@ -137,7 +139,7 @@ nnoremap <silent> <leader>i i<space><esc>
 " Insert space before
 nnoremap <silent> <leader>I hi<space><esc>
 " Find and replace word
-nnoremap <silent> <leader>r :%s/\<<C-r><C-w>\>//g<left><left>
+nnoremap <silent> <leader>R :%s/\<<C-r><C-w>\>//g<left><left>
 
 " vim-fugitive/git
 " ga for git add
