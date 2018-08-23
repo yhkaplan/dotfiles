@@ -127,6 +127,7 @@ nnoremap <silent> <leader>y yg_
 nnoremap <silent> <leader>a $p
 " Map vim-commentary to IDE-like mapping
 nnoremap <silent> <leader>/ :Commentary<CR>
+vnoremap <silent> <leader>/ :Commentary<CR>
 " Insert newline below
 nnoremap <silent> <leader>o o<Esc>k
 " Insert newline above
