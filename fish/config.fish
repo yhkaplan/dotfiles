@@ -15,6 +15,9 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Sets path for things installed w/ Homebrew
 set -g -x PATH /usr/local/bin $PATH
 
+# Set path for scripts
+set -g -x PATH ~/.dotfiles/scripts $PATH
+
 # For Swift
 set PATH /usr/bin/ $PATH
 #set PATH /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ $PATH
