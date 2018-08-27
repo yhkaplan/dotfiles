@@ -40,6 +40,7 @@ ln -sv ~/.dotfiles/tmux/.tmux.conf ~/
 ln -sv ~/.dotfiles/fish/config.fish ~/.config/fish/
 mkdir -p ~/.config/fish/functions
 ln -sv ~/.dotfiles/fish/git.fish ~/.config/fish/functions/
+ln -sv ~/.dotfiles/fish/fish_user_key_bindings.fish ~/.config/fish/functions/
 
 # Bash
 ln -sv ~/.dotfiles/bash/.bash_profile ~/
