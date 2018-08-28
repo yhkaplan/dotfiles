@@ -46,6 +46,20 @@ function bcd -d 'cd to one of the previously visited locations'
   commandline -f repaint
 end
 
+function vi -d "Open file in Neovim"
+  # https://github.com/fish-shell/fish-shell/issues/1362
+  set -l tmpfile (mktemp)
+  find . -type f | fzf > $tmpfile
+  set -l destfile (cat $tmpfile)
+  rm -f $tmpfile
+
+  if test -z "$destfile"
+      return 1
+  end
+
+  nvim $destfile
+end
+
 function __ghq_cd_repository -d "Change local repository directory"
   ghq list --full-path | fzf | read -l repo_path
   builtin cd $repo_path
