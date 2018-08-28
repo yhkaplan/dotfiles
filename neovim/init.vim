@@ -157,8 +157,7 @@ nnoremap <silent> <leader>gc :Gcommit<CR>
 " gp git push
 nnoremap <silent> <leader>gp :Gpush<CR>
 " gd git diff
-nnoremap <silent> <leader>gd :Gdiff<CR>
-nnoremap <silent> <leader>gg :GitGutterToggle<CR>
+nnoremap <silent> <leader>gd :GitGutterToggle<CR>
 " gs git status
 nnoremap <silent> <leader>gs :Gstatus<CR>
 
@@ -230,9 +229,13 @@ augroup numbertoggle
 augroup END
 " Live preview of search and replace
 set inccommand=nosplit
+
 " Turn off GitGutter by default
 " Enable w/ :GitGutterToggle
 let g:gitgutter_enabled = 0
+" Ignore whitespace
+let g:gitgutter_diff_args = '-w'
+
 " Enable CursorLine
 set cursorline
 " Default Colors for CursorLine
