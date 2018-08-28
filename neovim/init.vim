@@ -444,6 +444,11 @@ augroup resCur
   autocmd BufWinEnter * call ResCur()
 augroup END
 
+" Keep undo history across sessions, by storing in file.
+silent !mkdir ~/.config/nvim/backups > /dev/null 2>&1
+set undodir=~/.config/nvim/backups
+set undofile
+
 " ######## CTags! ############
 
 " Setting this option will result in Tagbar omitting the short help at the
