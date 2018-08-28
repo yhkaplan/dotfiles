@@ -43,6 +43,12 @@ alias tr='tree -L 2'
 # This is needed for ctags + Vim integration
 alias ctags="`brew --prefix`/bin/ctags"
 
+# FZF
+# Use fd for better performance, skip .git, show hidden files, and follow symlinks
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude **.storyboard'
+# To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 # Golang
 # GoRoot path for Homebrew/macOS
 export GOROOT=/usr/local/opt/go/libexec
