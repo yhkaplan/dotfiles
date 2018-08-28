@@ -339,6 +339,9 @@ vnoremap <silent><leader>n :call AddNumbers()<CR>
 
 " ############ Swift Settings ###############
 
+" swiftformat
+nnoremap <leader>F :!swiftformat --config ~/.dotfiles/swift/.swiftformat %<cr>
+
 " Makes sure Swift files are recognized as such
 autocmd BufNewFile,BufRead *.swift set filetype=swift
 
