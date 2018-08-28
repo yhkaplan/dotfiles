@@ -40,6 +40,8 @@ export LANG=en_US.UTF-8
 # Aliases
 alias ls='ls -GFh'
 alias tr='tree -L 2'
+# This is needed for ctags + Vim integration
+alias ctags="`brew --prefix`/bin/ctags"
 
 # Golang
 # GoRoot path for Homebrew/macOS

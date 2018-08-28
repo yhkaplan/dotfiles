@@ -23,6 +23,9 @@ brew upgrade
 
 echo "Installing packages..."
 
+# Ctags support for Objective-C requires unreleased version
+brew install ctags --HEAD
+
 # Select directory and run brewfile
 # The Brewfile is generated automatically through 'brew bundle dump'
 mv ~/dotfiles ~/.dotfiles

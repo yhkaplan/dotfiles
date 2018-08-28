@@ -48,7 +48,8 @@ if test -e "$envar_path"
 end
 
 # Alias
-alias ctags="/usr/local/bin/ctags" # Use Homebrew ctags
+# Use Homebrew ctags, needed for vim integration
+alias ctags="/usr/local/bin/ctags"
 
 ############# ABBREVIATIONS #################
 

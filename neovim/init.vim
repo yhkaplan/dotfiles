@@ -7,6 +7,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Tags
+Plug 'majutsushi/tagbar'
 " Directory brower, replacement for netrw
 Plug 'ap/vim-readdir'
 " Running swift test, gotest, etc
@@ -109,7 +111,8 @@ nnoremap <leader>l <C-w>l
 nnoremap <silent> <leader>s :FZF<CR>
 " Setting this to begin with space f because I mostly plan on
 " using it to find functions
-nnoremap <silent> <leader>f :BTags<CR>
+nnoremap <silent> <leader>f :TagbarToggle<CR>
+" TODO: map something to BTags once working
 " gl for git log
 nnoremap <silent> <leader>gl :Commits<CR>
 " c for commands
@@ -409,49 +412,79 @@ let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
 
-" ######## Tag Support w/ FZF ########
+" ######## CTags! ############
 
-function! s:align_lists(lists)
-  let maxes = {}
-  for list in a:lists
-    let i = 0
-    while i < len(list)
-      let maxes[i] = max([get(maxes, i, 0), len(list[i])])
-      let i += 1
-    endwhile
-  endfor
-  for list in a:lists
-    call map(list, "printf('%-'.maxes[v:key].'s', v:val)")
-  endfor
-  return a:lists
-endfunction
+" Markdown
+let g:tagbar_type_markdown = {
+    \ 'ctagstype' : 'markdown',
+    \ 'kinds' : [
+        \ 'h:Heading_L1',
+        \ 'i:Heading_L2',
+        \ 'k:Heading_L3'
+    \ ]
+\ }
 
-function! s:btags_source()
-  let lines = map(split(system(printf(
-    \ 'ctags -f - --sort=no --excmd=number --language-force=%s %s',
-    \ &filetype, expand('%:S'))), "\n"), 'split(v:val, "\t")')
-  if v:shell_error
-    throw 'failed to extract tags'
-  endif
-  return map(s:align_lists(lines), 'join(v:val, "\t")')
-endfunction
+" Golang
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+    \ }
 
-function! s:btags_sink(line)
-  execute split(a:line, "\t")[2]
-endfunction
-
-function! s:btags()
-  try
-    call fzf#run({
-    \ 'source':  s:btags_source(),
-    \ 'options': '+m -d "\t" --with-nth 1,4.. -n 1 --tiebreak=index',
-    \ 'down':    '40%',
-    \ 'sink':    function('s:btags_sink')})
-  catch
-    echohl WarningMsg
-    echom v:exception
-    echohl None
-  endtry
-endfunction
-
-command! BTags call s:btags()
+" Obj-c
+" add a definition for Objective-C to tagbar
+let g:tagbar_type_objc = {
+    \ 'ctagstype' : 'ObjectiveC',
+    \ 'kinds'     : [
+        \ 'i:interface',
+        \ 'I:implementation',
+        \ 'p:Protocol',
+        \ 'm:Object_method',
+        \ 'c:Class_method',
+        \ 'v:Global_variable',
+        \ 'F:Object field',
+        \ 'f:function',
+        \ 'p:property',
+        \ 't:type_alias',
+        \ 's:type_structure',
+        \ 'e:enumeration',
+        \ 'M:preprocessor_macro',
+    \ ],
+    \ 'sro'        : ' ',
+    \ 'kind2scope' : {
+        \ 'i' : 'interface',
+        \ 'I' : 'implementation',
+        \ 'p' : 'Protocol',
+        \ 's' : 'type_structure',
+        \ 'e' : 'enumeration'
+    \ },
+    \ 'scope2kind' : {
+        \ 'interface'      : 'i',
+        \ 'implementation' : 'I',
+        \ 'Protocol'       : 'p',
+        \ 'type_structure' : 's',
+        \ 'enumeration'    : 'e'
+    \ }
+    \ }
