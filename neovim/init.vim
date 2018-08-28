@@ -413,6 +413,9 @@ let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
 
 " ######## CTags! ############
+" Setting this option will result in Tagbar omitting the short help at the
+" top of the window and the blank lines in between top-level scopes
+let g:tagbar_compact = 1
 
 " Markdown
 let g:tagbar_type_markdown = {
