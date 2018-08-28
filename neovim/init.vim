@@ -101,6 +101,7 @@ nnoremap <silent> <leader>H :split<CR><C-w>j
 nnoremap <silent> <leader>tn :tabnew<CR>
 "tab next, tab to the right
 nnoremap <silent> <leader>tl :tabn<CR>
+
 " Sane defaults for split switching
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
@@ -109,10 +110,6 @@ nnoremap <leader>l <C-w>l
 
 " s for search
 nnoremap <silent> <leader>s :FZF<CR>
-" Setting this to begin with space f because I mostly plan on
-" using it to find functions
-nnoremap <silent> <leader>f :TagbarToggle<CR>
-" TODO: map something to BTags once working
 " gl for git log
 nnoremap <silent> <leader>gl :Commits<CR>
 " c for commands
@@ -120,6 +117,14 @@ nnoremap <silent> <leader>c :History:<CR>
 " r for recent
 nnoremap <silent> <leader>r :Hist<CR>
 nnoremap <silent> <leader>B :Buffers<CR>
+" K for Keybindings
+nnoremap <silent> <leader>K :Maps<CR>
+" L for git Log
+nnoremap <silent> <leader>L :Commits<CR>
+
+" Setting this to begin with space f because I mostly plan on
+" using it to find functions
+nnoremap <silent> <leader>f :TagbarToggle<CR>
 " Pastes buffer into newline below
 nnoremap  <silent> <leader>p :pu<CR>
 " Pastes buffer into newline above
