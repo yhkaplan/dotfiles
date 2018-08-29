@@ -538,6 +538,10 @@ let g:tagbar_type_objc = {
 " ----------------------------------------------------------------------------
 " #gi / #gpi | go to next/previous indentation level
 " ----------------------------------------------------------------------------
+function! s:indent_len(str)
+  return type(a:str) == 1 ? len(matchstr(a:str, '^\s*')) : 0
+endfunction
+
 function! s:go_indent(times, dir)
   for _ in range(a:times)
     let l = line('.')
