@@ -99,8 +99,13 @@ let mapleader = "\<Space>"
 nnoremap <silent> <leader>v :vsplit<CR><C-w>l
 nnoremap <silent> <leader>H :split<CR><C-w>j
 nnoremap <silent> <leader>tn :tabnew<CR>
-"tab next, tab to the right
-nnoremap <silent> <leader>tl :tabn<CR>
+" Buffers
+nnoremap ]b :bnext<cr>
+nnoremap [b :bprev<cr>
+
+" Tabs
+nnoremap ]t :tabn<cr>
+nnoremap [t :tabp<cr>
 
 " Sane defaults for split switching
 nnoremap <leader>j <C-w>j
