@@ -68,8 +68,7 @@ if status --is-interactive
     abbr -a gm git merge
     abbr -a gd git diff -w
     abbr -a gv git diff develop -w
-    abbr -a gl git log --oneline
-    abbr -a gy git log --oneline --since=yesterday
+    abbr -a gl git log --oneline --since=yesterday
     abbr -a gsl git log -8 --pretty --oneline
     abbr -a ggui git log --graph --decorate --oneline
     abbr -a gclean 'git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
