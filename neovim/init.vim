@@ -7,6 +7,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Formatting
+Plug 'sbdchd/neoformat'
 " Tags
 Plug 'majutsushi/tagbar'
 " Directory brower, replacement for netrw
@@ -153,6 +155,9 @@ nnoremap <silent> <leader>i i<space><esc>
 nnoremap <silent> <leader>I hi<space><esc>
 " Find and replace word
 nnoremap <silent> <leader>R :%s/\<<C-r><C-w>\>//g<left><left>
+
+" Format
+nnoremap <leader>F :Neoformat<CR>
 
 " vim-fugitive/git
 " ga for git add
@@ -343,9 +348,6 @@ endfunction
 vnoremap <silent><leader>n :call AddNumbers()<CR>
 
 " ############ Swift Settings ###############
-
-" swiftformat
-nnoremap <leader>F :!swiftformat --config ~/.dotfiles/swift/.swiftformat %<cr>
 
 " Makes sure Swift files are recognized as such
 autocmd BufNewFile,BufRead *.swift set filetype=swift
