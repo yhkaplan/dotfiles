@@ -7,6 +7,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Run in Tmux
+Plug 'benmills/vimux'
 " Formatting
 Plug 'sbdchd/neoformat'
 " Tags
@@ -22,18 +24,20 @@ Plug 'keith/swift.vim'
 " Bracket and quote completion
 Plug 'Shougo/neopairs.vim'
 Plug 'jiangmiao/auto-pairs'
+" Asynchronous building
+Plug 'tpope/vim-dispatch'
 " Surrounding with quote, bracket, etc
 Plug 'tpope/vim-surround'
 " Commenting out
 Plug 'tpope/vim-commentary'
 " Detect indent type etc
 Plug 'tpope/vim-sleuth'
-" Completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Git integration
 Plug 'tpope/vim-fugitive'
 " Git diff integration
 Plug 'airblade/vim-gitgutter'
+" Completion
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Swift completion (not clear if it's working)
 Plug 'mitsuse/autocomplete-swift'
 " Python autocomplete
@@ -387,6 +391,8 @@ nnoremap <silent> <leader>tv :<C-u>call FuncToVar()<CR>
 let g:xcode_default_simulator = 'iPhone 8'
 " Prefer schemes that don't have below pattern
 let g:xcode_scheme_ignore_pattern = '/Demo|Example|Package|AFNetworking|Bitlyzer|Kit|Bolts|GPUImage|Growthbeat|libwebp|View|lottie-ios/d'
+" Xcodebuild asynchronously w/ vim-dispatch
+let g:xcode_runner_command = 'Make {cmd}'
 " Set default shell to Bash (needed for Xcodebuild)
 set shell=/usr/local/bin/bash
 
@@ -395,6 +401,13 @@ au FileType swift nmap <Leader>xb :split <CR> :Xbuild <CR>
 au FileType swift nmap <Leader>xt :split <CR> :Xtest <CR>
 " Open in Xcode
 au FileType swift nmap <Leader>xo :Xopen <CR>
+" Run pod install w/ vim-dispatch
+nmap <Leader>xp :call VimuxRunCommand("clear; bundle exec pod install")<CR>
+" S for Swift REPL; Open and switch to REPL
+nmap <Leader>xs :call VimuxRunCommand("clear; swift")<CR>
+
+nmap <Leader>. :VimuxRunLastCommand<CR>
+nmap <Leader>x :VimuxCloseRunner<CR>
 
 " ############ Golang Settings ##############
 
