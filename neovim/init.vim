@@ -398,11 +398,11 @@ let g:xcode_runner_command = 'Make {cmd}'
 " Set default shell to Bash (needed for Xcodebuild)
 set shell=/usr/local/bin/bash
 
-au FileType swift nmap <Leader>xr :Xrun <CR>
-au FileType swift nmap <Leader>xb :split <CR> :Xbuild <CR>
-au FileType swift nmap <Leader>xt :split <CR> :Xtest <CR>
+nmap <Leader>xr :Xrun<CR>
+nmap <Leader>xb :Xbuild<CR>
+nmap <Leader>xt :Xtest<CR>
 " Open in Xcode
-au FileType swift nmap <Leader>xo :Xopen <CR>
+nmap <Leader>xo :Xopen<CR>
 " Run pod install w/ vim-dispatch
 nmap <Leader>xp :call VimuxRunCommand("clear; bundle exec pod install")<CR>
 " S for Swift REPL; Open and switch to REPL
