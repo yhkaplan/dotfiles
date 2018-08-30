@@ -16,3 +16,4 @@ github.com/davecgh/go-spew/spew
 github.com/motemen/ghq
 github.com/motemen/gore
 github.com/arduino/arduino-cli
+github.com/kisielk/errcheck
