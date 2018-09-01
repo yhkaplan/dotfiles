@@ -44,8 +44,8 @@ Plug 'mitsuse/autocomplete-swift'
 Plug 'zchee/deoplete-jedi'
 " Go-lang completion
 Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 Plug 'fatih/vim-go'
+Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 " Better markdown support
 Plug 'gabrielelana/vim-markdown'
 " FZF (through Homebrew)
