@@ -1,0 +1,12 @@
+~/.dotfiles/yaml/config ~/.config/yamllint/
+~/.dotfiles/ctags/.ctags ~/
+~/.dotfiles/neovim/init.vim ~/.config/nvim/
+~/.dotfiles/tmux/.tmux.conf ~/
+~/.dotfiles/fish/config.fish ~/.config/fish/
+~/.dotfiles/fish/git.fish ~/.config/fish/functions/
+~/.dotfiles/fish/fish_user_key_bindings.fish ~/.config/fish/functions/
+~/.dotfiles/bash/.bash_profile ~/
+~/.dotfiles/bash/.bashrc ~/
+~/.dotfiles/gem/Gemfile ~/
+~/.dotfiles/atom/.atom ~/
+~/.dotfiles/git/.gitignore_global ~/
