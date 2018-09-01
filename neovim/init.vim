@@ -414,8 +414,24 @@ nmap <Leader>x :VimuxCloseRunner<CR>
 " ############ Golang Settings ##############
 
 let g:ale_linters = {'go': ['gofmt', 'gotype', 'govet']}
-" Auto-import on save
-let g:go_fmt_command = 'goimports'
+let g:go_fmt_command = 'goimports' " Auto-import on save
+
+function CheckGoVersion ()
+  let go_version = system("go version")
+  if go_version != "go version go1.11 darwin/amd64\n"
+    echo "Go version change detected. Running gorebuild..."
+    echo go_version
+    " Update first just in case
+    system("go get -u github.com/FiloSottile/gorebuild")
+    system("gorebuild")
+    echo "Updating plugins too just in case"
+    call PlugUpdate()
+  endif
+endfunction
+
+" Check Go version to see if everything needs to be updated
+" to fix vim-go autocompletion
+call CheckGoVersion ()
 
 " ############ AUTOCOMPLETE #################
 
