@@ -1,6 +1,8 @@
 import subprocess
 from pathlib import Path
 
+OLD_FILE_PATH = "~/.old_dotfiles/"
+
 def get_shell_output(args_string):
     args = args_string.split()
     result = subprocess.run(args, stdout=subprocess.PIPE)
@@ -19,17 +21,20 @@ def make_folders(path):
             continue
 
         path_prefix = "/".join(folders[0:i])
-        print(f"mkdir -p {path_prefix}/{folder}")
-        # _ = get_shell_output(f"mkdir -p {path_prefix}/{folder}")
+        _ = get_shell_output(f"mkdir -p {path_prefix}/{folder}")
 
 
 def make_symlink(source, target):
     return get_shell_output(f"ln -sv {source} {target}")
 
 
+def move_existing_file(target):
+    _ = get_shell_output(f"mv {target} {old_file_path}")
+
+
 # MAIN
 
-OLD_FILE_PATH = "~/.old_dotfiles/"
+_ = get_shell_output(f"mkdir -p {OLD_FILE_PATH}")
 
 p = str(Path.home()) + "/.dotfiles/symlinks.txt"
 f = open(p)
@@ -39,7 +44,8 @@ for l in lines:
     source = l.split()[0]
     target = l.split()[1]
 
-    # Move target w/ mv to OLD_FILE_PATH
+    print("Moving existing file if existing")
+    move_existing_file(target)
 
     if target != "~/":
         print(f"Making folders for {target}")
@@ -48,5 +54,5 @@ for l in lines:
             print(folder_output)
 
     print(f"Symlinking {source} to {target}\n")
-    # symlink_output = make_symlink(source, target)
-
+    symlink_output = make_symlink(source, target)
+    print(symlink_output)
