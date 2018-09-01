@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AllowClipboardAccess</key>
+	<true/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
 	<key>AppleScrollAnimationEnabled</key>
@@ -52255,11 +52257,11 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>330 288 620 392 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>272 248 918 452 0 0 1280 777 </string>
+	<string>272 248 796 486 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>640 0 640 777 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>640 0 640 777 0 0 1280 777 </string>
+	<string>556 0 640 777 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>430 110 850 667 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -53755,7 +53757,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-08-17T05:06:05Z</date>
+	<date>2018-08-29T00:30:30Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SmartPlacement</key>
