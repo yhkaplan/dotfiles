@@ -5,6 +5,7 @@
 ~/.dotfiles/fish/config.fish ~/.config/fish/
 ~/.dotfiles/fish/git.fish ~/.config/fish/functions/
 ~/.dotfiles/fish/fish_user_key_bindings.fish ~/.config/fish/functions/
+~/.dotfiles/fish/fzf_key_bindings.fish ~/.config/fish/functions/                                             ~/.c/fish
 ~/.dotfiles/bash/.bash_profile ~/
 ~/.dotfiles/bash/.bashrc ~/
 ~/.dotfiles/gem/Gemfile ~/
