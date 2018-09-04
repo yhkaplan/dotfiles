@@ -72,6 +72,9 @@ git config --global core.excludesfile ~/.gitignore_global
 # Set GHQ
 git config --global ghq.root ~/dev
 
+echo "Setting symlinks"
+python3 make_symlinks.py
+
 # We installed the new shells, now we have to activate them
 echo "Adding newly installed shells to the list of allowed shells"
 
