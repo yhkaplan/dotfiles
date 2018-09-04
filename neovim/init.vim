@@ -422,10 +422,10 @@ function CheckGoVersion ()
     echo "Go version change detected. Running gorebuild..."
     echo go_version
     " Update first just in case
-    system("go get -u github.com/FiloSottile/gorebuild")
-    system("gorebuild")
+    call system("go get -u github.com/FiloSottile/gorebuild")
+    call system("gorebuild")
     echo "Updating plugins too just in case"
-    call PlugUpdate()
+    :PlugUpdate()<cr>
   endif
 endfunction
 
