@@ -11,3 +11,4 @@
 ~/.dotfiles/gem/Gemfile ~/
 ~/.dotfiles/atom/.atom ~/
 ~/.dotfiles/git/.gitignore_global ~/
+~/.dotfiles/ruby/.rubocop.yml ~/
