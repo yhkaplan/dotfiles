@@ -11,8 +11,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'benmills/vimux'
 " Formatting
 Plug 'sbdchd/neoformat'
-" Tags
-Plug 'majutsushi/tagbar'
 " Directory brower, replacement for netrw
 Plug 'ap/vim-readdir'
 " Running swift test, gotest, etc
@@ -135,7 +133,7 @@ nnoremap <silent> <leader>L :Commits<CR>
 
 " Setting this to begin with space f because I mostly plan on
 " using it to find functions
-nnoremap <silent> <leader>f :TagbarToggle<CR>
+nnoremap <silent> <leader>f :BTags<CR>
 " Pastes buffer into newline below
 nnoremap  <silent> <leader>p :pu<CR>
 " Pastes buffer into newline above
@@ -487,86 +485,6 @@ silent !mkdir ~/.config/nvim/backups > /dev/null 2>&1
 set undodir=~/.config/nvim/backups
 set undofile
 
-" ######## CTags! ############
-
-" Setting this option will result in Tagbar omitting the short help at the
-" top of the window and the blank lines in between top-level scopes
-let g:tagbar_compact = 1
-
-" Markdown
-let g:tagbar_type_markdown = {
-    \ 'ctagstype' : 'markdown',
-    \ 'kinds' : [
-        \ 'h:Heading_L1',
-        \ 'i:Heading_L2',
-        \ 'k:Heading_L3'
-    \ ]
-\ }
-
-" Golang
-let g:tagbar_type_go = {
-	\ 'ctagstype' : 'go',
-	\ 'kinds'     : [
-		\ 'p:package',
-		\ 'i:imports:1',
-		\ 'c:constants',
-		\ 'v:variables',
-		\ 't:types',
-		\ 'n:interfaces',
-		\ 'w:fields',
-		\ 'e:embedded',
-		\ 'm:methods',
-		\ 'r:constructor',
-		\ 'f:functions'
-	\ ],
-	\ 'sro' : '.',
-	\ 'kind2scope' : {
-		\ 't' : 'ctype',
-		\ 'n' : 'ntype'
-	\ },
-	\ 'scope2kind' : {
-		\ 'ctype' : 't',
-		\ 'ntype' : 'n'
-	\ },
-	\ 'ctagsbin'  : 'gotags',
-	\ 'ctagsargs' : '-sort -silent'
-    \ }
-
-" Obj-c
-" add a definition for Objective-C to tagbar
-let g:tagbar_type_objc = {
-    \ 'ctagstype' : 'ObjectiveC',
-    \ 'kinds'     : [
-        \ 'i:interface',
-        \ 'I:implementation',
-        \ 'p:Protocol',
-        \ 'm:Object_method',
-        \ 'c:Class_method',
-        \ 'v:Global_variable',
-        \ 'F:Object field',
-        \ 'f:function',
-        \ 'p:property',
-        \ 't:type_alias',
-        \ 's:type_structure',
-        \ 'e:enumeration',
-        \ 'M:preprocessor_macro',
-    \ ],
-    \ 'sro'        : ' ',
-    \ 'kind2scope' : {
-        \ 'i' : 'interface',
-        \ 'I' : 'implementation',
-        \ 'p' : 'Protocol',
-        \ 's' : 'type_structure',
-        \ 'e' : 'enumeration'
-    \ },
-    \ 'scope2kind' : {
-        \ 'interface'      : 'i',
-        \ 'implementation' : 'I',
-        \ 'Protocol'       : 'p',
-        \ 'type_structure' : 's',
-        \ 'enumeration'    : 'e'
-    \ }
-    \ }
 
 " ----------------------------------------------------------------------------
 " Functions by @junegunn
