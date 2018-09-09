@@ -19,9 +19,6 @@ Plug 'janko-m/vim-test'
 Plug 'gfontenot/vim-xcode'
 " Swift syntax highlighting
 Plug 'keith/swift.vim'
-" Bracket and quote completion
-Plug 'Shougo/neopairs.vim'
-Plug 'jiangmiao/auto-pairs'
 " Asynchronous building
 Plug 'tpope/vim-dispatch'
 " Surrounding with quote, bracket, etc
@@ -34,6 +31,12 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-fugitive'
 " Git diff integration
 Plug 'airblade/vim-gitgutter'
+" Snippets
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+" Bracket and quote completion
+Plug 'Shougo/neopairs.vim'
+Plug 'jiangmiao/auto-pairs'
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Swift completion (not clear if it's working)
@@ -295,6 +298,32 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " Error and warning signs.
 "let g:ale_sign_error = '⤫'
 "let g:ale_sign_warning = '-'
+
+" ########## Neosnippets ###########
+
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+" imap <C-l>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-l>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-l>     <Plug>(neosnippet_expand_target)
+imap <C-j>     <Plug>(neosnippet_expand_or_jump)
+smap <C-j>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-j>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <expr><TAB>
+ \ pumvisible() ? "\<C-n>" :
+ \ neosnippet#expandable_or_jumpable() ?
+ \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+" if has('conceal')
+"   set conceallevel=2 concealcursor=niv
+" endif
 
 " ########## LIGHTLINE SETTINGS ###########
 
