@@ -7,6 +7,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Tags
+Plug 'ludovicchabant/vim-gutentags'
 " Run in Tmux
 Plug 'benmills/vimux'
 " Formatting
@@ -120,6 +122,7 @@ nnoremap <leader>k <C-w>k
 nnoremap <leader>h <C-w>h
 nnoremap <leader>l <C-w>l
 
+nnoremap <silent>z :call fzf#vim#tags(expand('<cword>'))<CR>
 " s for search
 nnoremap <silent> <leader>s :FZF<CR>
 " gl for git log
@@ -386,6 +389,10 @@ vnoremap <silent><leader>n :call AddNumbers()<CR>
 
 " Makes sure Swift files are recognized as such
 autocmd BufNewFile,BufRead *.swift set filetype=swift
+autocmd BufNewFile,BufRead *.swift,*.h,*.m set tags+=~/dev/global-tags
+let g:gutentags_ctags_executable = '/usr/local/bin/ctags'
+let g:gutentags_ctags_tagfile = '.git/tags'
+let g:gutentags_ctags_extra_args = ['--languages=objectivec,swift', '--langmap=objectivec:.h.m']
 
 function AddMark ()
     let a:line_number=line('.')
