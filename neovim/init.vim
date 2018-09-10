@@ -276,6 +276,8 @@ set clipboard=unnamed
 set guicursor=
 " Set max line length indicator
 set colorcolumn=100
+" Reload vim config
+command! Reload execute "source $MYVIMRC"
 
 " ########### Split func ###############
 
@@ -437,6 +439,9 @@ function! SetShellToBash ()
   set shell=/usr/local/bin/bash
 endfunction
 
+set lazyredraw              " Don't redraw vim in all situations
+set title                   " Change the terminal's title
+set secure                  " Don't load autocmds from local .vimrc files
 nmap <Leader>xr :Xrun<CR>
 nmap <Leader>xb :call SetShellToBash()<CR>:Xbuild<CR>
 nmap <Leader>xt :Xtest<CR>
