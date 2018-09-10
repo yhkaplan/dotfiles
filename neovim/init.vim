@@ -456,21 +456,21 @@ let g:ale_linters = {'go': ['gofmt', 'gotype', 'govet']}
 let g:go_fmt_command = 'goimports' " Auto-import on save
 
 function CheckGoVersion ()
-  let go_version = system("go version")
-  if go_version != "go version go1.11 darwin/amd64\n"
-    echo "Go version change detected. Running gorebuild..."
+  let go_version = system('go version')
+  if go_version !=# "go version go1.11 darwin/amd64\n"
+    echo 'Go version change detected. Running gorebuild...'
     echo go_version
     " Update first just in case
-    call system("go get -u github.com/FiloSottile/gorebuild")
-    call system("gorebuild")
-    echo "Updating plugins too just in case"
+    call system('go get -u github.com/FiloSottile/gorebuild')
+    call system('gorebuild')
+    echo 'Updating plugins too just in case'
     :PlugUpdate()<cr>
   endif
 endfunction
 
 " Check Go version to see if everything needs to be updated
 " to fix vim-go autocompletion
-call CheckGoVersion ()
+" call CheckGoVersion ()
 
 " ############ AUTOCOMPLETE #################
 
