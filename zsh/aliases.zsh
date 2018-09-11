@@ -25,6 +25,7 @@ abbrev-alias gpr='git pull-request -m'
 abbrev-alias gh='git log --pretty=format:%H -1 | pbcopy'
 
 # Other
+abbrev-alias be="bundle exec"
 abbrev-alias ow='open *.xcworkspace/'
 abbrev-alias ox='open *.xcodeproj'
 abbrev-alias pi='bundle exec pod install'
