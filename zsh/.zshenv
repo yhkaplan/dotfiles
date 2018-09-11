@@ -1,6 +1,10 @@
 # rbenv
 export PATH="${HOME}/.rbenv/shims:${PATH}"
 eval "$(rbenv init - zsh)"
+# for swiftenv
+export SWIFTENV_ROOT="$HOME/.swiftenv"
+export PATH="$SWIFTENV_ROOT/bin:$PATH"
+eval "$(swiftenv init -)"
 
 # Sets path for things installed w/ Homebrew
 export PATH="$PATH:/usr/local/bin"
