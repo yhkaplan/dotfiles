@@ -64,8 +64,8 @@ fdr() {
 
 # Git
 
-# fbr - checkout git branch
-fbr() {
+# fco - checkout git branch
+fco() {
   local branches branch
   branches=$(git branch -vv) &&
   branch=$(echo "$branches" | fzf +m) &&
