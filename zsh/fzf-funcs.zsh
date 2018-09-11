@@ -197,4 +197,4 @@ function ghq-fzf() {
 }
 
 zle -N ghq-fzf
-bindkey "^]" ghq-fzf
+bindkey "^g" ghq-fzf

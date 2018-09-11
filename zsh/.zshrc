@@ -1,20 +1,21 @@
 source ~/.zsh_plugins.sh
 source ~/.dotfiles/zsh/aliases.zsh
-source "$HOME/.zshenv"
-# Sets path for things installed w/ Homebrew
-export PATH="$PATH:/usr/local/bin"
-# Set path for scripts
-export PATH="$PATH:$HOME/.dotfiles/scripts"
 
-export MYVIMRC="$HOME/.config/nvim/init.vim"
-# For Swift
-export PATH="$PATH:/usr/bin/"
+# =============
+#    EXPORT
+# =============
+export EDITOR="vim"
+export LSCOLORS=cxBxhxDxfxhxhxhxhxcxcx
+export CLICOLOR=1
 
-# For Golang
-export GOPATH="$HOME/go"
-export GOROOT="/usr/local/opt/go/libexec"
-export PATH=$GOPATH/bin:$PATH
-export PATH=$GOROOT/bin:$PATH
+# support colors in less
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
 
 # History substring
 bindkey '^[[A' history-substring-search-up
@@ -77,5 +78,3 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 export FZF_COMPLETION_TRIGGER=''
 bindkey '^T' fzf-completion
 bindkey '^I' $fzf_default_completion
-
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin

@@ -12,3 +12,6 @@
 ~/.dotfiles/atom/.atom ~/
 ~/.dotfiles/git/.gitignore_global ~/
 ~/.dotfiles/ruby/.rubocop.yml ~/
+~/.dotfiles/zsh/.fzf.zsh ~/
+~/.dotfiles/zsh/.zshrc ~/
+~/.dotfiles/zsh/.zshenv ~/

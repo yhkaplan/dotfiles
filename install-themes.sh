@@ -17,6 +17,7 @@ git clone --depth 1 'https://github.com/aseom/dotfiles/blob/master/osx/iterm2/ic
 
 git clone --depth 1 'https://github.com/bojan/xcode-one-dark.git'
 git clone --depth 1 'https://github.com/sonph/onehalf.git'
+git clone --depth 1 'https://github.com/nathanbuchar/atom-one-dark-terminal.git'
 
 git clone --depth 1 'https://github.com/dracula/alfred'
 git clone --depth 1 'https://github.com/dracula/vim.git'
