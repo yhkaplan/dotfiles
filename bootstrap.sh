@@ -50,6 +50,9 @@ sudo gem install bundler xcpretty
 
 ########## Other ################
 
+# Zsh plugins
+antibody bundle < ~/.dotfiles/zsh/.zsh_plugins.txt > ~/.zsh_plugins.sh
+
 # Dependencies for Deoplete on other Pythonic stuff
 pip3 install -r pip-requirements.txt
 
