@@ -1,4 +1,21 @@
 source ~/.zsh_plugins.sh
+source ~/.dotfiles/zsh/aliases.zsh
+source "$HOME/.zshenv"
+# Sets path for things installed w/ Homebrew
+export PATH="$PATH:/usr/local/bin"
+# Set path for scripts
+export PATH="$PATH:$HOME/.dotfiles/scripts"
+
+export MYVIMRC="$HOME/.config/nvim/init.vim"
+# For Swift
+export PATH="$PATH:/usr/bin/"
+
+# For Golang
+export GOPATH="$HOME/go"
+export GOROOT="/usr/local/opt/go/libexec"
+export PATH=$GOPATH/bin:$PATH
+export PATH=$GOROOT/bin:$PATH
+
 # History substring
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -9,8 +26,6 @@ SPACESHIP_PROMPT_ORDER=(
   dir           # Current directory section
   host          # Hostname section
   git           # Git section (git_branch + git_status)
-  hg            # Mercurial section (hg_branch  + hg_status)
-  exec_time     # Execution time
   line_sep      # Line break
   vi_mode       # Vi-mode indicator
   jobs          # Background jobs indicator
@@ -18,8 +33,12 @@ SPACESHIP_PROMPT_ORDER=(
   char          # Prompt character
 )
 SPACESHIP_PROMPT_ADD_NEWLINE=false
+SPACESHIP_PROMPT_SEPARATE_LINE=false
 SPACESHIP_CHAR_SYMBOL="❯"
 SPACESHIP_CHAR_SUFFIX=" "
+SPACESHIP_GIT_PREFIX=""
+SPACESHIP_GIT_BRANCH_PREFIX=""
+SPACESHIP_GIT_STATUS_STASHED=""
 
 autoload -Uz compinit
 typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
@@ -50,4 +69,13 @@ zstyle ':completion:*' menu select # select completions with arrow keys
 zstyle ':completion:*' group-name '' # group results by category
 zstyle ':completion:::::' completer _expand _complete _ignored _approximate # enable approximate matches for completion
 
+# FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.dotfiles/zsh/fzf-funcs.zsh
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+# Instead of using TAB key with a trigger sequence (**<TAB>), you can assign a dedicated key for fuzzy completion while retaining the default behavior of TAB key.
+export FZF_COMPLETION_TRIGGER=''
+bindkey '^T' fzf-completion
+bindkey '^I' $fzf_default_completion
+
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
