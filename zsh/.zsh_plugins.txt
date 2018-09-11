@@ -1,7 +1,7 @@
+denysdovhan/spaceship-prompt
+marzocchi/zsh-notify
+momo-lab/zsh-abbrev-alias
 zdharma/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
-zsh-users/zsh-history-substring-search
 zsh-users/zsh-completions
-marzocchi/zsh-notify
-denysdovhan/spaceship-prompt
-momo-lab/zsh-abbrev-alias
+zsh-users/zsh-history-substring-search
