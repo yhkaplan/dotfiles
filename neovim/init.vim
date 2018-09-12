@@ -182,10 +182,12 @@ nnoremap <silent> <leader>gf :tabnew<CR>:terminal git diff -w<CR>
 nnoremap <silent> <leader>gs :Gstatus<CR>
 
 " Golang
+autocmd FileType go inoreabbr iferr <C-R>=go#iferr#Generate()<CR><esc>x
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gr <Plug>(go-run)
 au FileType go nmap <Leader>gb <Plug>(go-build)
 au FileType go nmap <Leader>gt <Plug>(go-test)
+au FileType go nmap <Leader>R  <Plug>(go-rename)
 
 " Switch to h file of same name (useful for c++, obj-c, etc)
 " go to header
