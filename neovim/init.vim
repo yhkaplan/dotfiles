@@ -241,6 +241,23 @@ if executable('ag')
   " bind \ (backward slash) to grep shortcut
   nnoremap \ :Ag<SPACE>
 endif
+
+if executable('rg')
+  let g:rg_command = '
+    \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
+    \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
+    \ -g "!{.git,node_modules,vendor}/*" '
+
+  command! -bang -nargs=* Rg
+    \ call fzf#vim#grep(
+    \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+    \   <bang>0 ? fzf#vim#with_preview('up:60%')
+    \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+    \   <bang>0)
+
+  command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
+endif
+
 " Hide mode menu
 set noshowmode
 " Make $ not pickup newlines by mapping to similar binding
