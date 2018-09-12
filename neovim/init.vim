@@ -140,6 +140,10 @@ nnoremap <silent> <leader>L :Commits<CR>
 " Setting this to begin with space f because I mostly plan on
 " using it to find functions
 nnoremap <silent> <leader>f :BTags<CR>
+nnoremap <silent> <leader>F :Tags<CR>
+autocmd FileType go nnoremap <silent> <leader>f :GoDecls<CR>
+autocmd FileType go nnoremap <silent> <leader>F :GoDeclsDir<CR>
+
 " Pastes buffer into newline below
 nnoremap  <silent> <leader>p :pu<CR>
 " Pastes buffer into newline above
@@ -165,7 +169,7 @@ nnoremap <silent> <leader>I hi<space><esc>
 nnoremap <silent> <leader>R :%s/\<<C-r><C-w>\>//g<left><left>
 
 " Format
-nnoremap <leader>F :Neoformat<CR>
+nnoremap <leader>N :Neoformat<CR>
 
 " vim-fugitive/git
 " ga for git add
