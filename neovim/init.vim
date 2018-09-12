@@ -193,6 +193,12 @@ au FileType go nmap <Leader>gb <Plug>(go-build)
 au FileType go nmap <Leader>gt <Plug>(go-test)
 au FileType go nmap <Leader>R  <Plug>(go-rename)
 " TODO: assign bindings
+" :GoImpl [receiver] [interface]
+" Generates method stubs for implementing an interface. If no arguments is
+" passed it takes the identifier under the cursor to be the receiver and
+" asks for the interface type to be generated. If used with arguments, the
+" receiver and the interface needs to be specified.
+"
 " autocmd FileType go nmap <silent> <Leader>v <Plug>(go-def-vertical)
 " autocmd FileType go nmap <silent> <Leader>x <Plug>(go-doc-vertical)
 " autocmd FileType go nmap <silent> <Leader>i <Plug>(go-info)
