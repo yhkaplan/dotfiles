@@ -82,5 +82,17 @@ source ~/.dotfiles/zsh/fzf-funcs.zsh
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 # Instead of using TAB key with a trigger sequence (**<TAB>), you can assign a dedicated key for fuzzy completion while retaining the default behavior of TAB key.
 export FZF_COMPLETION_TRIGGER=''
+
 bindkey '^T' fzf-completion
 bindkey '^I' $fzf_default_completion
+
+root() {
+  git_dir="$(git rev-parse --show-toplevel 2> /dev/null)"
+
+  if [ -z $git_dir ]
+  then
+    cd ..
+  else
+    cd "$git_dir"
+  fi
+}
