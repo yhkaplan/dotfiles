@@ -23,6 +23,7 @@ abbrev-alias ggui='git log --graph --decorate --oneline'
 abbrev-alias gclean='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
 abbrev-alias gpr='git pull-request -m'
 abbrev-alias gh='git log --pretty=format:%H -1 | pbcopy'
+abbrev-alias gr='git log --oneline --since=yesterday | pbcopy'
 
 # Other
 abbrev-alias be="bundle exec"
@@ -34,6 +35,7 @@ abbrev-alias nv='nvim'
 abbrev-alias trel='tree -L 2'
 abbrev-alias formatswift='swiftlint autocorrect --config .swiftlint.yml --path '
 abbrev-alias pipupdate="pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U"
-abbrev-alias l='ls -GpF' # Mac OSX specific
-abbrev-alias ls='ls -GpF' # Mac OSX specific
-abbrev-alias ll='ls -alGpF' # Mac OSX specific
+
+alias l='ls -GpF' # Mac OSX specific
+alias ls='ls -GpF' # Mac OSX specific
+alias ll='ls -alGpF' # Mac OSX specific
