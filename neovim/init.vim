@@ -260,6 +260,10 @@ endif
 
 " Hide mode menu
 set noshowmode
+" Exit on j
+imap jj <Esc>
+" Center the screen
+nnoremap <space> zz
 " Make $ not pickup newlines by mapping to similar binding
 nmap $ g_
 " sensible yank til last character
@@ -392,6 +396,7 @@ function FormatURL ()
     execute a:line_number ',' . a:line_number . 's/\[.*\]\((.*)\): \(.*\)\s(.*/[\2]\1/g'
 endfunction
 
+" Todo make markdown only and change to : style command
 vnoremap <silent><leader>fu :call FormatURL()<CR>
 
 function AddNumbers ()
