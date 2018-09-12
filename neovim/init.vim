@@ -192,6 +192,19 @@ au FileType go nmap <Leader>gr <Plug>(go-run)
 au FileType go nmap <Leader>gb <Plug>(go-build)
 au FileType go nmap <Leader>gt <Plug>(go-test)
 au FileType go nmap <Leader>R  <Plug>(go-rename)
+" TODO: assign bindings
+" autocmd FileType go nmap <silent> <Leader>v <Plug>(go-def-vertical)
+" autocmd FileType go nmap <silent> <Leader>x <Plug>(go-doc-vertical)
+" autocmd FileType go nmap <silent> <Leader>i <Plug>(go-info)
+" autocmd FileType go nmap <silent> <Leader>l <Plug>(go-metalinter)
+" " Alternates between the implementation and test code
+" augroup go
+"   autocmd!
+"   autocmd Filetype go
+"     \  command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+"     \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+"     \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+" augroup END
 
 " Switch to h file of same name (useful for c++, obj-c, etc)
 " go to header
