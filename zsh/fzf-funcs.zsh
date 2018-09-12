@@ -67,8 +67,8 @@ fdr() {
 # fco - checkout git branch
 fco() {
   local branches branch
-  branches=$(git branch -vv) &&
-  branch=$(echo "$branches" | fzf +m) &&
+  branches=$(git branch) &&
+  branch=$(echo "$branches" | fzf-tmux +m -d 40%) &&
   git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 # fshow - git commit browser
