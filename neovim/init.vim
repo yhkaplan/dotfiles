@@ -49,8 +49,6 @@ Plug 'zchee/deoplete-jedi'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'fatih/vim-go'
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-" Better markdown support
-Plug 'gabrielelana/vim-markdown'
 " FZF (through Homebrew)
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
