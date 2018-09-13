@@ -140,6 +140,10 @@ nnoremap <silent> <leader>L :Commits<CR>
 " Setting this to begin with space f because I mostly plan on
 " using it to find functions
 nnoremap <silent> <leader>f :BTags<CR>
+nnoremap <silent> <leader>F :Tags<CR>
+autocmd FileType go nnoremap <silent> <leader>f :GoDecls<CR>
+autocmd FileType go nnoremap <silent> <leader>F :GoDeclsDir<CR>
+
 " Pastes buffer into newline below
 nnoremap  <silent> <leader>p :pu<CR>
 " Pastes buffer into newline above
@@ -165,7 +169,7 @@ nnoremap <silent> <leader>I hi<space><esc>
 nnoremap <silent> <leader>R :%s/\<<C-r><C-w>\>//g<left><left>
 
 " Format
-nnoremap <leader>F :Neoformat<CR>
+nnoremap <leader>N :Neoformat<CR>
 
 " vim-fugitive/git
 " ga for git add
@@ -182,10 +186,31 @@ nnoremap <silent> <leader>gf :tabnew<CR>:terminal git diff -w<CR>
 nnoremap <silent> <leader>gs :Gstatus<CR>
 
 " Golang
+autocmd FileType go inoreabbr iferr <C-R>=go#iferr#Generate()<CR><esc>x
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gr <Plug>(go-run)
 au FileType go nmap <Leader>gb <Plug>(go-build)
 au FileType go nmap <Leader>gt <Plug>(go-test)
+au FileType go nmap <Leader>R  <Plug>(go-rename)
+" TODO: assign bindings
+" :GoImpl [receiver] [interface]
+" Generates method stubs for implementing an interface. If no arguments is
+" passed it takes the identifier under the cursor to be the receiver and
+" asks for the interface type to be generated. If used with arguments, the
+" receiver and the interface needs to be specified.
+"
+" autocmd FileType go nmap <silent> <Leader>v <Plug>(go-def-vertical)
+" autocmd FileType go nmap <silent> <Leader>x <Plug>(go-doc-vertical)
+" autocmd FileType go nmap <silent> <Leader>i <Plug>(go-info)
+" autocmd FileType go nmap <silent> <Leader>l <Plug>(go-metalinter)
+" " Alternates between the implementation and test code
+" augroup go
+"   autocmd!
+"   autocmd Filetype go
+"     \  command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+"     \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+"     \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+" augroup END
 
 " Switch to h file of same name (useful for c++, obj-c, etc)
 " go to header
@@ -235,8 +260,29 @@ if executable('ag')
   " bind \ (backward slash) to grep shortcut
   nnoremap \ :Ag<SPACE>
 endif
+
+if executable('rg')
+  let g:rg_command = '
+    \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
+    \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
+    \ -g "!{.git,node_modules,vendor}/*" '
+
+  command! -bang -nargs=* Rg
+    \ call fzf#vim#grep(
+    \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+    \   <bang>0 ? fzf#vim#with_preview('up:60%')
+    \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+    \   <bang>0)
+
+  command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
+endif
+
 " Hide mode menu
 set noshowmode
+" Exit on j
+imap jj <Esc>
+" Center the screen
+nnoremap <space> zz
 " Make $ not pickup newlines by mapping to similar binding
 nmap $ g_
 " sensible yank til last character
@@ -369,6 +415,7 @@ function FormatURL ()
     execute a:line_number ',' . a:line_number . 's/\[.*\]\((.*)\): \(.*\)\s(.*/[\2]\1/g'
 endfunction
 
+" Todo make markdown only and change to : style command
 vnoremap <silent><leader>fu :call FormatURL()<CR>
 
 function AddNumbers ()
