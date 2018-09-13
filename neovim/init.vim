@@ -330,7 +330,7 @@ set colorcolumn=100
 command! Reload execute "source $MYVIMRC"
 
 " ########### Split func ###############
-
+" TODO: make swift only
 function! BreakHere()
     s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
     call histdel('/', -1)
@@ -414,6 +414,7 @@ autocmd FileType markdown setlocal indentexpr=
 autocmd FileType markdown setlocal ts=4 sw=4 sts=0 expandtab " probably unneeded
 
 " Formats URLs taken from furik to markdown nicely
+" TODO: make md only
 function FormatURL ()
     let a:line_number=line('.')
     execute a:line_number ',' . a:line_number . 's/\[.*\]\((.*)\): \(.*\)\s(.*/[\2]\1/g'
@@ -437,6 +438,7 @@ let g:gutentags_ctags_executable = '/usr/local/bin/ctags'
 let g:gutentags_ctags_tagfile = '.git/tags'
 let g:gutentags_ctags_extra_args = ['--languages=objectivec,swift', '--langmap=objectivec:.h.m']
 
+" TODO: make swift only
 function AddMark ()
     let a:line_number=line('.')
     normal! i// MARK: -
