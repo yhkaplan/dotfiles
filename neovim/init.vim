@@ -62,6 +62,7 @@ Plug 'w0rp/ale'
 
 " Theme(s)
 Plug 'rakr/vim-one'
+Plug 'mhartington/oceanic-next'
 
 call plug#end()
 
@@ -80,8 +81,13 @@ endif
 
 " ############ THEMING #################
 
-set background=dark " for the dark version
-colorscheme one
+syntax on
+let g:oceanic_next_terminal_bold = 0
+let g:oceanic_next_terminal_italic = 0
+colorscheme OceanicNext
+
+" set background=dark " for the dark version
+"colorscheme one
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -377,7 +383,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 " ########## LIGHTLINE SETTINGS ###########
 
 let g:lightline = {
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': 'oceanicnext',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
