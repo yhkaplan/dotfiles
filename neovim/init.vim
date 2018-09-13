@@ -7,6 +7,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Dasht docs
+Plug 'sunaku/vim-dasht'
 " Tags
 Plug 'ludovicchabant/vim-gutentags'
 " Run in Tmux
@@ -182,6 +184,10 @@ nnoremap <silent> <leader>gd :GitGutterToggle<CR>
 nnoremap <silent> <leader>gf :tabnew<CR>:terminal git diff -w<CR>
 " gs git status
 nnoremap <silent> <leader>gs :Gstatus<CR>
+
+" Dasht
+" search related docsets TODO: make Swift/Python/Ruby/Bash/Vim only
+nnoremap <silent> <Leader>gd :call Dasht([expand('<cword>'), expand('<cWORD>')])<Return>
 
 " Golang
 autocmd FileType go inoreabbr iferr <C-R>=go#iferr#Generate()<CR><esc>x
