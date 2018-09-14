@@ -539,6 +539,12 @@ let g:deoplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:deoplete#sources#syntax#min_keyword_length = 2
 
+" Fix behavior of deoplete adding unwanted return chars
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return pumvisible() ? deoplete#mappings#close_popup() : "\n"
+endfunction
+
 " Swift settings
 " Jump to the first placeholder by typing `<C-k>`.
 autocmd FileType swift imap <buffer> <C-k> <Plug>(autocomplete_swift_jump_to_placeholder)
@@ -546,7 +552,7 @@ let g:deoplete#sources#swift#source_kitten_binary = '/usr/local/bin/sourcekitten
 let g:deoplete#sources#swift#daemon_autostart = 1
 
 " Golang deoplete settings
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode' " May be incorrect
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 " ######## Netrw settings ############
