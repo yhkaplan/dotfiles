@@ -18,6 +18,7 @@ fo() {
   if [ -n "$file" ]; then
     [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
   fi
+
 }
 # vf - fuzzy open with vim from anywhere
 # ex: vf word1 word2 ... (even part of a file name)
@@ -47,6 +48,7 @@ fda() {
   local dir
   dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
 }
+
 # fdr - cd to selected parent directory
 fdr() {
   local declare dirs=()
@@ -71,6 +73,7 @@ fco() {
   branch=$(echo "$branches" | fzf-tmux +m -d 40%) &&
   git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
+
 # fshow - git commit browser
 fshow() {
   git log --graph --color=always \
@@ -82,6 +85,7 @@ fshow() {
                 {}
 FZF-EOF"
 }
+
 # fshow_preview - git commit browser with previews
 fshow_preview() {
     glNoGraph |
@@ -91,6 +95,7 @@ fshow_preview() {
                 --bind "enter:execute:$_viewGitLogLine   | less -R" \
                 --bind "alt-y:execute:$_gitLogLineToHash | xclip"
 }
+
 # fcs - get git commit sha
 # example usage: git rebase -i `fcs`
 fcs() {
@@ -99,6 +104,7 @@ fcs() {
   commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
   echo -n $(echo "$commit" | sed "s/ .*//")
 }
+
 # fstash - easier way to deal with stashes
 # type fstash to get a list of your stashes
 # enter shows you the contents of the stash
@@ -127,12 +133,13 @@ fstash() {
     fi
   done
 }
-# fgst - pick files from `git status -s`
+
+# fgs - pick files from `git status -s`
 is_in_git_repo() {
   git rev-parse HEAD > /dev/null 2>&1
 }
 
-fgst() {
+fgs() {
   # "Nothing to see here, move along"
   is_in_git_repo || return
 
@@ -143,10 +150,28 @@ fgst() {
   done
   echo
 }
+
+fadd() {
+  local out q n addfiles
+  while out=$(
+      git status --short |
+      awk '{if (substr($0,2,1) !~ / /) print $2}' |
+      fzf-tmux --multi --exit-0 --expect=ctrl-d); do
+    q=$(head -1 <<< "$out")
+    n=$[$(wc -l <<< "$out") - 1]
+    addfiles=(`echo $(tail "-$n" <<< "$out")`)
+    [[ -z "$addfiles" ]] && continue
+    if [ "$q" = ctrl-d ]; then
+      git diff --color=always "$addfiles" | less -R
+    else
+      git add $addfiles
+    fi
+  done
+}
+
 # tm - create new tmux session, or switch to existing one. Works from within tmux too. (@bag-man)
 # `tm` will allow you to select your tmux session via fzf.
 # `tm irc` will attach to the irc session (if it exists), else it will create it.
-
 tm() {
   [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
   if [ $1 ]; then
@@ -154,6 +179,7 @@ tm() {
   fi
   session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
 }
+
 # Install (one or multiple) selected application(s)
 # using "brew search" as source input
 # mnemonic [B]rew [I]nstall [P]lugin
@@ -165,6 +191,7 @@ bip() {
     do; brew install $prog; done;
   fi
 }
+
 # Update (one or multiple) selected application(s)
 # mnemonic [B]rew [U]pdate [P]lugin
 bup() {
@@ -175,6 +202,7 @@ bup() {
     do; brew upgrade $prog; done;
   fi
 }
+
 # Delete (one or multiple) selected application(s)
 # mnemonic [B]rew [C]lean [P]lugin (e.g. uninstall)
 bcp() {
@@ -185,6 +213,7 @@ bcp() {
     do; brew uninstall $prog; done;
   fi
 }
+
 function ghq-fzf() {
   local selected_dir=$(ghq list | fzf --query="$LBUFFER")
 
