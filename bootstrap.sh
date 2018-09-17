@@ -83,19 +83,16 @@ echo "Adding newly installed shells to the list of allowed shells"
 
 # Prompts for password
 sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
-sudo bash -c 'echo /usr/local/bin/fish >> /etc/shells'
+sudo bash -c 'echo /usr/local/bin/zsh >> /etc/shells'
 
 # Gives user choice for preferred shell
 while true; do
-    read -p "Do you want Fish to be your default shell? " yn
+    read -p "Do you want Zsh to be your default shell? " yn
     case $yn in
         [Yy]* )
-            chsh -s /usr/local/bin/fish
-            # Open fish and install useful utilities/themes
-
-            curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+            chsh -s /usr/local/bin/zsh
             echo "Bootstrapping complete"
-            fish
+            zsh
             break;;
         [Nn]* ) echo "Bootstrapping complete"; exit;;
         * ) echo "Please input yes or no";;
