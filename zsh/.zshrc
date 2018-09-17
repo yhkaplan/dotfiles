@@ -96,3 +96,6 @@ root() {
     cd "$git_dir"
   fi
 }
+
+# Add ssh keys
+ssh-add -A
