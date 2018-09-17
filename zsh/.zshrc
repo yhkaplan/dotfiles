@@ -1,8 +1,8 @@
-# if [[ -z "$TMUX" ]]
-# then
-#   tmux new-session;
-#   exit;
-# fi
+if [[ -z "$TMUX" ]]
+then
+  tmux new-session;
+  exit;
+fi
 
 source ~/.zsh_plugins.sh
 source ~/.dotfiles/zsh/aliases.zsh
