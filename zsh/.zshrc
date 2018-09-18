@@ -80,7 +80,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate # en
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.dotfiles/zsh/fzf-funcs.zsh
 # Use fd for better performance, skip .git, show hidden files, and follow symlinks
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude **.storyboard'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 # Instead of using TAB key with a trigger sequence (**<TAB>), you can assign a dedicated key for fuzzy completion while retaining the default behavior of TAB key.
 export FZF_COMPLETION_TRIGGER=''
