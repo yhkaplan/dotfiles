@@ -100,4 +100,5 @@ root() {
 }
 
 # Add ssh keys
-ssh-add -A
+ssh-add -A > /dev/null 2>&1
+
