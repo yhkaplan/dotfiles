@@ -11,7 +11,7 @@ echo "Starting bootstrapping"
 ############ Homebrew ###############
 
 # Check for Homebrew, install if we don't have it
-if test ! $(which brew); then
+if test ! "$(command -v brew)"; then
     echo "Installing homebrew..."
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
@@ -26,7 +26,7 @@ echo "Installing packages..."
 # Select directory and run brewfile
 # The Brewfile is generated automatically through 'brew bundle dump'
 mv ~/dotfiles ~/.dotfiles
-cd ~/.dotfiles/
+cd ~/.dotfiles/ || echo "Could not cd dotfiles"; exit 1
 brew bundle
 brew cleanup
 brew cask cleanup
@@ -87,7 +87,7 @@ sudo bash -c 'echo /usr/local/bin/zsh >> /etc/shells'
 
 # Gives user choice for preferred shell
 while true; do
-    read -p "Do you want Zsh to be your default shell? " yn
+    read -r -p "Do you want Zsh to be your default shell? " yn
     case $yn in
         [Yy]* )
             chsh -s /usr/local/bin/zsh
