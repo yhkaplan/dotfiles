@@ -102,3 +102,10 @@ root() {
 # Add ssh keys
 ssh-add -A > /dev/null 2>&1
 
+# Envar secrets
+token_path="$HOME/.secrets/tokens"
+if [ -f "$token_path" ]; then
+  # shellcheck source=.secrets/tokens
+  source "$token_path"
+fi
+
