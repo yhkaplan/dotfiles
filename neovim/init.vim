@@ -112,7 +112,6 @@ let g:fzf_colors =
 let mapleader = "\<Space>"
 
 nnoremap <silent> <leader>v :vsplit<CR><C-w>l
-nnoremap <silent> <leader>H :split<CR><C-w>j
 nnoremap <silent> <leader>tn :tabnew<CR>
 " Buffers
 nnoremap ]b :bnext<cr>
@@ -136,8 +135,8 @@ nnoremap <silent> <leader>gl :Commits<CR>
 " c for commands
 nnoremap <silent> <leader>c :History:<CR>
 " r for recent
-nnoremap <silent> <leader>r :Hist<CR>
-nnoremap <silent> <leader>B :Buffers<CR>
+nnoremap <silent> <leader>H :Hist<CR>
+nnoremap <silent> <leader>r :Buffers<CR>
 " K for Keybindings
 nnoremap <silent> <leader>K :Maps<CR>
 " L for git Log
