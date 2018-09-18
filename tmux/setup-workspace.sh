@@ -1,6 +1,6 @@
-# !/usr/local/bin/fish
+#!/usr/local/bin/fish
 
-# Reference this article for more info: 
+# Reference this article for more info:
 # http://sherifsoliman.com/2016/12/29/tmux-workspace-scripts/
 
 tmux rename-window ios-main
