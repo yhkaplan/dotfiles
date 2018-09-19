@@ -129,7 +129,7 @@ nnoremap <leader>l <C-w>l
 
 nnoremap <silent>z :call fzf#vim#tags(expand('<cword>'))<CR>
 " s for search
-nnoremap <silent> <leader>s :FZF<CR>
+nnoremap <silent> <leader>s :GFiles<CR>
 " gl for git log
 nnoremap <silent> <leader>gl :Commits<CR>
 " c for commands
@@ -141,6 +141,8 @@ nnoremap <silent> <leader>r :Buffers<CR>
 nnoremap <silent> <leader>K :Maps<CR>
 " L for git Log
 nnoremap <silent> <leader>L :Commits<CR>
+" Return to last viewed buffer
+nnoremap <silent> <leader>b :b#<CR>
 
 " Setting this to begin with space f because I mostly plan on
 " using it to find functions
@@ -474,7 +476,7 @@ function FuncToVar ()
     execute a:line_number . ',' . a:line_number . 's/func \(.*\)(.*) -> \(.*\)\s/var \1: \2 /g'
 endfunction
 
-nmap <silent><leader>b :call BreakLines()<CR>
+nmap <silent><leader>B :call BreakLines()<CR>
 " tv for transform to var
 nnoremap <silent> <leader>tv :<C-u>call FuncToVar()<CR>
 
