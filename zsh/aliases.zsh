@@ -29,6 +29,8 @@ abbrev-alias gr='git log --oneline --since=yesterday | pbcopy'
 abbrev-alias be="bundle exec"
 abbrev-alias ow='open *.xcworkspace/'
 abbrev-alias ox='open *.xcodeproj'
+abbrev-alias xs='sudo xcode-select --switch /Applications/Xcode.app'
+abbrev-alias xv='xcodebuild -version'
 abbrev-alias pi='bundle exec pod install'
 abbrev-alias bm='xcodebuild -workspace minne.xcworkspace/ -scheme minne | xcpretty'
 abbrev-alias nv='nvim'
