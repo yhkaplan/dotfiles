@@ -197,6 +197,9 @@ nnoremap <silent> <leader>gs :Gstatus<CR>
 " search related docsets TODO: make Swift/Python/Ruby/Bash/Vim only
 nnoremap <silent> <Leader>gd :call Dasht([expand('<cword>'), expand('<cWORD>')])<Return>
 
+" use gw to swap the current word with the next, without changing cursor position
+nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>:nohlsearch<CR>
+
 " Golang
 autocmd FileType go inoreabbr iferr <C-R>=go#iferr#Generate()<CR><esc>x
 au FileType go nmap <Leader>gd <Plug>(go-doc)
