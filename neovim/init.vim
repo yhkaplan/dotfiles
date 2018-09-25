@@ -127,6 +127,7 @@ nnoremap <leader>k <C-w>k
 nnoremap <leader>h <C-w>h
 nnoremap <leader>l <C-w>l
 
+" Search tags for word under cursor
 nnoremap <silent>z :call fzf#vim#tags(expand('<cword>'))<CR>
 " s for search
 nnoremap <silent> <leader>s :GFiles<CR>
