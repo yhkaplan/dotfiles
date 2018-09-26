@@ -449,8 +449,6 @@ autocmd BufNewFile,BufRead *.swift,*.h,*.m set tags+=~/dev/global-tags
 let g:gutentags_ctags_executable = '/usr/local/bin/ctags'
 let g:gutentags_ctags_tagfile = '.git/tags'
 let g:gutentags_ctags_extra_args = ['--languages=objectivec,swift', '--langmap=objectivec:.h.m']
-" Jump to the tag if there's only one match and will present a list if there are multiple matches
-nnoremap <C-]> g<C-]>
 
 " TODO: make swift only
 function AddMark ()
