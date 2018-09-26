@@ -185,7 +185,7 @@ nnoremap <silent> <leader>gc :Gcommit<CR>
 " gp git push
 nnoremap <silent> <leader>gp :Gpush<CR>
 " gd git diff
-nnoremap <silent> <leader>gd :GitGutterToggle<CR>
+nnoremap <silent> <leader>gg :GitGutterToggle<CR>
 " git full diff
 nnoremap <silent> <leader>gf :tabnew<CR>:terminal git diff -w<CR>
 " gs git status
