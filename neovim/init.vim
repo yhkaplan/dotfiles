@@ -210,6 +210,12 @@ augroup go
     \| nmap <Leader>gb <Plug>(go-build)
     \| nmap <Leader>gt <Plug>(go-test)
     \| nmap <Leader>R  <Plug>(go-rename)
+    \| command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+    \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+    \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+  " Alternates between the implementation and test code
+
+  " Try out :GoAddTags and :GoRemoveTags for struct in Go!
   " TODO: assign bindings
   " :GoImpl [receiver] [interface]
   " Generates method stubs for implementing an interface. If no arguments is
@@ -217,18 +223,7 @@ augroup go
   " asks for the interface type to be generated. If used with arguments, the
   " receiver and the interface needs to be specified.
   "
-  " autocmd FileType go nmap <silent> <Leader>v <Plug>(go-def-vertical)
-  " autocmd FileType go nmap <silent> <Leader>x <Plug>(go-doc-vertical)
   " autocmd FileType go nmap <silent> <Leader>i <Plug>(go-info)
-  " autocmd FileType go nmap <silent> <Leader>l <Plug>(go-metalinter)
-  " " Alternates between the implementation and test code
-  " augroup go
-  "   autocmd!
-  "   autocmd Filetype go
-  "     \  command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-  "     \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-  "     \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-  " augroup END
 augroup END
 
 " Switch to h file of same name (useful for c++, obj-c, etc)
