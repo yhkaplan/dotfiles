@@ -16,6 +16,7 @@ github.com/mdempsky/gocode
 github.com/monochromegane/dragon-imports
 github.com/motemen/ghq
 github.com/motemen/gore
+github.com/opennota/check/cmd/structcheck
 github.com/rogpeppe/godef
 github.com/tools/godep
 github.com/zmb3/gogetdoc
