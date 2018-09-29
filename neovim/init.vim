@@ -321,6 +321,8 @@ autocmd InsertLeave * highlight  CursorLine ctermbg=White ctermfg=Black
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Show matching brackets
 set showmatch
+" Disable swapfile
+set noswapfile
 " Use macOS pasteboard
 " Workaround for bug reducing startup time
 let g:clipboard = {'copy': {'+': 'pbcopy', '*': 'pbcopy'}, 'paste': {'+': 'pbpaste', '*': 'pbpaste'}, 'name': 'pbcopy', 'cache_enabled': 0}
