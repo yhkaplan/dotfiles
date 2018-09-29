@@ -63,7 +63,7 @@ Plug 'maximbaz/lightline-ale'
 Plug 'w0rp/ale'
 
 " Theme(s)
-Plug 'rakr/vim-one'
+Plug 'joshdick/onedark.vim'
 Plug 'mhartington/oceanic-next'
 
 call plug#end()
@@ -84,12 +84,7 @@ endif
 " ############ THEMING #################
 
 syntax on
-let g:oceanic_next_terminal_bold = 0
-let g:oceanic_next_terminal_italic = 0
-colorscheme OceanicNext
-
-" set background=dark " for the dark version
-"colorscheme one
+colorscheme onedark
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -383,7 +378,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 " ########## LIGHTLINE SETTINGS ###########
 
 let g:lightline = {
-      \ 'colorscheme': 'oceanicnext',
+      \ 'colorscheme': 'onedark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
@@ -407,11 +402,6 @@ let g:lightline.component_type = {
       \     'linter_errors': 'error',
       \     'linter_ok': 'left',
       \ }
-
-" let g:lightline#ale#indicator_checking = "\uf110"
-" let g:lightline#ale#indicator_warnings = "\uf071"
-" let g:lightline#ale#indicator_errors = "\uf05e"
-" let g:lightline#ale#indicator_ok = "\uf00c"
 
 " ###### MARKDOWN SETTINGS #############
 
