@@ -355,8 +355,8 @@ set copyindent      " copy indent from the previous line
 "keep the sign gutter open at all times
 let g:ale_sign_column_always = 1
 " Keybindings for jumping to next/previous error
-nmap <silent>k <Plug>(ale_previous_wrap)
-nmap <silent>j <Plug>(ale_next_wrap)
+nmap <silent> <leader>k <Plug>(ale_previous_wrap)
+nmap <silent> <leader>j <Plug>(ale_next_wrap)
 " Error and warning signs.
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '▲'
