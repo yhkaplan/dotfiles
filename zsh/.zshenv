@@ -5,6 +5,9 @@ setopt no_global_rcs
 # Add commonly used folders to $PATH
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
+# Add Visual Studio Code (code)
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
 # Set path for scripts
 export PATH="$PATH:${HOME}/.dotfiles/scripts"
 
