@@ -11,6 +11,8 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'sunaku/vim-dasht'
 " Tags
 Plug 'ludovicchabant/vim-gutentags'
+" Seamless navigation between tmux panes and vim splits
+Plug 'christoomey/vim-tmux-navigator'
 " Run in Tmux
 Plug 'benmills/vimux'
 " Formatting
@@ -120,12 +122,6 @@ nnoremap [b :bprev<cr>
 " Tabs
 nnoremap ]t :tabn<cr>
 nnoremap [t :tabp<cr>
-
-" Sane defaults for split switching
-nnoremap <leader>j <C-w>j
-nnoremap <leader>k <C-w>k
-nnoremap <leader>h <C-w>h
-nnoremap <leader>l <C-w>l
 
 " Search tags for word under cursor
 nnoremap <silent>z :call fzf#vim#tags(expand('<cword>'))<CR>
@@ -362,8 +358,8 @@ set copyindent      " copy indent from the previous line
 "keep the sign gutter open at all times
 let g:ale_sign_column_always = 1
 " Keybindings for jumping to next/previous error
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent>k <Plug>(ale_previous_wrap)
+nmap <silent>j <Plug>(ale_next_wrap)
 " Error and warning signs.
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '▲'
@@ -371,9 +367,9 @@ let g:ale_sign_warning = '▲'
 " ########## Neosnippets ###########
 
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <C-m>     <Plug>(neosnippet_expand_or_jump)
+smap <C-m>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-m>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB>
@@ -551,8 +547,8 @@ function! s:my_cr_function()
 endfunction
 
 " Swift settings
-" Jump to the first placeholder by typing `<C-k>`.
-autocmd FileType swift imap <buffer> <C-k> <Plug>(autocomplete_swift_jump_to_placeholder)
+" Jump to the first placeholder by typing `<C-m>`.
+autocmd FileType swift imap <buffer> <C-m> <Plug>(autocomplete_swift_jump_to_placeholder)
 let g:deoplete#sources#swift#source_kitten_binary = '/usr/local/bin/sourcekitten'
 let g:deoplete#sources#swift#daemon_autostart = 1
 
