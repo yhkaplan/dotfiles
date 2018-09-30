@@ -7,6 +7,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Debugging
+Plug 'jodosha/vim-godebug'
 " Dasht docs
 Plug 'sunaku/vim-dasht'
 " Tags
@@ -206,6 +208,8 @@ augroup go
     \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
   " Alternates between the implementation and test code
 
+  " :call GoToggleBreakpoint() to add or remove a breakpoint at the current line
+  " :call GoDebug() to start a debug session for the main package
   " Try out :GoAddTags and :GoRemoveTags for struct in Go!
   " TODO: assign bindings
   " :GoImpl [receiver] [interface]
