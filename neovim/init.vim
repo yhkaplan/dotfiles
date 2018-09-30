@@ -288,6 +288,8 @@ endif
 set noshowmode
 " Exit on j
 imap jj <Esc>
+" No adding spaces in joined lines
+nnoremap J gJ
 " Center the screen
 nnoremap <space> zz
 " Make $ not pickup newlines by mapping to similar binding
