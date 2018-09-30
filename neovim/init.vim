@@ -121,7 +121,7 @@ nnoremap ]t :tabn<cr>
 nnoremap [t :tabp<cr>
 
 " Search tags for word under cursor
-nnoremap <silent>z :call fzf#vim#tags(expand('<cword>'))<CR>
+nnoremap <silent> <leader>z :call fzf#vim#tags(expand('<cword>'))<CR>
 " s for search
 nnoremap <silent> <leader>s :GFiles<CR>
 " gl for git log
@@ -149,8 +149,6 @@ nnoremap  <silent> <leader>p :pu<CR>
 nnoremap  <silent> <leader>P :pu!<CR>
 " Splits line at cursor (u for unjoin)
 nnoremap <silent> <leader>u :<C-u>call BreakHere()<CR>
-" Yank to end of line
-nnoremap <silent> <leader>y yg_
 " Pastes at end
 nnoremap <silent> <leader>a $p
 " Map vim-commentary to IDE-like mapping
