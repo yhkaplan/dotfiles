@@ -540,7 +540,7 @@ endfunction
 
 " Swift settings
 " Jump to the first placeholder by typing `<C-m>`.
-autocmd FileType swift imap <buffer> <C-m> <Plug>(autocomplete_swift_jump_to_placeholder)
+" autocmd FileType swift imap <buffer> <C-m> <Plug>(autocomplete_swift_jump_to_placeholder)
 let g:deoplete#sources#swift#source_kitten_binary = '/usr/local/bin/sourcekitten'
 let g:deoplete#sources#swift#daemon_autostart = 1
 
