@@ -78,6 +78,8 @@ git config --global ghq.root ~/dev
 echo "Setting symlinks"
 python3 make_symlinks.py
 
+echo "Please update hosts file with contents of https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+
 # We installed the new shells, now we have to activate them
 echo "Adding newly installed shells to the list of allowed shells"
 
