@@ -8,6 +8,7 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 " Debugging
+Plug 'dbgx/lldb.nvim'
 Plug 'jodosha/vim-godebug'
 " Dasht docs
 Plug 'sunaku/vim-dasht'
@@ -257,6 +258,8 @@ au BufRead,BufNewFile *.fish set syntax=vim
 au BufRead,BufNewFile Dangerfile setfiletype ruby
 
 " ########## GENERAL SETTINGS ###########
+
+let g:python_host_prog = '/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python'
 
 " Referenced https://robots.thoughtbot.com/faster-grepping-in-vim
 if executable('ag')
