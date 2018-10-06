@@ -16,6 +16,9 @@ export GOPATH="$HOME/go"
 export GOROOT="/usr/local/opt/go/libexec"
 export PATH="${PATH}:${GOROOT}/bin:${GOPATH}/bin"
 
+# Set a default simulator for iOS
+export DEFAULT_SIM="platform=iOS Simulator,name=iPhone 8,OS=12.0"
+
 # neovim
 export MYVIMRC="$HOME/.config/nvim/init.vim"
 

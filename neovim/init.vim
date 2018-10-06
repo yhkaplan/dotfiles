@@ -7,6 +7,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Live markdown preview (macOS only; manages dependencies automatically)
+Plug 'junegunn/vim-xmark'
 " Debugging
 Plug 'jodosha/vim-godebug'
 " Dasht docs
