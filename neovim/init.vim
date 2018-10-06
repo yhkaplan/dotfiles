@@ -129,8 +129,7 @@ nnoremap <silent> <leader>gl :Commits<CR>
 " c for commands
 nnoremap <silent> <leader>c :History:<CR>
 " r for recent
-nnoremap <silent> <leader>H :Hist<CR>
-nnoremap <silent> <leader>r :Buffers<CR>
+nnoremap <silent> <leader>r :Hist<CR>
 " K for Keybindings
 nnoremap <silent> <leader>K :Maps<CR>
 " L for git Log
