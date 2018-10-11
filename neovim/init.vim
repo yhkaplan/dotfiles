@@ -49,8 +49,6 @@ Plug 'Shougo/neopairs.vim'
 Plug 'jiangmiao/auto-pairs'
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Swift completion (not clear if it's working)
-Plug 'mitsuse/autocomplete-swift'
 " Python autocomplete
 Plug 'zchee/deoplete-jedi'
 " Go-lang completion
