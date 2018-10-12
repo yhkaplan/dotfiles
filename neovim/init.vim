@@ -458,7 +458,7 @@ autocmd BufNewFile,BufRead *.swift set filetype=swift
 autocmd BufNewFile,BufRead *.swift,*.h,*.m set tags+=~/dev/global-tags
 let g:gutentags_ctags_executable = '/usr/local/bin/ctags'
 let g:gutentags_ctags_tagfile = '.git/tags'
-let g:gutentags_ctags_extra_args = ['--languages=objectivec,swift', '--langmap=objectivec:.h.m']
+let g:gutentags_ctags_extra_args = ['--languages=objectivec,swift,ruby,python', '--langmap=objectivec:.h.m']
 
 " TODO: make swift only
 function AddMark ()
