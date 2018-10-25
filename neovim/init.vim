@@ -525,6 +525,7 @@ nmap <Leader>x :VimuxCloseRunner<CR>
 let g:ale_linters = {'go': ['gofmt', 'gotype', 'govet']}
 let g:go_fmt_command = 'goimports' " Auto-import on save
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'structcheck']
+let g:go_gocode_unimported_packages = 1
 
 function CheckGoVersion ()
   let go_version = system('go version')
