@@ -46,6 +46,8 @@ SPACESHIP_CHAR_SUFFIX=" "
 SPACESHIP_GIT_PREFIX=""
 SPACESHIP_GIT_BRANCH_PREFIX=""
 SPACESHIP_GIT_STATUS_STASHED=""
+SPACESHIP_VI_MODE_COLOR="cyan"
+spaceship_vi_mode_enable
 
 autoload -Uz compinit
 typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
