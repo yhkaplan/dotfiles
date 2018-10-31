@@ -130,14 +130,13 @@ nnoremap <silent> <leader>s :GFiles<CR>
 nnoremap <silent> <leader>gl :Commits<CR>
 " c for commands
 nnoremap <silent> <leader>c :History:<CR>
-" r for recent
-nnoremap <silent> <leader>r :Hist<CR>
 " K for Keybindings
 nnoremap <silent> <leader>K :Maps<CR>
 " L for git Log
 nnoremap <silent> <leader>L :Commits<CR>
-" Return to last viewed buffer
-nnoremap <silent> <leader>b :b#<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+" Return to last viewed buffer (r for recent)
+nnoremap <silent> <leader>r :b#<CR>
 
 " Setting this to begin with space f because I mostly plan on
 " using it to find functions
