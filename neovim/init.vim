@@ -70,7 +70,6 @@ Plug 'w0rp/ale'
 
 " Theme(s)
 Plug 'joshdick/onedark.vim'
-Plug 'mhartington/oceanic-next'
 
 call plug#end()
 
