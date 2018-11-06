@@ -7,6 +7,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+" camelCase and snake_case word objects/motions
+Plug 'chaoren/vim-wordmotion'
 " Show buffers like tabs using lightline
 Plug 'mgee/lightline-bufferline'
 " Live markdown preview (macOS only; manages dependencies automatically)
@@ -134,9 +136,9 @@ nnoremap <silent> <leader>c :History:<CR>
 nnoremap <silent> <leader>K :Maps<CR>
 " L for git Log
 nnoremap <silent> <leader>L :Commits<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>r :Buffers<CR>
 " Return to last viewed buffer (r for recent)
-nnoremap <silent> <leader>r :b#<CR>
+nnoremap <silent> <leader>R :b#<CR>
 
 " Setting this to begin with space f because I mostly plan on
 " using it to find functions
@@ -181,6 +183,8 @@ nnoremap <silent> <leader>gg :GitGutterToggle<CR>
 nnoremap <silent> <leader>gf :tabnew<CR>:terminal git diff -w<CR>
 " gs git status
 nnoremap <silent> <leader>gs :Gstatus<CR>
+
+let g:wordmotion_prefix = '<Leader>'
 
 " Dasht
 " search related docsets TODO: make Swift/Python/Ruby/Bash/Vim only
