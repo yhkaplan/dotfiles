@@ -5,7 +5,6 @@
 ~/.dotfiles/bash/.bash_profile ~/
 ~/.dotfiles/bash/.bashrc ~/
 ~/.dotfiles/gem/Gemfile ~/
-~/.dotfiles/atom/.atom ~/
 ~/.dotfiles/git/.gitignore_global ~/
 ~/.dotfiles/ruby/.rubocop.yml ~/
 ~/.dotfiles/zsh/.fzf.zsh ~/

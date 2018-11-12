@@ -59,9 +59,6 @@ pip3 install -r pip-requirements.txt
 # Golang dependencies
 python3 go/install.py
 
-# requires atom commandline tools
-apm install --packages-file ~/.atom/package.list
-
 # Make iTerm/Terminal "Last login:" message from Login utility stop appearing
 touch ~/.hushlogin
 
