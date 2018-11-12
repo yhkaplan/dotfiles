@@ -3,17 +3,18 @@ from pathlib import Path
 
 OLD_FILE_PATH = "~/.old_dotfiles/"
 
+
 def get_shell_output(args_string):
     args = args_string.split()
     result = subprocess.run(args, stdout=subprocess.PIPE)
 
-    stdout = result.stdout.decode('utf-8')
+    stdout = result.stdout.decode("utf-8")
     return stdout
 
 
 def make_folders(path):
     if path[-1] == "/":
-        path = path[:-1] # Remove last char
+        path = path[:-1]  # Remove last char
 
     folders = path.split("/")
     for i, folder in enumerate(folders):
@@ -21,7 +22,7 @@ def make_folders(path):
             continue
 
         path_prefix = "/".join(folders[0:i])
-        _ = get_shell_output(f"mkdir -p {path_prefix}/{folder}")
+        get_shell_output(f"mkdir -p {path_prefix}/{folder}")
 
 
 def make_symlink(source, target):
@@ -29,7 +30,7 @@ def make_symlink(source, target):
 
 
 def move_existing_file(target):
-    _ = get_shell_output(f"mv {target} {old_file_path}")
+    get_shell_output(f"mv {target} {OLD_FILE_PATH}")
 
 
 # MAIN
