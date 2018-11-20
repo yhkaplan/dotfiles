@@ -21,8 +21,6 @@ Plug 'sunaku/vim-dasht'
 Plug 'ludovicchabant/vim-gutentags'
 " Seamless navigation between tmux panes and vim splits
 Plug 'christoomey/vim-tmux-navigator'
-" Run in Tmux
-Plug 'benmills/vimux'
 " Formatting
 Plug 'sbdchd/neoformat'
 " Directory brower, replacement for netrw
@@ -513,13 +511,6 @@ nmap <Leader>xb :call SetShellToBash()<CR>:Xbuild<CR>
 nmap <Leader>xt :Xtest<CR>
 " Open in Xcode
 nmap <Leader>xo :Xopen<CR>
-" Run pod install w/ vim-dispatch
-nmap <Leader>xp :call VimuxRunCommand("clear; bundle exec pod install")<CR>
-" S for Swift REPL; Open and switch to REPL
-nmap <Leader>xs :call VimuxRunCommand("clear; swift")<CR>
-
-nmap <Leader>. :VimuxRunLastCommand<CR>
-nmap <Leader>x :VimuxCloseRunner<CR>
 
 " ############ Golang Settings ##############
 
