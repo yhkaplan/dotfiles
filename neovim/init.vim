@@ -41,8 +41,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sleuth'
 " Git integration
 Plug 'tpope/vim-fugitive'
-" Git diff integration
-Plug 'airblade/vim-gitgutter'
 " Snippets
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
@@ -174,8 +172,6 @@ nnoremap <silent> <leader>ga :Gwrite<CR>
 nnoremap <silent> <leader>gc :Gcommit<CR>
 " gp git push
 nnoremap <silent> <leader>gp :Gpush<CR>
-" gd git diff
-nnoremap <silent> <leader>gg :GitGutterToggle<CR>
 " git full diff
 nnoremap <silent> <leader>gf :tabnew<CR>:terminal git diff -w<CR>
 " gs git status
@@ -306,12 +302,6 @@ augroup numbertoggle
 augroup END
 " Live preview of search and replace
 set inccommand=nosplit
-
-" Turn off GitGutter by default
-" Enable w/ :GitGutterToggle
-let g:gitgutter_enabled = 0
-" Ignore whitespace
-let g:gitgutter_diff_args = '-w'
 
 " Enable CursorLine
 set cursorline
