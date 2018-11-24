@@ -58,6 +58,9 @@ fi
 
 zmodload -i zsh/complist
 
+# Turn off autocorrect suggestions
+unsetopt correct
+
 # History
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000
