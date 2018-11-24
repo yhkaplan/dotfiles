@@ -219,6 +219,7 @@ augroup END
 nnoremap <silent> <leader>gh :e %<.h<CR>
 " go to implementation file
 nnoremap <silent> <leader>gm :e %<.m<CR>
+nnoremap <silent> <leader>gv :vsplit<CR>:GoAlternate<CR>
 
 " ########## Strip trailing whitespaces ###########
 
