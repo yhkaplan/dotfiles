@@ -462,8 +462,9 @@ nmap <silent><leader>B :call BreakLines()<CR>
 " tv for transform to var
 nnoremap <silent> <leader>tv :<C-u>call FuncToVar()<CR>
 
-" Alternate between test and implementation files using fd
-function! Alternate ()
+" ############ Alternate between test and implementation files ###################
+" Currently depends on fd
+function! s:alternate ()
   let l:file_name = expand('%')
   let l:is_test = expand('%:t') =~ 'Test'
 
@@ -481,11 +482,9 @@ function! Alternate ()
 
   " Find file (should prob use find instead)
   let l:file_name = system('fd' . ' ' . l:file_name)
-  echo l:file_name
 
   " Grab first result if multiple
   let l:is_multiple_results = l:file_name =~ '\n'
-  echo l:is_multiple_results
   if l:is_multiple_results
     let l:file_name = substitute(l:file_name,'\n.*','','')
   endif
@@ -499,6 +498,7 @@ function! Alternate ()
   endif
 
 endfunction
+command! Alternate call s:alternate()
 
 " ############ vim-xcode ###################
 
