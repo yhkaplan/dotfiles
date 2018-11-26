@@ -462,6 +462,44 @@ nmap <silent><leader>B :call BreakLines()<CR>
 " tv for transform to var
 nnoremap <silent> <leader>tv :<C-u>call FuncToVar()<CR>
 
+" Alternate between test and implementation files using fd
+function! Alternate ()
+  let l:file_name = expand('%')
+  let l:is_test = expand('%:t') =~ 'Test'
+
+  " Remove file path
+  let l:file_name = substitute(l:file_name,'[A-z]\+/','','g')
+
+  if l:is_test
+    " Remove test/tests from filename (could prob shorten this)
+    let l:file_name = substitute(l:file_name,'Test\.','.','')
+    let l:file_name = substitute(l:file_name,'Tests\.','.','')
+  else
+    " Add test to filename
+    let l:file_name = substitute(l:file_name,'\.','Test.','')
+  endif
+
+  " Find file (should prob use find instead)
+  let l:file_name = system('fd' . ' ' . l:file_name)
+  echo l:file_name
+
+  " Grab first result if multiple
+  let l:is_multiple_results = l:file_name =~ '\n'
+  echo l:is_multiple_results
+  if l:is_multiple_results
+    let l:file_name = substitute(l:file_name,'\n.*','','')
+  endif
+
+  " Open file
+  let win = bufwinnr(l:file_name)
+  if l:win > 0
+    execute l:win . 'wincmd w'
+  else
+    execute ':e ' . l:file_name
+  endif
+
+endfunction
+
 " ############ vim-xcode ###################
 
 let g:xcode_default_simulator = 'iPhone 8'
