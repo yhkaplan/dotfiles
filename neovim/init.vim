@@ -299,9 +299,10 @@ augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
-" Live preview of search and replace
+" Live preview of search and replace (Neovim only)
 set inccommand=nosplit
-
+" Start scrolling three lines before the horizontal window border
+set scrolloff=3
 " Enable CursorLine
 set cursorline
 " Default Colors for CursorLine
