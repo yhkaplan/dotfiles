@@ -37,6 +37,7 @@ brew "coreutils"
 brew "cppcheck"
 brew "ctags", args: ["HEAD"]
 brew "curl"
+brew "dep"
 brew "openssl"
 brew "wget"
 brew "dasht"
