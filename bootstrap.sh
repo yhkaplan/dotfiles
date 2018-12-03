@@ -59,6 +59,10 @@ pip3 install -r pip-requirements.txt
 # Golang dependencies
 python3 go/install.py
 
+# JS
+npm install -g prettier
+npm install -g remark-lint
+
 # Make iTerm/Terminal "Last login:" message from Login utility stop appearing
 touch ~/.hushlogin
 
