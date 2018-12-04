@@ -61,6 +61,10 @@ zmodload -i zsh/complist
 # Turn off autocorrect suggestions
 unsetopt correct
 
+# Workaround for conflict between Homebrew and default Python 2
+# https://forums.swift.org/t/swift-repl-starts-with-error-when-homebrew-python-is-installed/12927
+alias swift='PATH="/usr/bin:$PATH" swift'
+
 # History
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000
