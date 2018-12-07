@@ -74,6 +74,11 @@ fco() {
   git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 
+# fa - git add
+fa() {
+  git add $(git status -s | awk '{$1=""; print $0}' | fzf-tmux +m -d 40%)
+}
+
 # fshow - git commit browser
 fshow() {
   git log --graph --color=always \
