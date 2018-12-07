@@ -307,6 +307,7 @@ set scrolloff=3
 set cursorline
 " Always split to the right
 set splitright
+set splitbelow
 " Default Colors for CursorLine
 highlight  CursorLine ctermbg=White ctermfg=Black
 " Change Color when entering Insert Mode
