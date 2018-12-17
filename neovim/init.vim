@@ -504,6 +504,15 @@ function! s:alternate ()
 endfunction
 command! Alternate call s:alternate()
 
+" ############ Open to current line in Xcode ###################
+function! s:open_in_xcode ()
+  let l:file_path = expand('%:p')
+  let l:line = line('.')
+
+  execute 'silent' . ' ' '!' . 'xed' . ' ' . '--line' . ' ' . l:line . ' ' . l:file_path
+endfunction
+command! Xline call s:open_in_xcode()
+
 " ############ vim-xcode ###################
 
 let g:xcode_default_simulator = 'iPhone 8'
