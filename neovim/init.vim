@@ -27,8 +27,6 @@ Plug 'ap/vim-readdir'
 Plug 'gfontenot/vim-xcode'
 " Swift syntax highlighting
 Plug 'keith/swift.vim'
-" Asynchronous building
-Plug 'tpope/vim-dispatch'
 " Surrounding with quote, bracket, etc
 Plug 'tpope/vim-surround'
 " Commenting out
@@ -516,19 +514,11 @@ command! Xline call s:open_in_xcode()
 let g:xcode_default_simulator = 'iPhone 8'
 " Prefer schemes that don't have below pattern
 let g:xcode_scheme_ignore_pattern = '/Demo|Example|Package|AFNetworking|Bitlyzer|Kit|Bolts|GPUImage|Growthbeat|libwebp|View|lottie-ios/d'
-" Xcodebuild asynchronously w/ vim-dispatch
-" let g:xcode_runner_command = 'Make {cmd}'
 
-" Set default shell to Bash (needed for Xcodebuild)
-function! SetShellToBash ()
-  set shell=/usr/local/bin/bash
-endfunction
-
-set lazyredraw              " Don't redraw vim in all situations
 set title                   " Change the terminal's title
 set secure                  " Don't load autocmds from local .vimrc files
 nmap <Leader>xr :Xrun<CR>
-nmap <Leader>xb :call SetShellToBash()<CR>:Xbuild<CR>
+nmap <Leader>xb :Xbuild<CR>
 nmap <Leader>xt :Xtest<CR>
 " Open in Xcode
 nmap <Leader>xo :Xopen<CR>
