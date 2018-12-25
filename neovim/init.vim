@@ -23,8 +23,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'sbdchd/neoformat'
 " Directory brower, replacement for netrw
 Plug 'ap/vim-readdir'
-" Running swift test, gotest, etc
-Plug 'janko-m/vim-test'
 " Xcodebuild, run, etc
 Plug 'gfontenot/vim-xcode'
 " Swift syntax highlighting
