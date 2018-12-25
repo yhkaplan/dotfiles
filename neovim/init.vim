@@ -40,7 +40,7 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 " Bracket and quote completion
 Plug 'Shougo/neopairs.vim'
-Plug 'jiangmiao/auto-pairs'
+Plug 'cohama/lexima.vim'
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Python autocomplete
