@@ -139,7 +139,6 @@ cask "font-sourcecodepro-nerd-font-mono"
 cask "google-chrome"
 cask "iterm2"
 cask "java"
-cask "jupyter-notebook-ql"
 cask "minikube"
 cask "qlcolorcode"
 cask "qlmarkdown"
@@ -165,7 +164,6 @@ mas "Pixelmator", id: 407963104
 mas "Pocket", id: 568494494
 mas "Realm Browser", id: 1007457278
 mas "Reeder", id: 880001334
-mas "Slack", id: 803453959
 mas "Spark", id: 1176895641
 mas "The Unarchiver", id: 425424353
 mas "Things3", id: 904280696
