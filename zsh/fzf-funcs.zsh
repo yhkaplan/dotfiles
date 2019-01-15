@@ -69,7 +69,7 @@ fdr() {
 # fco - checkout git branch
 fco() {
   local branches branch
-  branches=$(git branch) &&
+  branches=$(git branch --sort=-committerdate) &&
   branch=$(echo "$branches" | fzf-tmux +m -d 40%) &&
   git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
