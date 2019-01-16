@@ -120,5 +120,7 @@ if [ -f "$token_path" ]; then
   source "$token_path"
 fi
 
+# Direnv
+eval "$(direnv hook zsh)"
 # Autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
