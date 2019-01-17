@@ -35,8 +35,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sleuth'
 " Git integration
 Plug 'tpope/vim-fugitive'
-" Save window/buffer session
-Plug 'tpope/vim-obsession'
 " Snippets
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
