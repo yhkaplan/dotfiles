@@ -730,3 +730,45 @@ onoremap <silent> io :<c-u>call <SID>indent_object('==', 0, line('.'), line('.')
 " ----------------------------------------------------------------------------
 nmap <silent> <leader>I ^vio<C-V>I
 nmap <silent> <leader>A ^vio<C-V>$A
+
+" ----------------------------------------------------------------------------
+" Session management (saving window position, etc)
+" http://vim.wikia.com/wiki/Automatic_session_restore_in_git_directories
+" ----------------------------------------------------------------------------
+function! FindProjectName()
+  let s:name = getcwd()
+  if !isdirectory('.git')
+    let s:name = substitute(finddir('.git', '.;'), '/.git', "", "")
+  end
+  if s:name != ''
+    let s:name = matchstr(s:name, '.*', strridx(s:name, '/') + 1)
+  end
+  return s:name
+endfunction
+
+" Sessions only restored if we start Vim without args.
+function! RestoreSession(name)
+  let s:session_path = $HOME . '/.config/nvim/sessions' . a:name
+  if a:name != ''
+    if filereadable(s:session_path)
+      execute 'source ' . s:session_path
+    end
+  end
+endfunction
+
+" Sessions only saved if we start Vim without args.
+function! SaveSession(name)
+  if a:name != ''
+    let s:sessions_dir = $HOME . '/.config/nvim/sessions'
+    if !isdirectory(s:sessions_dir)
+      call mkdir(s:sessions_dir)
+    endif
+    execute 'mksession! ' . s:sessions_dir . a:name
+  end
+endfunction
+
+" Restore and save sessions.
+if argc() == 0
+  autocmd VimEnter * call RestoreSession(FindProjectName())
+  autocmd VimLeave * call SaveSession(FindProjectName())
+end
