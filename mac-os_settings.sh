@@ -61,15 +61,15 @@ defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
 ###############################################################################
 
 for app in "Activity Monitor" \
-	"Calendar" \
-	"cfprefsd" \
-	"Dock" \
-	"Finder" \
-	"Google Chrome" \
-	"Spectacle" \
-	"SystemUIServer" \
-	"Xcode" \
-	"iCal"; do
-	killall "${app}" &> /dev/null
+  "Calendar" \
+  "cfprefsd" \
+  "Dock" \
+  "Finder" \
+  "Google Chrome" \
+  "Spectacle" \
+  "SystemUIServer" \
+  "Xcode" \
+  "iCal"; do
+  killall "${app}" &>/dev/null
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
