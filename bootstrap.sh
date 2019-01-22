@@ -40,8 +40,8 @@ LINE='eval "$(rbenv init -)"'
 grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra echo "Cleaning up..."
 
 echo "Installing Ruby versions"
-rbenv install 2.4.1
 rbenv install 2.5.1
+rbenv install 2.6.0
 
 # Installs bundler for system version of Ruby, may cause
 # headaches and issues if the rbenv version doesn't have bundler installed
