@@ -5,9 +5,9 @@ sudo -v
 
 # Keep-alive: update existing `sudo` time stamp until the script has finished.
 while true; do
-    sudo -n true
-    sleep 60
-    kill -0 "$$" || exit
+  sudo -n true
+  sleep 60
+  kill -0 "$$" || exit
 done 2>/dev/null &
 
 echo "Starting bootstrapping"
@@ -16,8 +16,8 @@ echo "Starting bootstrapping"
 
 # Check for Homebrew, install if we don't have it
 if test ! "$(command -v brew)"; then
-    echo "Installing homebrew..."
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  echo "Installing homebrew..."
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 # Make sure we’re using the latest Homebrew
@@ -95,18 +95,18 @@ sudo bash -c 'echo /usr/local/bin/zsh >> /etc/shells'
 
 # Gives user choice for preferred shell
 while true; do
-    read -r -p "Do you want Zsh to be your default shell? " yn
-    case $yn in
-    [Yy]*)
-        chsh -s /usr/local/bin/zsh
-        echo "Bootstrapping complete"
-        zsh
-        break
-        ;;
-    [Nn]*)
-        echo "Bootstrapping complete"
-        exit
-        ;;
-    *) echo "Please input yes or no" ;;
-    esac
+  read -r -p "Do you want Zsh to be your default shell? " yn
+  case $yn in
+  [Yy]*)
+    chsh -s /usr/local/bin/zsh
+    echo "Bootstrapping complete"
+    zsh
+    break
+    ;;
+  [Nn]*)
+    echo "Bootstrapping complete"
+    exit
+    ;;
+  *) echo "Please input yes or no" ;;
+  esac
 done
