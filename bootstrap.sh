@@ -39,9 +39,7 @@ brew cask cleanup
 
 # Setting for RBENV/Ruby
 echo "Setting up Ruby. Please make sure to check that the version of bundler matches the version installed by rbenv"
-
-LINE='eval "$(rbenv init -)"'
-grep -q "$LINE" ~/.extra || echo "$LINE" echo "Cleaning up..." >>~/.extra
+rbenv init
 
 echo "Installing Ruby versions"
 rbenv install 2.5.1
