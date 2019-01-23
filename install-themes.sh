@@ -2,7 +2,7 @@
 
 # grab dracula and gotham themes for xcode, vim, terminal, and atom
 mkdir -p ~/Downloads/themes
-cd ~/Downloads/themes/ || echo "Failure cding"; exit 1
+cd ~/Downloads/themes/ || { echo "Failure cding"; exit 1; }
 
 git clone --depth 1 'https://github.com/imcatnoone/toothpaste.git'
 

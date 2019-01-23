@@ -30,7 +30,7 @@ echo "Installing packages..."
 # Select directory and run brewfile
 # The Brewfile is generated automatically through 'brew bundle dump'
 mv ~/dotfiles ~/.dotfiles
-cd ~/.dotfiles/ || echo "Could not cd dotfiles"; exit 1
+cd ~/.dotfiles/ || { echo "Could not cd dotfiles"; exit 1; }
 brew bundle
 brew cleanup
 brew cask cleanup
