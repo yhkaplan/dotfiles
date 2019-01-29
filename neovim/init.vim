@@ -7,6 +7,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Additional text objects
+Plug 'wellle/targets.vim'
 " camelCase and snake_case word objects/motions
 Plug 'chaoren/vim-wordmotion'
 " Live markdown preview (macOS only; manages dependencies automatically)
