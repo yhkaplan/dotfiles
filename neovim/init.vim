@@ -520,7 +520,7 @@ let g:xcode_scheme_ignore_pattern = '/Demo|Example|Package|AFNetworking|Bitlyzer
 set title                   " Change the terminal's title
 set secure                  " Don't load autocmds from local .vimrc files
 nmap <Leader>xr :Xrun<CR>
-nmap <Leader>xb :Xbuild<CR>
+nmap <Leader>xb :!build_xcode.sh<CR>
 nmap <Leader>xt :Xtest<CR>
 " Open in Xcode
 nmap <Leader>xo :Xopen<CR>
