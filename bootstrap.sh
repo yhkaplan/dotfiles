@@ -33,7 +33,6 @@ mv ~/dotfiles ~/.dotfiles
 cd ~/.dotfiles/ || { echo "Could not cd dotfiles"; exit 1; }
 brew bundle
 brew cleanup
-brew cask cleanup
 
 ############ Ruby ###############
 
