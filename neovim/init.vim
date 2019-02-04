@@ -7,6 +7,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+" GitGutter
+Plug 'airblade/vim-gitgutter'
 " Additional text objects
 Plug 'wellle/targets.vim'
 " camelCase and snake_case word objects/motions
@@ -371,6 +373,69 @@ imap <expr><TAB>
 
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" ########## Gitgutter ###########
+let g:gitgutter_diff_args = '-w'
+" タイピング停止時から反映されるまでの時間はデフォルトでは4000ミリ秒なので、速くしたい
+set updatetime=250
+" 記号の変更
+let g:gitgutter_sign_added = '|'
+let g:gitgutter_sign_modified = '|'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '-'
+let g:gitgutter_sign_modified_removed = '*'
+
+" What is this used for?
+let g:gitgutter_grep = 'rg'
+
+" また、ハンク内で<Leader>hsを押すと変更をステージでき、<Leader>hrを押せば変更を元に戻せる
+nmap <Leader>ha <Plug>GitGutterStageHunk
+nmap <Leader>hu <Plug>GitGutterRevertHunk
+
+function! NextHunkAllBuffers()
+  let line = line('.')
+  GitGutterNextHunk
+  if line('.') != line
+    return
+  endif
+
+  let bufnr = bufnr('')
+  while 1
+    bnext
+    if bufnr('') == bufnr
+      return
+    endif
+    if !empty(GitGutterGetHunks())
+      normal! 1G
+      GitGutterNextHunk
+      return
+    endif
+  endwhile
+endfunction
+
+function! PrevHunkAllBuffers()
+  let line = line('.')
+  GitGutterPrevHunk
+  if line('.') != line
+    return
+  endif
+
+  let bufnr = bufnr('')
+  while 1
+    bprevious
+    if bufnr('') == bufnr
+      return
+    endif
+    if !empty(GitGutterGetHunks())
+      normal! G
+      GitGutterPrevHunk
+      return
+    endif
+  endwhile
+endfunction
+
+nmap <silent> ]C :call NextHunkAllBuffers()<CR>
+nmap <silent> [C :call PrevHunkAllBuffers()<CR>
 
 " ########## LIGHTLINE SETTINGS ###########
 
