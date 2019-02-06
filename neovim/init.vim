@@ -129,7 +129,7 @@ nnoremap <silent> <leader>c :History:<CR>
 nnoremap <silent> <leader>K :Maps<CR>
 " L for git Log
 nnoremap <silent> <leader>L :Commits<CR>
-nnoremap <silent> <leader>r :Buffers<CR>
+nnoremap <silent> <leader>Bu :Buffers<CR>
 " Return to last viewed buffer (r for recent)
 nnoremap <silent> <leader>R :b#<CR>
 
