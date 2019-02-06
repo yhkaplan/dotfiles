@@ -836,6 +836,7 @@ endfunction
 
 " Restore and save sessions.
 if argc() == 0
-  autocmd VimEnter * call RestoreSession(FindProjectName())
+  " Nested restored syntax highlighting etc
+  autocmd VimEnter * nested call RestoreSession(FindProjectName())
   autocmd VimLeave * call SaveSession(FindProjectName())
 end
