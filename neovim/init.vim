@@ -223,7 +223,12 @@ autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 nnoremap <silent> <leader>gh :e %<.h<CR>
 " go to implementation file
 nnoremap <silent> <leader>gm :e %<.m<CR>
-nnoremap <silent> <leader>gv :vsplit<CR>:GoAlternate<CR>
+
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+
+" Close quickfix window
+nnoremap <leader>q :cclose<CR>
 
 " ########## Strip trailing whitespaces ###########
 
