@@ -191,10 +191,10 @@ augroup go
     \  nnoremap <silent> <leader>f :GoDecls<CR>
     \| nnoremap <silent> <leader>F :GoDeclsDir<CR>
     \| inoreabbr iferr <C-R>=go#iferr#Generate()<CR><esc>x
-    \| nmap <Leader>gd <Plug>(go-doc)
-    \| nmap <Leader>gr <Plug>(go-run)
-    \| nmap <Leader>gb <Plug>(go-build)
-    \| nmap <Leader>gt <Plug>(go-test)
+    \| nmap <Leader>d <Plug>(go-doc)
+    \| nmap <Leader>r <Plug>(go-run)
+    \| nmap <Leader>b <Plug>(go-build)
+    \| nmap <Leader>t <Plug>(go-test)
     \| nmap <Leader>R  <Plug>(go-rename)
     \| command! -bang A call go#alternate#Switch(<bang>0, 'edit')
     \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
@@ -593,11 +593,17 @@ let g:xcode_scheme_ignore_pattern = '/Demo|Example|Package|AFNetworking|Bitlyzer
 
 set title                   " Change the terminal's title
 set secure                  " Don't load autocmds from local .vimrc files
-nmap <Leader>xr :Xrun<CR>
-nmap <Leader>xb :silent !build_xcode.sh<CR>
-nmap <Leader>xt :Xtest<CR>
+
 " Open in Xcode
 nmap <Leader>xo :Xopen<CR>
+
+augroup swift
+  autocmd!
+  autocmd Filetype swift,m,h
+    \  nmap <Leader>r :Xrun<CR>
+    \| nmap <Leader>b :silent !build_xcode.sh<CR>
+    \| nmap <Leader>t :Xtest<CR>
+augroup END
 
 " ############ Golang Settings ##############
 
