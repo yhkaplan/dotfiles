@@ -815,7 +815,7 @@ endfunction
 
 " Sessions only restored if we start Vim without args.
 function! RestoreSession(name)
-  let s:session_path = $HOME . '/.config/nvim/sessions' . a:name
+  let s:session_path = $HOME . '/.config/nvim/sessions/' . a:name
   if a:name != ''
     if filereadable(s:session_path)
       execute 'source ' . s:session_path
@@ -826,7 +826,7 @@ endfunction
 " Sessions only saved if we start Vim without args.
 function! SaveSession(name)
   if a:name != ''
-    let s:sessions_dir = $HOME . '/.config/nvim/sessions'
+    let s:sessions_dir = $HOME . '/.config/nvim/sessions/'
     if !isdirectory(s:sessions_dir)
       call mkdir(s:sessions_dir)
     endif
