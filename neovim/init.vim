@@ -214,6 +214,10 @@ augroup go
   " autocmd FileType go nmap <silent> <Leader>i <Plug>(go-info)
 augroup END
 
+" Turns off loud fixit window
+let g:go_fmt_fail_silently = 1
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+
 " Switch to h file of same name (useful for c++, obj-c, etc)
 " go to header
 nnoremap <silent> <leader>gh :e %<.h<CR>
