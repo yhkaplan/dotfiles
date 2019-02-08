@@ -530,9 +530,28 @@ nmap <silent><leader>B :call BreakLines()<CR>
 " tv for transform to var
 nnoremap <silent> <leader>tv :<C-u>call FuncToVar()<CR>
 
-" ############ Alternate between test and implementation files ###################
+" ############ Alternate between test, objc, swift and implementation files ###################
+function! s:alternate_objc ()
+  let l:file_name = expand('%')
+  " get m file name
+  let l:is_swift_file = expand('%:t') =~ '\.swift$'
+  if l:is_swift_file
+    let l:file_name = substitute(l:file_name,'\.swift$','\.m','')
+  else
+    let l:file_name = substitute(l:file_name,'\.[h|m]$','\.swift','')
+  endif
+  " Open file
+  let win = bufwinnr(l:file_name)
+  if l:win > 0
+    execute l:win . 'wincmd w'
+  else
+    execute ':e ' . l:file_name
+  endif
+endfunction
+command! Altm call s:alternate_objc()
+
 " Currently depends on fd
-function! s:alternate ()
+function! s:alternate_test ()
   let l:file_name = expand('%')
   let l:is_test = expand('%:t') =~ 'Test'
 
@@ -566,7 +585,7 @@ function! s:alternate ()
   endif
 
 endfunction
-command! Alternate call s:alternate()
+command! Alternate call s:alternate_test()
 
 " ############ Open to current line in Xcode ###################
 function! s:open_in_xcode ()
