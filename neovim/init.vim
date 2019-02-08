@@ -507,14 +507,6 @@ let g:gutentags_ctags_executable = '/usr/local/bin/ctags'
 let g:gutentags_ctags_tagfile = '.git/tags'
 let g:gutentags_ctags_extra_args = ['--languages=objectivec,swift,ruby,python', '--langmap=objectivec:.h.m']
 
-" TODO: make swift only
-function AddMark ()
-    let a:line_number=line('.')
-    normal! i// MARK: -
-endfunction
-
-nmap <silent><leader>xm :call AddMark()<CR>
-
 " A function for changing declaration/call like getItem(a: aLongName, b: anotherLongName)
 " into a multiline declaration/call
 function BreakLines ()
