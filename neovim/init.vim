@@ -600,7 +600,7 @@ nmap <Leader>xo :Xopen<CR>
 augroup swift
   autocmd!
   autocmd Filetype swift,m,h
-    \  nmap <Leader>r :Xrun<CR>
+    \  nmap <Leader>r :silent !run_xcode.sh<CR>
     \| nmap <Leader>b :silent !build_xcode.sh<CR>
     \| nmap <Leader>t :Xtest<CR>
 augroup END
