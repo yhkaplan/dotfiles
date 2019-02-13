@@ -549,6 +549,7 @@ function! s:alternate_objc ()
   endif
 endfunction
 command! Altm call s:alternate_objc()
+command! Alts call s:alternate_objc()
 
 " Currently depends on fd
 function! s:alternate_test ()
