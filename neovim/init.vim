@@ -246,19 +246,11 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " The reason to not set filetype is that
 " linter gets filled w/ errors
 au BufRead,BufNewFile *.stencil set syntax=swift
-au BufRead,BufNewFile Brewfile set syntax=ruby
-au BufRead,BufNewFile Deliverfile set syntax=ruby
-au BufRead,BufNewFile Fastfile set syntax=ruby
-au BufRead,BufNewFile Gymfile set syntax=ruby
-au BufRead,BufNewFile Rakefile set syntax=ruby
-au BufRead,BufNewFile Gemfile set syntax=ruby
-au BufRead,BufNewFile Podfile set syntax=ruby
-au BufRead,BufNewFile Cartfile set syntax=ruby
 au BufRead,BufNewFile *.podspec set syntax=ruby
 
 " Set the filetype based on the file's extension, but only if
 " 'filetype' has not already been set
-au BufRead,BufNewFile Dangerfile setfiletype ruby
+au BufRead,BufNewFile *file setfiletype ruby
 
 " ########## GENERAL SETTINGS ###########
 
@@ -549,6 +541,7 @@ function! s:alternate_objc ()
   endif
 endfunction
 command! Altm call s:alternate_objc()
+command! Alts call s:alternate_objc()
 
 " Currently depends on fd
 function! s:alternate_test ()
