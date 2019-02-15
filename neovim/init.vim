@@ -228,7 +228,7 @@ map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 
 " Close quickfix window
-nnoremap <leader>q :cclose<CR>
+nnoremap <leader>q :cclose<CR>:only<CR>
 
 " ########## Strip trailing whitespaces ###########
 
