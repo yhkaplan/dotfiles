@@ -471,24 +471,26 @@ let g:lightline.component_type = {
 let g:markdown_enable_spell_checking = 0
 let g:markdown_enable_conceal = 1
 set conceallevel=2
-autocmd FileType markdown setlocal indentexpr=
-autocmd FileType markdown setlocal ts=4 sw=4 sts=0 expandtab " probably unneeded
 
 " Formats URLs taken from furik to markdown nicely
-" TODO: make md only
 function FormatURL ()
     let a:line_number=line('.')
     execute a:line_number ',' . a:line_number . 's/\[.*\]\((.*)\): \(.*\)\s(.*/[\2]\1/g'
 endfunction
 
-" Todo make markdown only and change to : style command
-vnoremap <silent><leader>fu :call FormatURL()<CR>
-
+" Adds line number to each line
 function AddNumbers ()
   execute "normal! I" . line('.') . ". \<esc>"
 endfunction
 
-vnoremap <silent><leader>n :call AddNumbers()<CR>
+augroup markdown
+  autocmd!
+  autocmd FileType markdown,md
+    \  setlocal indentexpr=
+    \| setlocal ts=4 sw=4 sts=0 expandtab
+    \| vnoremap <silent><leader>fu :call FormatURL()<CR>
+    \| vnoremap <silent><leader>n :call AddNumbers()<CR>
+augroup END
 
 " ############ Swift Settings ###############
 
