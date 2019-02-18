@@ -492,6 +492,11 @@ augroup markdown
     \| vnoremap <silent><leader>n :call AddNumbers()<CR>
 augroup END
 
+augroup fmt
+  autocmd!
+  autocmd BufWritePre *.md undojoin | Neoformat
+augroup END
+
 " ############ Swift Settings ###############
 
 " Makes sure Swift files are recognized as such
