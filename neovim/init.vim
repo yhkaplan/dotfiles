@@ -388,9 +388,7 @@ let g:gitgutter_sign_modified = '|'
 let g:gitgutter_sign_removed = '-'
 let g:gitgutter_sign_removed_first_line = '-'
 let g:gitgutter_sign_modified_removed = '*'
-
-" What is this used for?
-let g:gitgutter_grep = 'rg'
+let g:gitgutter_enabled=0 " Disable at first to improve performance
 
 " また、ハンク内で<Leader>hsを押すと変更をステージでき、<Leader>hrを押せば変更を元に戻せる
 nmap <Leader>ha <Plug>GitGutterStageHunk
