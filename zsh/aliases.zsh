@@ -35,6 +35,7 @@ abbrev-alias pi='bundle exec pod install'
 abbrev-alias bm='xcodebuild -workspace minne.xcworkspace/ -scheme minne | xcpretty'
 abbrev-alias nv='nvim'
 abbrev-alias trel='tree -L 2'
+abbrev-alias resize='fd -d 1 -e png -x convert {} -resize %40 {}'
 abbrev-alias formatswift='swiftlint autocorrect --config .swiftlint.yml --path '
 abbrev-alias pipupdate="pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U"
 
