@@ -551,6 +551,11 @@ endfunction
 command! Altm call s:alternate_objc()
 command! Alts call s:alternate_objc()
 
+function! s:add_nullability_annotations ()
+  call feedkeys(":%s/*/* _Nullable /g")
+endfunction
+command! Annotate call s:add_nullability_annotations()
+
 " Currently depends on fd
 function! s:alternate_test ()
   let l:file_name = expand('%')
