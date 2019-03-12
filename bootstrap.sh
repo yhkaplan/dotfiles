@@ -72,6 +72,9 @@ git config --global alias.unstage 'reset HEAD --'
 git config --global alias.last 'log -1 --stat HEAD'
 git config --global alias.shortlog 'log -4 --pretty --oneline'
 git config --global alias.current 'rev-parse --abbrev-ref HEAD'
+# amend w/ previous commit name
+git config --global alias.amend 'commit --amend --no-edit'
+
 git config --global core.excludesfile ~/.gitignore_global
 
 # Set GHQ
