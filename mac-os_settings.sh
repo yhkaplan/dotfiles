@@ -35,8 +35,9 @@ defaults write com.apple.Finder FXPreferredViewStyle clmv
 # Finder: show path bar
 defaults write com.apple.finder ShowPathbar -bool true
 
-# Finder: show all filename extensions
+# Finder: show all filename extensions and hidden files
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+defaults write com.apple.finder AppleShowAllFiles TRUE
 
 # Disable Dashboard
 defaults write com.apple.dashboard mcx-disabled -bool true
