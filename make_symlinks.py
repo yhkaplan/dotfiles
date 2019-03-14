@@ -1,7 +1,10 @@
 import subprocess
+import os
+import re
 from pathlib import Path
 
-OLD_FILE_PATH = "~/.old_dotfiles/"
+home = str(Path.home())
+OLD_FILE_PATH = home + "/.old_dotfiles"
 
 
 def get_shell_output(args_string):
@@ -18,11 +21,12 @@ def make_folders(path):
 
     folders = path.split("/")
     for i, folder in enumerate(folders):
-        if folder == "~":
-            continue
+        if folder == f"{home}/" or folder == home:
+                continue
 
         path_prefix = "/".join(folders[0:i])
-        get_shell_output(f"mkdir -p {path_prefix}/{folder}")
+        print(f"mkdir -p {path_prefix}/{folder}")
+        _ = get_shell_output(f"mkdir -p {path_prefix}/{folder}")
 
 
 def make_symlink(source, target):
@@ -30,25 +34,30 @@ def make_symlink(source, target):
 
 
 def move_existing_file(target):
-    get_shell_output(f"mv {target} {OLD_FILE_PATH}")
+    _ = get_shell_output(f"mv {target} {OLD_FILE_PATH}/")
 
 
 # MAIN
 
 _ = get_shell_output(f"mkdir -p {OLD_FILE_PATH}")
 
-p = str(Path.home()) + "/.dotfiles/symlinks.txt"
+p = home + "/.dotfiles/symlinks.txt"
 f = open(p)
 
 lines = f.readlines()
 for l in lines:
-    source = l.split()[0]
-    target = l.split()[1]
+    source = l.split()[0].replace("~", home)
+    target = l.split()[1].replace("~", home)
 
-    print("Moving existing file if existing")
-    move_existing_file(target)
+    file_pattern = r'([\w|\.]+)\s'
+    match = re.findall(file_pattern, l)
+    if match:
+        print("Moving existing file")
+        existing_file_path = target + match[0]
+        print(existing_file_path)
+        move_existing_file(existing_file_path)
 
-    if target != "~/":
+    if target != f"{home}/" and target != home:
         print(f"Making folders for {target}")
         folder_output = make_folders(target)
         if folder_output is not None:
