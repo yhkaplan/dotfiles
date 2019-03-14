@@ -45,7 +45,7 @@ brew cleanup
 
 # Setting for RBENV/Ruby
 echo "Setting up Ruby. Please make sure to check that the version of bundler matches the version installed by rbenv"
-rbenv init
+eval "$(rbenv init -)"
 
 echo "Installing Ruby versions"
 rbenv install 2.5.1
