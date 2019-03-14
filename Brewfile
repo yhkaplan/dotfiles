@@ -168,5 +168,4 @@ mas "Reeder", id: 880001334
 mas "Spark", id: 1176895641
 mas "The Unarchiver", id: 425424353
 mas "Things3", id: 904280696
-mas "Xcode", id: 497799835
 mas "XLIFFTool", id: 1074282695

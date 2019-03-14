@@ -12,6 +12,13 @@ done 2>/dev/null &
 
 echo "Starting bootstrapping"
 
+sudo xcode-select --install
+# If no xcode, then install
+if ! [ -d "/Applications/Xcode.app" ]; then
+  brew mas "Xcode", id: 497799835
+fi
+sudo xcodebuild -license accept
+
 ############ Homebrew ###############
 
 # Check for Homebrew, install if we don't have it
