@@ -24,6 +24,7 @@ abbrev-alias gclean='git branch --merged | egrep -v "(^\*|master|dev)" | xargs g
 abbrev-alias gpr='git pull-request -m'
 abbrev-alias gh='git log --pretty=format:%H -1 | pbcopy'
 abbrev-alias gr='git log --oneline --since=yesterday | pbcopy'
+abbrev-alias gn='git status -s | rg UU | cut -c 4- | xargs nvim'
 
 # Other
 abbrev-alias be="bundle exec"
