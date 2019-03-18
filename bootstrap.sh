@@ -20,16 +20,15 @@ if test ! "$(command -v brew)"; then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-# Make sure we’re using the latest Homebrew
-brew update
-# Upgrade any already-installed formulae
-brew upgrade
+brew install mas # Install Mac App Store Homebrew integration
 
-echo "Installing packages..."
 sudo xcode-select --install
 # If no xcode, then install
 if ! [ -d "/Applications/Xcode.app" ]; then
-  brew mas "Xcode", id: 497799835
+  mas install 497799835 # Xcode ID
+  if ! [ -d "/Applications/Xcode.app" ]; then
+    echo "No Xcode installed"; exit 1
+  fi
 fi
 sudo xcodebuild -license accept
 
