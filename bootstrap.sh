@@ -36,8 +36,27 @@ sudo xcodebuild -license accept
 # The Brewfile is generated automatically through 'brew bundle dump'
 mv ~/dotfiles ~/.dotfiles
 cd ~/.dotfiles/ || { echo "Could not cd dotfiles"; exit 1; }
-brew bundle
-brew cleanup
+
+while true; do
+  read -r -p "Do you want to install brew packages? " yn
+  case $yn in
+  [Yy]*)
+    brew update
+    brew upgrade
+
+    echo "Installing packages..."
+
+    brew bundle
+    brew cleanup
+    break
+    ;;
+  [Nn]*)
+    echo "Skipping brew packages"
+    break
+    ;;
+  *) echo "Please input yes or no" ;;
+  esac
+done
 
 ############ Ruby ###############
 
