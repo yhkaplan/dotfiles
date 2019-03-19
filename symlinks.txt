@@ -10,3 +10,4 @@
 ~/.dotfiles/zsh/.fzf.zsh ~/
 ~/.dotfiles/zsh/.zshrc ~/
 ~/.dotfiles/zsh/.zshenv ~/
+~/.dotfiles/ruby/bundle_config ~/.bundle/config
