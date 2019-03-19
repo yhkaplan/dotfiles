@@ -28,8 +28,8 @@ abbrev-alias gn='git status -s | rg UU | cut -c 4- | xargs nvim'
 
 # Other
 abbrev-alias be="bundle exec"
-abbrev-alias ow='open *.xcworkspace/'
-abbrev-alias ox='open *.xcodeproj'
+abbrev-alias ow='open -a Xcode *.xcworkspace/'
+abbrev-alias ox='open -a Xcode *.xcodeproj'
 abbrev-alias xs='sudo xcode-select --switch /Applications/Xcode.app'
 abbrev-alias xv='xcodebuild -version'
 abbrev-alias pi='bundle exec pod install'
