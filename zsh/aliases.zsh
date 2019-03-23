@@ -45,3 +45,6 @@ alias ls='ls -GpF' # Mac OSX specific
 alias ll='ls -alGpF' # Mac OSX specific
 alias ...='cd ../../'
 alias ....='cd ../../../'
+
+# Zsh from asking if spelling is really correct (it is)
+alias swift build='nocorrect swift build'
