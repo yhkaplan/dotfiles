@@ -52210,13 +52210,9 @@
 	<true/>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
-	<key>NSFontPanelAttributes</key>
-	<string>1, 8</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Downloads/base16-iterm2-master/itermcolors</string>
+	<string>~</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
-	<string>{712, 448}</string>
-	<key>NSNavPanelExpandedSizeForSaveMode</key>
 	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
@@ -52249,25 +52245,16 @@
 	</data>
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
-	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
-	<dict>
-		<key>TB Is Shown</key>
-		<integer>1</integer>
-	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>134 74 689 421 0 0 1280 777 </string>
+	<string>1169 110 445 103 0 0 1920 1057 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>330 288 620 392 0 0 1280 777 </string>
+	<string>430 480 620 392 0 0 1920 1057 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>272 348 770 429 0 0 1280 777 </string>
+	<string>342 451 1018 447 0 0 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>640 1 640 776 0 0 1280 777 </string>
+	<string>963 0 954 1057 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>381 133 850 667 0 0 1280 800 </string>
-	<key>NSWindow Frame iTerm Window 2</key>
-	<string>430 133 850 667 0 0 1280 800 </string>
-	<key>NSWindow Frame iTerm Window 3</key>
-	<string>194 4 850 667 0 0 1280 777 </string>
+	<string>212 101 570 452 0 0 1680 1027 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -52490,13 +52477,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.1247100830078125</real>
+				<real>0.0714263916015625</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.11032045594238599</real>
+				<real>0.060833893224739005</real>
 				<key>Red Component</key>
-				<real>0.074346420174116745</real>
+				<real>0.042581133826132232</real>
 			</dict>
 			<key>Background Image Location</key>
 			<string></string>
@@ -52926,7 +52913,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>SauceCodePowerline-Regular 12</string>
+			<string>SauceCodePowerline-Regular 13</string>
 			<key>Open Toolbelt</key>
 			<false/>
 			<key>Option Key Sends</key>
@@ -53699,24 +53686,14 @@
 			<string>/Users/joshk</string>
 		</dict>
 	</array>
-	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
-	<true/>
 	<key>NoSyncHaveRequestedFullDiskAccess</key>
-	<true/>
-	<key>NoSyncHaveWarnedAboutIncompatibleSoftware</key>
 	<true/>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
-	<string>92F9E352-6142-4BE7-B63F-5F04EC069B0C</string>
-	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
-	<true/>
-	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
-	<integer>0</integer>
-	<key>NoSyncPermissionToShowTip</key>
-	<false/>
+	<string>6A1D28E4-94D7-4656-A641-27C53F81F966</string>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>538108839.47737002</real>
+	<real>574148513.08045602</real>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -53751,17 +53728,17 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>~/.dotfiles/iTerm/</string>
+	<string>/Users/josh/.dotfiles/iTerm/</string>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/final.xml?shard=63</string>
+	<string>https://iterm2.com/appcasts/final.xml?shard=5</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-02-11T05:55:10Z</date>
+	<date>2019-03-27T08:02:31Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SmartPlacement</key>
