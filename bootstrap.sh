@@ -22,7 +22,12 @@ fi
 
 brew install mas # Install Mac App Store Homebrew integration
 
-sudo xcode-select --install
+# If no CLI tools, then install
+if test ! "$(command -v gcc)"; then
+  sudo xcode-select --install
+  sudo xcodebuild -license accept
+fi
+
 # If no xcode, then install
 if ! [ -d "/Applications/Xcode.app" ]; then
   mas install 497799835 # Xcode ID
