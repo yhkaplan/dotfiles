@@ -35,7 +35,16 @@ if ! [ -d "/Applications/Xcode.app" ]; then
     echo "No Xcode installed"; exit 1
   fi
 fi
-sudo xcodebuild -license accept
+
+# If no ansible, then install
+if test ! "$(command -v ansible)"; then
+  brew install ansible
+fi
+
+# Ansible
+ansible-playbook ansible/main_playbook.yml --ask-become-pass
+
+# TODO: Move the below, then xcode stuff to ansible playbooks
 
 # Select directory and run brewfile
 # The Brewfile is generated automatically through 'brew bundle dump'

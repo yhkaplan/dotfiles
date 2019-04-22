@@ -1,0 +1,7 @@
+---
+- name: Main Playbook to manage dotfile
+  hosts: localhost
+  connection: local
+  tasks:
+      - name: Brew install
+        command: brew bundle
