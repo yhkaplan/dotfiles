@@ -619,6 +619,7 @@ augroup swift
   autocmd Filetype swift,m,h
     \  nmap <Leader>r :silent !run_xcode.sh<CR>
     \| nmap <Leader>b :silent !build_xcode.sh<CR>
+    \| nmap <Leader>sb :!swift %<CR> " Run current file in Swift (good for scripts)
     \| nmap <Leader>t :Xtest<CR>
 augroup END
 
