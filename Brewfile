@@ -13,6 +13,7 @@ tap "ibdecodable/tap"
 tap "kateinoigakukun/tap"
 tap "kylef/formulae"
 tap "mono0926/license-plist"
+tap "monochromegane/hoi"
 tap "universal-ctags/universal-ctags"
 tap "vapor/tap"
 tap "yonaskolb/beak", "https://github.com/yonaskolb/Beak.git"
@@ -20,15 +21,16 @@ cask "abstract"
 cask "osxfuse"
 cask "sketch"
 brew "ack"
+brew "openssl"
+brew "readline"
+brew "python"
+brew "ansible"
 brew "autoconf"
 brew "autojump"
 brew "bash"
 brew "bash-completion"
 brew "bat"
 brew "bazaar"
-brew "openssl"
-brew "readline"
-brew "python"
 brew "black"
 brew "brew-cask-completion"
 brew "carthage"
@@ -153,23 +155,27 @@ cask "spectacle"
 cask "spotify"
 cask "virtualbox"
 cask "visual-studio-code"
-mas "1Password 7", id: 1333542190
-mas "Affinity Designer", id: 824171161
-mas "Battery Health", id: 490192174
-mas "Bear", id: 1091189122
-mas "DevCleaner", id: 1388020431
-mas "Don't Sleep!", id: 466314666
-mas "InjectionIII", id: 1380446739
-mas "Keynote", id: 409183694
-mas "Kindle", id: 405399194
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "PiPifier", id: 1160374471
-mas "Pixelmator", id: 407963104
-mas "Pocket", id: 568494494
-mas "Realm Browser", id: 1007457278
-mas "Reeder", id: 880001334
-mas "Spark", id: 1176895641
-mas "The Unarchiver", id: 425424353
-mas "Things3", id: 904280696
-mas "XLIFFTool", id: 1074282695
+mas "com.agilebits.onepassword7", id: 1333542190
+mas "com.amazon.Kindle", id: 405399194
+mas "com.apple.dt.Xcode", id: 497799835
+mas "com.apple.iWork.Keynote", id: 409183694
+mas "com.apple.iWork.Numbers", id: 409203825
+mas "com.apple.iWork.Pages", id: 409201541
+mas "com.culturedcode.ThingsMac", id: 904280696
+mas "com.fiplab.batteryhealth", id: 490192174
+mas "com.johnholdsworth.InjectionIII", id: 1380446739
+mas "com.oneminutegames.XcodeCleaner", id: 1388020431
+mas "com.pixelmatorteam.pixelmator", id: 407963104
+mas "com.readdle.smartemail-Mac", id: 1176895641
+mas "com.readitlater.PocketMac", id: 568494494
+mas "com.reederapp.rkit2.mac", id: 880001334
+mas "com.seriflabs.affinitydesigner", id: 824171161
+mas "com.stevebarnegren.xcodecommentwrapper", id: 1377998565
+mas "com.Swiftify.Xcode", id: 1183412116
+mas "com.txtlabs.dontsleep", id: 466314666
+mas "cx.c3.theunarchiver", id: 425424353
+mas "de.APPenzeller.PiPifier", id: 1160374471
+mas "info.lazar.xliff-tool", id: 1074282695
+mas "io.realm.realmbrowser", id: 1007457278
+mas "name.lazarenko.daniel.xcsort", id: 1153337296
+mas "net.shinyfrog.bear", id: 1091189122
