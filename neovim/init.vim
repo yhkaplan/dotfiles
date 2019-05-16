@@ -669,6 +669,8 @@ endfunction
 " autocmd FileType swift imap <buffer> <C-m> <Plug>(autocomplete_swift_jump_to_placeholder)
 let g:deoplete#sources#swift#source_kitten_binary = '/usr/local/bin/sourcekitten'
 let g:deoplete#sources#swift#daemon_autostart = 1
+" Fix flicker issue in Swift
+call deoplete#custom#option('auto_refresh_delay', 0)
 
 " Golang deoplete settings
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
