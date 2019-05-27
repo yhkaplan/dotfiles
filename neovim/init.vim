@@ -476,7 +476,7 @@ set conceallevel=2
 " Formats URLs taken from furik to markdown nicely
 function FormatURL ()
     let a:line_number=line('.')
-    execute a:line_number ',' . a:line_number . 's/\[.*\]\((.*)\): \(.*\)\s(.*/[\2]\1/g'
+    execute a:line_number ',' . a:line_number . 's/:\s.*//'
 endfunction
 
 " Adds line number to each line
