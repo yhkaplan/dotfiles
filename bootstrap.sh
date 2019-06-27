@@ -72,6 +72,10 @@ while true; do
   esac
 done
 
+############ LLDB ###############
+mkdir -p ~/.lldb
+(cd ~/.lldb && git clone git@github.com:DerekSelander/LLDB.git)
+
 ############ Ruby ###############
 
 # Setting for RBENV/Ruby
