@@ -33,6 +33,8 @@ Plug 'gfontenot/vim-xcode'
 Plug 'keith/swift.vim'
 " Surrounding with quote, bracket, etc
 Plug 'tpope/vim-surround'
+" Auto add endings for Ruby, Vimscript etc.
+Plug 'tpope/vim-endwise'
 " Commenting out
 Plug 'tpope/vim-commentary'
 " Detect indent type etc
