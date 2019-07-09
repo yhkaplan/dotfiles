@@ -146,6 +146,7 @@ nnoremap  <silent> <leader>p :pu<CR>
 nnoremap  <silent> <leader>P :pu!<CR>
 " Splits line at cursor (u for unjoin)
 nnoremap <silent> <leader>u :<C-u>call BreakHere()<CR>
+nnoremap <silent> <leader>v :<C-u>call MakeIntoComputedVar()<CR>
 " Pastes at end
 nnoremap <silent> <leader>a $p
 " Map vim-commentary to IDE-like mapping
@@ -340,8 +341,12 @@ command! Reload execute "source $MYVIMRC"
 " ########### Split func ###############
 " TODO: make swift only
 function! BreakHere()
-    s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6
-    call histdel('/', -1)
+  s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6/
+  call histdel('/', -1)
+endfunction
+
+function! MakeIntoComputedVar()
+  s/\(\s\+\(@objc\)\?\) func \(\w\+\).*-> \(\w\+?\?\) {/\1 var \3: \4 {/
 endfunction
 
 " ########### Proper tabs ###############
