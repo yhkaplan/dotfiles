@@ -43,6 +43,7 @@ abbrev-alias pipupdate="pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | 
 alias l='ls -GpF' # Mac OSX specific
 alias ls='ls -GpF' # Mac OSX specific
 alias ll='ls -alGpF' # Mac OSX specific
+alias gr='grep'
 alias ...='cd ../../'
 alias ....='cd ../../../'
 
