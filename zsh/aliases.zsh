@@ -39,6 +39,7 @@ abbrev-alias trel='tree -L 2'
 abbrev-alias resize='fd -d 1 -e png -x convert {} -resize %40 {}'
 abbrev-alias formatswift='swiftlint autocorrect --config .swiftlint.yml --path '
 abbrev-alias pipupdate="pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U"
+abbrev-alias todo='git diff -w develop | rg TODO'
 
 alias l='ls -GpF' # Mac OSX specific
 alias ls='ls -GpF' # Mac OSX specific
