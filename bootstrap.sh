@@ -96,6 +96,9 @@ sudo gem install bundler xcpretty
 # Zsh plugins
 antibody bundle <~/.dotfiles/zsh/.zsh_plugins.txt >~/.zsh_plugins.sh
 
+# Tmux plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 # Dependencies for Deoplete on other Pythonic stuff
 pip3 install -r pip-requirements.txt
 
