@@ -25,6 +25,7 @@ abbrev-alias gpr='git pull-request -m'
 abbrev-alias gh='git log --pretty=format:%H -1 | pbcopy'
 abbrev-alias gr='git log --oneline --since=yesterday | pbcopy'
 abbrev-alias gn='git status -s | rg UU | cut -c 4- | xargs nvim'
+abbrev-alias gc='git status -s | rg "\?\?" | cut -c 4- | xargs trash'
 
 # Other
 abbrev-alias be="bundle exec"
