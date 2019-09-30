@@ -121,6 +121,8 @@ git config --global alias.current 'rev-parse --abbrev-ref HEAD'
 git config --global alias.amend 'commit --amend --no-edit'
 
 git config --global core.excludesfile ~/.gitignore_global
+# Set pager to delta, a nice Rust differ
+git config --global core.pager "delta --dark"
 
 # Set GHQ
 git config --global ghq.root ~/dev
