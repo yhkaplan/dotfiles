@@ -187,6 +187,24 @@ nnoremap <silent> <Leader>gd :call Dasht([expand('<cword>'), expand('<cWORD>')])
 " use gw to swap the current word with the next, without changing cursor position
 nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>:nohlsearch<CR>
 
+" for Japanese IME mode"{{{
+nnoremap あ a
+nnoremap い i
+nnoremap う u
+nnoremap え e
+nnoremap お o
+nnoremap っd dd
+nnoremap っy yy
+nnoremap し” ci"
+nnoremap し’ ci'
+nnoremap せ ce
+nnoremap で de
+inoremap <silent> っj <ESC>
+
+nnoremap っz zz
+nnoremap ・ /
+"}}}
+
 " Golang
 augroup go
   autocmd!
