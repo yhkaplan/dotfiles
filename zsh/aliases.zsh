@@ -48,6 +48,7 @@ alias ll='ls -alGpF' # Mac OSX specific
 alias gr='grep'
 alias ...='cd ../../'
 alias ....='cd ../../../'
+alias k='kubectl'
 
 # Zsh from asking if spelling is really correct (it is)
 alias swift build='nocorrect swift build'
