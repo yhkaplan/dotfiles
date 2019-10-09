@@ -50,6 +50,7 @@ alias gr='grep'
 alias ...='cd ../../'
 alias ....='cd ../../../'
 alias k='kubectl'
+alias d='docker'
 
 # Zsh from asking if spelling is really correct (it is)
 alias swift build='nocorrect swift build'
