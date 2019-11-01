@@ -27,6 +27,12 @@ abbrev-alias gr='git log --oneline --since=yesterday | pbcopy'
 abbrev-alias gn='git status -s | rg UU | cut -c 4- | xargs nvim'
 abbrev-alias gcl='git status -s | rg "\?\?" | cut -c 4- | xargs trash'
 
+# simctl
+abbrev-alias simvid="xcrun simctl io booted recordVideo file.mp4"
+abbrev-alias simsync="xcrun simctl pbsync booted"
+# Open deep links and other urls
+abbrev-alias simopen="xcrun simctl openurl booted"
+
 # Other
 abbrev-alias be="bundle exec"
 abbrev-alias ow='open -a Xcode *.xcworkspace/'
