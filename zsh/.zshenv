@@ -2,6 +2,12 @@
 # which overrides PATH after this is called
 setopt no_global_rcs
 
+# Fastlane requires some environment variables set up to run correctly.
+# In particular, having your locale not set to a UTF-8 locale will cause
+# issues with building and uploading your build
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # Add commonly used folders to $PATH
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
