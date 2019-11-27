@@ -1,0 +1,18 @@
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+prompt_order = [
+    "username",
+    "hostname",
+    "directory",
+    "git_branch",
+    "git_state",
+    "git_status",
+    "character",
+]
+
+[git_branch]
+symbol = ""
+
+[git_status]
+stashed = ""

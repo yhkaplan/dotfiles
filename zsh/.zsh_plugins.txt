@@ -1,4 +1,3 @@
-denysdovhan/spaceship-prompt
 marzocchi/zsh-notify
 momo-lab/zsh-abbrev-alias
 zdharma/fast-syntax-highlighting
