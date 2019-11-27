@@ -1,7 +1,6 @@
-if [[ -z "$TMUX" ]]
+if [ -z "$TMUX" ]
 then
-  tmux new-session;
-  exit;
+  tmux attach -t TMUX || tmux new -s TMUX
 fi
 
 source ~/.zsh_plugins.sh
