@@ -60,4 +60,4 @@ alias d='docker'
 alias t='tmux' # tmux is hard to type...
 
 # Zsh from asking if spelling is really correct (it is)
-alias swift build='nocorrect swift build'
+# alias swift build='nocorrect swift build'

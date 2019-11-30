@@ -1,5 +1,6 @@
 if [ -z "$TMUX" ]
 then
+  # TODO: Use list-clients to see if only client
   tmux attach -t TMUX || tmux new -s TMUX
 fi
 
