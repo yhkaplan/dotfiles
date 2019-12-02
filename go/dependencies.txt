@@ -14,7 +14,6 @@ github.com/klauspost/asmfmt/cmd/asmfmt
 github.com/koron/iferr
 github.com/mdempsky/gocode
 github.com/monochromegane/dragon-imports
-github.com/motemen/ghq
 github.com/motemen/gore
 github.com/opennota/check/cmd/structcheck
 github.com/rogpeppe/godef

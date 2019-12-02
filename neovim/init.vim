@@ -237,6 +237,8 @@ augroup END
 
 " Turns off loud fixit window
 let g:go_fmt_fail_silently = 1
+" Display type info for function parameters automatically
+let g:go_auto_type_info = 1
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 " Switch to h file of same name (useful for c++, obj-c, etc)

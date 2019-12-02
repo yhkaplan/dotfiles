@@ -30,7 +30,7 @@ def make_folders(path):
 
 
 def make_symlink(source, target):
-    return get_shell_output(f"ln -sv {source} {target}")
+    return get_shell_output(f"ln -sfv {source} {target}")
 
 
 def move_existing_file(target):
