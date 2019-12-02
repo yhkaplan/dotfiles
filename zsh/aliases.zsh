@@ -45,7 +45,7 @@ abbrev-alias nv='nvim'
 abbrev-alias trel='tree -L 2'
 abbrev-alias resize='fd -d 1 -e png -x convert {} -resize %40 {}'
 abbrev-alias formatswift='swiftlint autocorrect --config .swiftlint.yml --path '
-abbrev-alias swift build-release 'swift build -c release -Xswiftc -static-stdlib'
+# abbrev-alias build-release 'swift build -c release -Xswiftc -static-stdlib'
 abbrev-alias pipupdate="pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U"
 abbrev-alias todo='git diff -w develop | rg TODO'
 
@@ -58,6 +58,7 @@ alias ....='cd ../../../'
 alias k='kubectl'
 alias d='docker'
 alias t='tmux' # tmux is hard to type...
+alias vi='nvim'
 
 # Zsh from asking if spelling is really correct (it is)
-alias swift build='nocorrect swift build'
+# alias swift build='nocorrect swift build'
