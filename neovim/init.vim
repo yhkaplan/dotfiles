@@ -9,14 +9,10 @@ call plug#begin('~/.config/nvim/plugged')
 
 " GitGutter
 Plug 'airblade/vim-gitgutter'
-" Additional text objects
-Plug 'wellle/targets.vim'
 " camelCase and snake_case word objects/motions
 Plug 'chaoren/vim-wordmotion'
 " Live markdown preview (macOS only; manages dependencies automatically)
 Plug 'junegunn/vim-xmark'
-" Debugging
-Plug 'jodosha/vim-godebug'
 " Dasht docs
 Plug 'sunaku/vim-dasht'
 " Tags
@@ -51,10 +47,8 @@ Plug 'cohama/lexima.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Python autocomplete
 Plug 'zchee/deoplete-jedi'
-" Go-lang completion
-Plug 'zchee/deoplete-go', { 'do': 'make'}
+" Go
 Plug 'fatih/vim-go'
-Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 " FZF (through Homebrew)
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -235,6 +229,10 @@ augroup go
   " autocmd FileType go nmap <silent> <Leader>i <Plug>(go-info)
 augroup END
 
+" Needed to use gopls + deoplete
+call deoplete#custom#option('omni_patterns', {
+\ 'go': '[^. *\t]\.\w*',
+\})
 " Turns off loud fixit window
 let g:go_fmt_fail_silently = 1
 " Display type info for function parameters automatically
@@ -693,10 +691,6 @@ let g:deoplete#sources#swift#source_kitten_binary = '/usr/local/bin/sourcekitten
 let g:deoplete#sources#swift#daemon_autostart = 1
 " Fix flicker issue in Swift
 call deoplete#custom#option('auto_refresh_delay', 0)
-
-" Golang deoplete settings
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 " ######## Netrw settings ############
 
