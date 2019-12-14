@@ -678,6 +678,10 @@ let g:deoplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:deoplete#sources#syntax#min_keyword_length = 2
 
+" Remove the preview window for autocomplete that causes awful flicker
+" for statusline, preview window, etc
+set completeopt-=preview
+
 " Fix behavior of deoplete adding unwanted return chars
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
