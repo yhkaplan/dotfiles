@@ -237,6 +237,13 @@ call deoplete#custom#option('omni_patterns', {
 let g:go_fmt_fail_silently = 1
 " Display type info for function parameters automatically
 let g:go_auto_type_info = 1
+" More colorful syntax highlighting
+let g:go_highlight_types = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 " Switch to h file of same name (useful for c++, obj-c, etc)
