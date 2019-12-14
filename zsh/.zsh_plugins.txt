@@ -1,3 +1,4 @@
+denysdovhan/spaceship-prompt
 momo-lab/zsh-abbrev-alias
 zdharma/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
