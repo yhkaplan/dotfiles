@@ -7,14 +7,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-" GitGutter
-Plug 'airblade/vim-gitgutter'
 " camelCase and snake_case word objects/motions
 Plug 'chaoren/vim-wordmotion'
-" Live markdown preview (macOS only; manages dependencies automatically)
-Plug 'junegunn/vim-xmark'
-" Dasht docs
-Plug 'sunaku/vim-dasht'
 " Tags
 Plug 'ludovicchabant/vim-gutentags'
 " Seamless navigation between tmux panes and vim splits
@@ -45,8 +39,6 @@ Plug 'Shougo/neopairs.vim'
 Plug 'cohama/lexima.vim'
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Python autocomplete
-Plug 'zchee/deoplete-jedi'
 " Go
 Plug 'fatih/vim-go'
 " FZF (through Homebrew)
