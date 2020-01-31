@@ -1,3 +1,6 @@
+" Set leader key to space
+let mapleader = "\<Space>"
+
 " Use the system pasteboard
 set clipboard=unnamed
 
