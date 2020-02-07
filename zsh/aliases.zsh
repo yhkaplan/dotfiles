@@ -57,6 +57,7 @@ alias ...='cd ../../'
 alias ....='cd ../../../'
 alias k='kubectl'
 alias d='docker'
+alias dc='docker-compose'
 alias t='tmux' # tmux is hard to type...
 alias vi='nvim'
 
