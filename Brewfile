@@ -11,11 +11,9 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "ibdecodable/tap"
-tap "jesseduffield/lazydocker"
 tap "kateinoigakukun/tap"
 tap "kylef/formulae"
 tap "mono0926/license-plist"
-tap "monochromegane/hoi"
 tap "universal-ctags/universal-ctags"
 tap "vapor/tap"
 tap "yonaskolb/beak", "https://github.com/yonaskolb/Beak.git"
@@ -29,8 +27,6 @@ brew "python"
 brew "ansible"
 brew "autoconf"
 brew "autojump"
-brew "bash"
-brew "bash-completion"
 brew "bat"
 brew "bazaar"
 brew "black"
@@ -125,16 +121,12 @@ brew "xcodegen"
 brew "xctool"
 brew "yamllint"
 brew "youtube-dl"
-brew "zopfli"
 brew "zsh"
 brew "zsh-autosuggestions"
-brew "cjbassi/gotop/gotop"
 brew "dandavison/delta/git-delta"
 brew "danger/tap/danger-swift"
-brew "datawire/blackbird/telepresence"
 brew "garethr/kubeval/kubeval"
 brew "getantibody/tap/antibody"
-brew "jesseduffield/lazydocker/lazydocker"
 brew "kateinoigakukun/tap/iblinter"
 brew "kenmaz/taps/swiftoutline"
 brew "kylef/formulae/swiftenv"
@@ -144,7 +136,6 @@ brew "yonaskolb/beak/beak"
 cask "alacritty"
 cask "alfred"
 cask "arduino"
-cask "caffeine"
 cask "chromedriver"
 cask "docker"
 cask "fastlane"
@@ -155,13 +146,7 @@ cask "font-source-sans-pro"
 cask "font-source-serif-pro"
 cask "font-sourcecodepro-nerd-font"
 cask "font-sourcecodepro-nerd-font-mono"
-cask "iterm2"
-cask "java"
 cask "minikube"
-cask "qlcolorcode"
-cask "qlmarkdown"
-cask "quicklook-csv"
-cask "quicklook-json"
 cask "spectacle"
 cask "spotify"
 cask "virtualbox"
@@ -177,7 +162,6 @@ mas "com.fiplab.batteryhealth", id: 490192174
 mas "com.johnholdsworth.InjectionIII", id: 1380446739
 mas "com.oneminutegames.XcodeCleaner", id: 1388020431
 mas "com.pixelmatorteam.pixelmator", id: 407963104
-mas "com.readdle.smartemail-Mac", id: 1176895641
 mas "com.readitlater.PocketMac", id: 568494494
 mas "com.reederapp.rkit2.mac", id: 880001334
 mas "com.seriflabs.affinitydesigner", id: 824171161
@@ -185,8 +169,5 @@ mas "com.stevebarnegren.xcodecommentwrapper", id: 1377998565
 mas "com.Swiftify.Xcode", id: 1183412116
 mas "com.txtlabs.dontsleep", id: 466314666
 mas "cx.c3.theunarchiver", id: 425424353
-mas "de.APPenzeller.PiPifier", id: 1160374471
 mas "info.lazar.xliff-tool", id: 1074282695
-mas "io.realm.realmbrowser", id: 1007457278
-mas "name.lazarenko.daniel.xcsort", id: 1153337296
 mas "net.shinyfrog.bear", id: 1091189122
