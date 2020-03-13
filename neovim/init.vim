@@ -7,6 +7,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+" GraphQL support
+Plug 'jparise/vim-graphql'
 " camelCase and snake_case word objects/motions
 Plug 'chaoren/vim-wordmotion'
 " Tags

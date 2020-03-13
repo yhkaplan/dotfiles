@@ -13,3 +13,4 @@
 ~/.dotfiles/ruby/bundle_config ~/.bundle/config
 ~/.dotfiles/lldb/.lldbinit ~/
 ~/.dotfiles/alacritty/alacritty.yml ~/.config/alacritty/
+~/.xvimrc ~/

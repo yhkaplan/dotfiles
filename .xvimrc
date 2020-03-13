@@ -1,0 +1,14 @@
+" Set leader key to space
+let mapleader = "\<Space>"
+
+" Use the system pasteboard
+set clipboard=unnamed
+
+" Window navigation
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" Pastes at end
+nnoremap <silent> <leader>a $p
