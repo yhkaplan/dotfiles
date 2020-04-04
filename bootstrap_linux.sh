@@ -8,11 +8,11 @@ if [ -z $tags ]; then
 fi
 
 if ! [ -x "$(ansible -v ansible)" ]; then
-  sudo apt install ansible -v 2.9.6
+  sudo apt-get install ansible
 fi
 
 ansible-playbook \
   -i ~/.dotfiles/hosts \
-  ~/.dotfiles.yml \
+  ~/.dotfiles/dotfiles.yml \
   --ask-become-pass \
   --tags $tags

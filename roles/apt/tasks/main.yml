@@ -1,9 +1,9 @@
-- name: Upgrade apt
-  apt: upgrade=yes
-  when: package_upgrade
-  become: yes
-  become_user: root
-  become_method: sudo
+# - name: Upgrade apt
+#   apt: upgrade=yes
+#   when: package_upgrade
+#   become: yes
+#   become_user: root
+#   become_method: sudo
 
 - name: Install apt packages
   apt:
