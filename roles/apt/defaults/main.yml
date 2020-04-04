@@ -1,0 +1,27 @@
+package_upgrade: yes
+packages:
+  - autojump
+  - build-essential
+  - curl
+  - direnv
+  - docker-compose
+  - docker.io
+  - fd
+  - fzf
+  - ghq
+  - go
+  - hugo
+  - jq
+  - jsonlint
+  - make
+  - mosh
+  - ncdu
+  - neovim
+  - rbenv
+  - ripgrep
+  - tldr
+  - tmux
+  - tokei
+  - wget
+  - yamllint
+  - zsh

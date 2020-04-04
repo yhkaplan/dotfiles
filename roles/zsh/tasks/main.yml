@@ -1,0 +1,75 @@
+- name: Install zsh
+  apt: name=zsh state=present
+  become: yes
+  become_user: root
+  become_method: sudo
+
+- name: Check for antibody installation
+  stat:
+    path: "~/.zsh_plugins.txt"
+  register: antibody_stat
+
+- name: Symlink zsh plugins
+  file:
+    src: "{{ dotfiles_home }}/zsh/.zsh_plugins.txt"
+    dest: "{{dotfiles_user_home}}/.zsh_plugins.txt"
+    state: link
+  when: not antibody_stat.stat.islnk
+
+- name: Install Antibody and setup plugins
+  raw: "curl -sfL git.io/antibody | sh -s - -b /usr/local/bin; antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh"
+  when: not antibody_stat.stat.islnk
+
+- name: Check for .zshrc
+  stat: path="{{dotfiles_user_home}}/.zshrc"
+  register: zshrc_stat
+
+- name: Back up .zshrc
+  command: mv ~/.zshrc ~/.zshrc.bak
+  args:
+    creates: "{{dotfiles_user_home}}/.zshrc.bak"
+  when: zshrc_stat.stat.exists
+
+- name: Remove .zshrc
+  command: rm ~/.zshrc
+  when: zshrc_stat.stat.exists
+
+- name: Symlink .zshrc
+  file:
+    src: "{{ dotfiles_home }}/zsh/.zshrc"
+    dest: "{{dotfiles_user_home}}/.zshrc"
+    state: link
+
+- name: Check for .zshenv
+  stat: path="{{dotfiles_user_home}}/.zshenv"
+  register: zshenv_stat
+
+- name: Back up .zshenv
+  command: mv ~/.zshenv ~/.zshenv.bak
+  args:
+    creates: "{{dotfiles_user_home}}/.zshenv.bak"
+  when: zshenv_stat.stat.exists
+
+- name: Remove .zshenv
+  command: rm ~/.zshenv
+  when: zshenv_stat.stat.exists
+
+- name: Symlink .zshenv
+  file:
+    src: "{{ dotfiles_home }}/zsh/.zshenv"
+    dest: "{{dotfiles_user_home}}/.zshenv"
+    state: link
+
+- name: Check for .fzf.zsh
+  stat: path="{{dotfiles_user_home}}/.fzf.zsh"
+  register: fzf_zsh_stat
+
+- name: Remove .fzf.zsh
+  command: rm ~/.fzf.zsh
+  when: fzf_zsh_stat.stat.exists
+
+- name: Symlink .fzf.zsh
+  file:
+    src: "{{ dotfiles_home }}/zsh/.fzf.zsh"
+    dest: "{{dotfiles_user_home}}/.fzf.zsh"
+    state: link
