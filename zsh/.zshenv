@@ -17,10 +17,13 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 # Set path for scripts
 export PATH="$PATH:${HOME}/.dotfiles/scripts"
 
-# go
+# Go
 export GOPATH="$HOME/go"
 export GOROOT="/usr/local/opt/go/libexec"
 export PATH="${PATH}:${GOROOT}/bin:${GOPATH}/bin"
+
+# Flutter
+export PATH="${PATH}:${HOME}/flutter/bin"
 
 # Set a default simulator for iOS
 export DEFAULT_SIM="platform=iOS Simulator,name=iPhone 8,OS=12.0"
