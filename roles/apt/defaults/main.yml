@@ -4,12 +4,12 @@ packages:
   - build-essential
   - curl
   - direnv
-  - docker-compose
-  - docker.io
-  - fd
+    #- docker-compose
+    #- docker.io
+  #- fd
   - fzf
-  - ghq
-  - go
+    #  - ghq
+    #- go
   - hugo
   - jq
   - jsonlint
@@ -21,7 +21,7 @@ packages:
   - ripgrep
   - tldr
   - tmux
-  - tokei
+    #- tokei
   - wget
   - yamllint
   - zsh

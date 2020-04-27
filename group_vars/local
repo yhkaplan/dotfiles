@@ -1,5 +1,5 @@
 dotfiles_user_home: "{{ '~' | expanduser }}"
-dofiles_home: "{{ dotfiles_user_home }}/.dotfiles"
+dotfiles_home: "{{ dotfiles_user_home }}/.dotfiles"
 
 full_name: Joshua Kaplan
 git_user: yhkaplan
