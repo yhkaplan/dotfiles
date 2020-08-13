@@ -1,7 +1,7 @@
-if [ -z "$TMUX" ]
-then
-  # TODO: Use list-clients to see if only client
-  tmux attach -t TMUX || tmux new -s TMUX
+# Create new Tmux session if not inside one
+# Using wildcards around screen because it could be screen-color256 or something
+if ! { [[ "$TERM" == *"screen"* ]] && [ -n "$TMUX" ]; } then
+  tmux new
 fi
 
 source ~/.zsh_plugins.sh
