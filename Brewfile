@@ -5,86 +5,79 @@ tap "danger/tap"
 tap "datawire/blackbird"
 tap "garethr/kubeval"
 tap "getantibody/tap"
+tap "github/gh"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
+tap "homebrew/services"
 tap "ibdecodable/tap"
+tap "jesseduffield/lazydocker"
 tap "kateinoigakukun/tap"
+tap "kenmaz/taps"
 tap "kylef/formulae"
+tap "mongodb/brew"
 tap "mono0926/license-plist"
+tap "rigellute/tap"
 tap "universal-ctags/universal-ctags"
 tap "vapor/tap"
-tap "yonaskolb/beak", "https://github.com/yonaskolb/Beak.git"
-cask "abstract"
-cask "osxfuse"
-cask "sketch"
+tap "woshiccm/tap"
+tap "yhkaplan/scaffold", "https://github.com/yhkaplan/scaffold.git"
 brew "ack"
-brew "openssl"
 brew "readline"
-brew "python"
 brew "ansible"
 brew "autoconf"
 brew "autojump"
+brew "bash"
+brew "bash-completion"
+brew "bat"
 brew "bazaar"
-brew "black"
 brew "brew-cask-completion"
 brew "carthage"
 brew "cask"
 brew "chisel"
-brew "cocoapods"
+brew "clang-format"
+brew "cmake"
+brew "ffmpeg"
 brew "coreutils"
 brew "cppcheck"
 brew "ctags", args: ["HEAD"]
 brew "curl"
 brew "wget"
 brew "dasht"
+brew "go"
 brew "direnv"
 brew "dnsmasq"
 brew "docker-completion"
 brew "docker-compose"
+brew "node"
 brew "eslint"
+brew "fastlane"
 brew "fd"
-brew "ffmpeg"
-brew "findutils"
-brew "flawfinder"
 brew "fzf"
 brew "gcc"
+brew "gh"
 brew "ghq"
 brew "git"
-brew "git-extras"
 brew "gnu-sed"
-brew "go"
+brew "graphviz"
 brew "grep"
 brew "hadolint"
-brew "hub"
+brew "httpie"
 brew "hugo"
-brew "node"
-brew "imagemagick@6", link: true
 brew "jq"
 brew "jsonlint"
 brew "kubernetes-cli"
-brew "kustomize"
-brew "m-cli"
-brew "marathon-swift"
-brew "mariadb-connector-c"
 brew "mas"
 brew "memcached"
-brew "mergepbx"
-brew "mint"
-brew "mongodb"
 brew "moreutils"
 brew "mosh"
-brew "mysql@5.6", link: true
-brew "ncdu"
 brew "neovim"
+brew "ninja"
 brew "nmap"
-brew "nodebrew"
-brew "pandoc"
 brew "pkg-config"
 brew "postgresql"
-brew "pv"
 brew "qrencode"
 brew "ruby-build"
 brew "rbenv"
@@ -94,15 +87,13 @@ brew "rename"
 brew "ripgrep"
 brew "shellcheck"
 brew "shfmt"
-brew "skaffold"
 brew "sourcekitten"
 brew "sourcery"
 brew "starship"
 brew "swiftformat"
-brew "swiftgen"
 brew "swiftlint"
+brew "tealdeer"
 brew "terminal-notifier"
-brew "tldr"
 brew "tmux"
 brew "tokei"
 brew "trash"
@@ -119,17 +110,17 @@ brew "danger/tap/danger-swift"
 brew "garethr/kubeval/kubeval"
 brew "getantibody/tap/antibody"
 brew "kateinoigakukun/tap/iblinter"
-brew "kenmaz/taps/swiftoutline"
 brew "kylef/formulae/swiftenv"
 brew "mono0926/license-plist/license-plist"
-brew "vapor/tap/vapor"
-brew "yonaskolb/beak/beak"
+brew "yhkaplan/scaffold/scaffold"
 cask "alacritty"
 cask "alfred"
 cask "arduino"
+cask "caffeine"
 cask "chromedriver"
 cask "docker"
 cask "fastlane"
+cask "font-firacode-nerd-font-mono"
 cask "font-inconsolata-for-powerline"
 cask "font-source-code-pro"
 cask "font-source-code-pro-for-powerline"
@@ -137,26 +128,26 @@ cask "font-source-sans-pro"
 cask "font-source-serif-pro"
 cask "font-sourcecodepro-nerd-font"
 cask "font-sourcecodepro-nerd-font-mono"
+cask "iterm2"
 cask "minikube"
-cask "spectacle"
-cask "virtualbox"
+cask "qlcolorcode"
+cask "qlmarkdown"
+cask "quicklook-csv"
+cask "quicklook-json"
 cask "visual-studio-code"
-mas "com.agilebits.onepassword7", id: 1333542190
-mas "com.amazon.Kindle", id: 405399194
-mas "com.apple.dt.Xcode", id: 497799835
-mas "com.apple.iWork.Keynote", id: 409183694
-mas "com.apple.iWork.Numbers", id: 409203825
-mas "com.apple.iWork.Pages", id: 409201541
-mas "com.culturedcode.ThingsMac", id: 904280696
-mas "com.fiplab.batteryhealth", id: 490192174
-mas "com.oneminutegames.XcodeCleaner", id: 1388020431
-mas "com.pixelmatorteam.pixelmator", id: 407963104
-mas "com.readitlater.PocketMac", id: 568494494
-mas "com.reederapp.rkit2.mac", id: 880001334
-mas "com.seriflabs.affinitydesigner", id: 824171161
-mas "com.stevebarnegren.xcodecommentwrapper", id: 1377998565
-mas "com.Swiftify.Xcode", id: 1183412116
-mas "com.txtlabs.dontsleep", id: 466314666
-mas "cx.c3.theunarchiver", id: 425424353
-mas "info.lazar.xliff-tool", id: 1074282695
-mas "net.shinyfrog.bear", id: 1091189122
+mas "1Password 7", id: 1333542190
+mas "Affinity Designer", id: 824171161
+mas "Battery Health", id: 490192174
+mas "Bear", id: 1091189122
+mas "DevCleaner", id: 1388020431
+mas "GoodNotes", id: 1444383602
+mas "Keynote", id: 409183694
+mas "Kindle", id: 405399194
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Playgrounds", id: 1496833156
+mas "Reeder", id: 880001334
+mas "The Unarchiver", id: 425424353
+mas "Things", id: 904280696
+mas "Transporter", id: 1450874784
+mas "Xcode", id: 497799835
