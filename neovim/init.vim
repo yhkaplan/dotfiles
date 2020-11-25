@@ -347,7 +347,7 @@ set noswapfile
 " Workaround for bug reducing startup time
 let g:clipboard = {'copy': {'+': 'pbcopy', '*': 'pbcopy'}, 'paste': {'+': 'pbpaste', '*': 'pbpaste'}, 'name': 'pbcopy', 'cache_enabled': 0}
 set clipboard=unnamed
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3'
 let g:loaded_python_provider=1 " Disable Python 2 provider
 
 " Fixes cursor
