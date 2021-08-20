@@ -76,21 +76,6 @@ done
 mkdir -p ~/.lldb
 (cd ~/.lldb && git clone git@github.com:DerekSelander/LLDB.git)
 
-############ Ruby ###############
-
-# Setting for RBENV/Ruby
-echo "Setting up Ruby. Please make sure to check that the version of bundler matches the version installed by rbenv"
-eval "$(rbenv init -)"
-
-echo "Installing Ruby versions"
-rbenv install 2.5.1
-rbenv install 2.6.0
-
-# Installs bundler for system version of Ruby, may cause
-# headaches and issues if the rbenv version doesn't have bundler installed
-# XCPretty required for vim-xcode and nice for running xcodebuild in command line
-sudo gem install bundler xcpretty
-
 ########## Other ################
 
 # Zsh plugins
@@ -98,12 +83,6 @@ antibody bundle <~/.dotfiles/zsh/.zsh_plugins.txt >~/.zsh_plugins.sh
 
 # Tmux plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# Dependencies for Deoplete on other Pythonic stuff
-pip3 install -r pip-requirements.txt
-
-# Golang dependencies
-python3 go/install.py
 
 # JS
 npm install -g prettier

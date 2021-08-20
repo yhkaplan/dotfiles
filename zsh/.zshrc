@@ -4,6 +4,21 @@ if ! { [[ "$TERM" == *"screen"* ]] && [ -n "$TMUX" ]; } then
   tmux new
 fi
 
+# Kill 2 oldest detached tmux sessions if more than 3 exist that are detached
+# sessions=$(tmux list-sessions | grep -E -v '\(attached\)$')
+# session_count=$(echo $sessions | wc -l | tr -d '[:space:]' || 0)
+# if [$session_count -gt 3]; then
+#   i=0
+#   # Kill first 2 detached sessions
+#   echo $sessions | while IFS='\n' read line; do
+#     if [$i -lt 2]; then
+#       echo "Killing ${line%%:*}"
+#       # tmux kill-session -t "${line%%:*}"
+#     fi
+#     i=$((i+1))
+#   done
+# fi
+
 source ~/.zsh_plugins.sh
 source ~/.dotfiles/zsh/aliases.zsh
 
@@ -30,6 +45,7 @@ bindkey '^[[B' history-substring-search-down
 # Spaceship
 SPACESHIP_PROMPT_ORDER=(
   user          # Username section
+  input_mode
   dir           # Current directory section
   host          # Hostname section
   git           # Git section (git_branch + git_status)
@@ -57,13 +73,6 @@ else
 fi
 
 zmodload -i zsh/complist
-
-# Turn off autocorrect suggestions
-unsetopt correct
-
-# Workaround for conflict between Homebrew and default Python 2
-# https://forums.swift.org/t/swift-repl-starts-with-error-when-homebrew-python-is-installed/12927
-alias swift='PATH="/usr/bin:$PATH" swift'
 
 # History
 HISTFILE=$HOME/.zsh_history
@@ -119,6 +128,11 @@ if [ -f "$token_path" ]; then
   # shellcheck source=.secrets/tokens
   source "$token_path"
 fi
+
+# Turn off autocorrect suggestions
+unsetopt correct
+unsetopt correct_all
+export DISABLE_CORRECTION=true
 
 # Autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh

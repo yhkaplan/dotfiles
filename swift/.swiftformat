@@ -1,4 +1,0 @@
---exclude Pods
---exclude Carthage
---disable blankLinesAtEndOfScope,blankLinesAtStartOfScope,strongOutlets,unusedArguments,hoistPatternLet,sortedImports,trailingCommas
-

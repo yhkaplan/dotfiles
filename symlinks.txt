@@ -1,16 +1,11 @@
-~/.dotfiles/yaml/config ~/.config/yamllint/
 ~/.dotfiles/ctags/.ctags ~/
 ~/.dotfiles/neovim/init.vim ~/.config/nvim/
 ~/.dotfiles/tmux/.tmux.conf ~/
 ~/.dotfiles/bash/.bash_profile ~/
 ~/.dotfiles/bash/.bashrc ~/
-~/.dotfiles/gem/Gemfile ~/
 ~/.dotfiles/git/.gitignore_global ~/
-~/.dotfiles/ruby/.rubocop.yml ~/
 ~/.dotfiles/zsh/.fzf.zsh ~/
 ~/.dotfiles/zsh/.zshrc ~/
 ~/.dotfiles/zsh/.zshenv ~/
 ~/.dotfiles/ruby/bundle_config ~/.bundle/config
 ~/.dotfiles/lldb/.lldbinit ~/
-~/.dotfiles/alacritty/alacritty.yml ~/.config/alacritty/
-~/.xvimrc ~/

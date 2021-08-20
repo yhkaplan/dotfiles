@@ -22,7 +22,7 @@ abbrev-alias gsl='git log -8 --pretty --oneline'
 abbrev-alias ggui='git log --graph --decorate --oneline'
 abbrev-alias gclean='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
 abbrev-alias gpr='git pull-request -m'
-abbrev-alias gh='git log --pretty=format:%H -1 | pbcopy'
+abbrev-alias ghash='git log --pretty=format:%H -1 | pbcopy'
 abbrev-alias gr='git log --oneline --since=yesterday | pbcopy'
 abbrev-alias gn='git status -s | rg UU | cut -c 4- | xargs nvim'
 abbrev-alias gcl='git status -s | rg "\?\?" | cut -c 4- | xargs trash'
@@ -49,9 +49,9 @@ abbrev-alias formatswift='swiftlint autocorrect --config .swiftlint.yml --path '
 abbrev-alias pipupdate="pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U"
 abbrev-alias todo='git diff -w develop | rg TODO'
 
-alias l='ls -GpF' # Mac OSX specific
-alias ls='ls -GpF' # Mac OSX specific
-alias ll='ls -alGpF' # Mac OSX specific
+alias l='ls -GpF' # macOS specific
+alias ls='ls -GpF' # macOS specific
+alias ll='ls -alGpF' # macOS specific
 alias gr='grep'
 alias ...='cd ../../'
 alias ....='cd ../../../'

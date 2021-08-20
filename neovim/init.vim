@@ -33,14 +33,9 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sleuth'
 " Git integration
 Plug 'tpope/vim-fugitive'
-" Snippets
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
 " Bracket and quote completion
 Plug 'Shougo/neopairs.vim'
 Plug 'cohama/lexima.vim'
-" Completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Go
 Plug 'fatih/vim-go'
 " FZF (through Homebrew)
@@ -51,8 +46,11 @@ Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
 " ALE Linting for Go, Swift, etc
 Plug 'w0rp/ale'
+" Completion
+Plug 'nvim-lua/completion-nvim'
+Plug 'neovim/nvim-lspconfig'
 
-" Theme(s)
+" Theme
 Plug 'joshdick/onedark.vim'
 
 call plug#end()
@@ -223,10 +221,6 @@ augroup go
   " autocmd FileType go nmap <silent> <Leader>i <Plug>(go-info)
 augroup END
 
-" Needed to use gopls + deoplete
-call deoplete#custom#option('omni_patterns', {
-\ 'go': '[^. *\t]\.\w*',
-\})
 " Turns off loud fixit window
 let g:go_fmt_fail_silently = 1
 " Display type info for function parameters automatically
@@ -347,7 +341,7 @@ set noswapfile
 " Workaround for bug reducing startup time
 let g:clipboard = {'copy': {'+': 'pbcopy', '*': 'pbcopy'}, 'paste': {'+': 'pbpaste', '*': 'pbpaste'}, 'name': 'pbcopy', 'cache_enabled': 0}
 set clipboard=unnamed
-let g:python3_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/usr/local/bin/python3'
 let g:loaded_python_provider=1 " Disable Python 2 provider
 
 " Fixes cursor
@@ -388,21 +382,31 @@ nmap <silent> <leader>j <Plug>(ale_next_wrap)
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '▲'
 
-" ########## Neosnippets ###########
+" ########## Completion  ###########
 
-" Plugin key-mappings.
-imap <C-m>     <Plug>(neosnippet_expand_or_jump)
-smap <C-m>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-m>     <Plug>(neosnippet_expand_target)
+" Use completion-nvim in every buffer
+autocmd BufEnter * lua require'completion'.on_attach()
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" SuperTab like snippets behavior.
-imap <expr><TAB>
- \ pumvisible() ? "\<C-n>" :
- \ neosnippet#expandable_or_jumpable() ?
- \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
 
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" Avoid showing message extra message when using completion
+set shortmess+=c
+g:completion_matching_smart_case = 1
+
+lua << EOF
+require'lspconfig'.bashls.setup{}
+require'lspconfig'.gopls.setup{}
+require'lspconfig'.graphql.setup{}
+require'lspconfig'.jsonls.setup{}
+require'lspconfig'.solargraph.setup{}
+require'lspconfig'.sourcekit.setup{}
+require'lspconfig'.vimls.setup{}
+require'lspconfig'.tsserver.setup{}
+EOF
 
 " ########## Gitgutter ###########
 let g:gitgutter_diff_args = '-w'
@@ -664,38 +668,6 @@ function CheckGoVersion ()
   endif
 endfunction
 
-" Check Go version to see if everything needs to be updated
-" to fix vim-go autocompletion
-" call CheckGoVersion ()
-
-" ############ AUTOCOMPLETE #################
-
-" Enable Deoplete
-let g:deoplete#enable_at_startup = 1
-" Set bracket autocompletion (might not be working)
-call deoplete#custom#source('_', 'converters', ['converter_auto_paren'])
-" Use smartcase.
-let g:deoplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:deoplete#sources#syntax#min_keyword_length = 2
-
-" Remove the preview window for autocomplete that causes awful flicker
-" for statusline, preview window, etc
-set completeopt-=preview
-
-" Fix behavior of deoplete adding unwanted return chars
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return pumvisible() ? deoplete#mappings#close_popup() : "\n"
-endfunction
-
-" Swift settings
-" Jump to the first placeholder by typing `<C-m>`.
-" autocmd FileType swift imap <buffer> <C-m> <Plug>(autocomplete_swift_jump_to_placeholder)
-let g:deoplete#sources#swift#source_kitten_binary = '/usr/local/bin/sourcekitten'
-let g:deoplete#sources#swift#daemon_autostart = 1
-" Fix flicker issue in Swift
-call deoplete#custom#option('auto_refresh_delay', 0)
 
 " ######## Netrw settings ############
 
@@ -757,6 +729,7 @@ function! s:go_indent(times, dir)
 endfunction
 nnoremap <silent> gi :<c-u>call <SID>go_indent(v:count1, 1)<cr>
 nnoremap <silent> gpi :<c-u>call <SID>go_indent(v:count1, -1)<cr>
+
 " ----------------------------------------------------------------------------
 " :Root | Change directory to the root of the Git repository
 " ----------------------------------------------------------------------------
