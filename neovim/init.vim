@@ -19,8 +19,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'sbdchd/neoformat'
 " Directory brower, replacement for netrw
 Plug 'ap/vim-readdir'
-" Xcodebuild, run, etc
-Plug 'gfontenot/vim-xcode'
 " Swift syntax highlighting
 Plug 'keith/swift.vim'
 " Surrounding with quote, bracket, etc
@@ -152,23 +150,7 @@ nnoremap <silent> <leader>R :%s/\<<C-r><C-w>\>//g<left><left>
 " Format
 nnoremap <leader>N :Neoformat<CR>
 
-" vim-fugitive/git
-" ga for git add
-nnoremap <silent> <leader>ga :Gwrite<CR>
-" gc git commit
-nnoremap <silent> <leader>gc :Gcommit<CR>
-" gp git push
-nnoremap <silent> <leader>gp :Gpush<CR>
-" git full diff
-nnoremap <silent> <leader>gf :tabnew<CR>:terminal git diff -w<CR>
-" gs git status
-nnoremap <silent> <leader>gs :Gstatus<CR>
-
 let g:wordmotion_prefix = '<Leader>'
-
-" Dasht
-" search related docsets TODO: make Swift/Python/Ruby/Bash/Vim only
-nnoremap <silent> <Leader>gd :call Dasht([expand('<cword>'), expand('<cWORD>')])<Return>
 
 " use gw to swap the current word with the next, without changing cursor position
 nnoremap <silent> gw "_yiw:s/\(\%#\w\+\)\(\W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>:nohlsearch<CR>
@@ -233,12 +215,6 @@ let g:go_highlight_functions = 1
 let g:go_highlight_function_parameters = 1
 let g:go_highlight_function_calls = 1
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-
-" Switch to h file of same name (useful for c++, obj-c, etc)
-" go to header
-nnoremap <silent> <leader>gh :e %<.h<CR>
-" go to implementation file
-nnoremap <silent> <leader>gm :e %<.m<CR>
 
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
@@ -308,14 +284,6 @@ nnoremap <space> zz
 nmap $ g_
 " sensible yank til last character
 nnoremap Y y$
-" Hybrid relative line numbers
-set number relativenumber
-" Switch between line number schemes depending on mode
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
 " Live preview of search and replace (Neovim only)
 set inccommand=nosplit
 " Start scrolling three lines before the horizontal window border
@@ -351,17 +319,6 @@ set colorcolumn=100
 " Reload vim config
 command! Reload execute "source $MYVIMRC"
 
-" ########### Split func ###############
-" TODO: make swift only
-function! BreakHere()
-  s/^\(\s*\)\(.\{-}\)\(\s*\)\(\%#\)\(\s*\)\(.*\)/\1\2\r\1\4\6/
-  call histdel('/', -1)
-endfunction
-
-function! MakeIntoComputedVar()
-  s/\(\s\+\(@objc\)\?\) func \(\w\+\).*-> \(\w\+?\?\) {/\1 var \3: \4 {/
-endfunction
-
 " ########### Proper tabs ###############
 
 set tabstop=4       " number of visual spaces per TAB
@@ -395,7 +352,6 @@ set completeopt=menuone,noinsert,noselect
 
 " Avoid showing message extra message when using completion
 set shortmess+=c
-g:completion_matching_smart_case = 1
 
 lua << EOF
 require'lspconfig'.bashls.setup{}
@@ -509,18 +465,12 @@ function FormatURL ()
     execute a:line_number ',' . a:line_number . 's/:\s.*//'
 endfunction
 
-" Adds line number to each line
-function AddNumbers ()
-  execute "normal! I" . line('.') . ". \<esc>"
-endfunction
-
 augroup markdown
   autocmd!
   autocmd FileType markdown,md
     \  setlocal indentexpr=
     \| setlocal ts=4 sw=4 sts=0 expandtab
     \| vnoremap <silent><leader>fu :call FormatURL()<CR>
-    \| vnoremap <silent><leader>n :call AddNumbers()<CR>
 augroup END
 
 " ############ Swift Settings ###############
@@ -531,122 +481,6 @@ autocmd BufNewFile,BufRead *.swift,*.h,*.m set tags+=~/dev/global-tags
 let g:gutentags_ctags_executable = '/usr/local/bin/ctags'
 let g:gutentags_ctags_tagfile = '.git/tags'
 let g:gutentags_ctags_extra_args = ['--languages=objectivec,swift,ruby,python', '--langmap=objectivec:.h.m']
-
-" A function for changing declaration/call like getItem(a: aLongName, b: anotherLongName)
-" into a multiline declaration/call
-function BreakLines ()
-    let a:line_number=line('.')
-
-    " Replace ( and comma w/ ( newline
-    execute a:line_number . ',' . a:line_number . 's/\((\|,\s\)/\1\r/g'
-
-    " Get new line number
-    let a:new_line_number=line('.')
-    execute a:new_line_number . ',' . a:new_line_number . 's/)/\r)'
-endfunction
-
-" A function to change a func into a computed var
-function FuncToVar ()
-    let a:line_number=line('.')
-    execute a:line_number . ',' . a:line_number . 's/func \(.*\)(.*) -> \(.*\)\s/var \1: \2 /g'
-endfunction
-
-nmap <silent><leader>B :call BreakLines()<CR>
-" tv for transform to var
-nnoremap <silent> <leader>tv :<C-u>call FuncToVar()<CR>
-
-" ############ Alternate between test, objc, swift and implementation files ###################
-function! s:alternate_objc ()
-  let l:file_name = expand('%')
-  " get m file name
-  let l:is_swift_file = expand('%:t') =~ '\.swift$'
-  if l:is_swift_file
-    let l:file_name = substitute(l:file_name,'\.swift$','\.m','')
-  else
-    let l:file_name = substitute(l:file_name,'\.[h|m]$','\.swift','')
-  endif
-  " Open file
-  let win = bufwinnr(l:file_name)
-  if l:win > 0
-    execute l:win . 'wincmd w'
-  else
-    execute ':e ' . l:file_name
-  endif
-endfunction
-command! Altm call s:alternate_objc()
-command! Alts call s:alternate_objc()
-
-function! s:add_nullability_annotations ()
-  call feedkeys(":%s/*/* _Nullable /g")
-endfunction
-command! Annotate call s:add_nullability_annotations()
-
-" Currently depends on fd
-function! s:alternate_test ()
-  let l:file_name = expand('%')
-  let l:is_test = expand('%:t') =~ 'Test'
-
-  " Remove file path
-  let l:file_name = substitute(l:file_name,'[A-z]\+/','','g')
-
-  if l:is_test
-    " Remove test/tests from filename (could prob shorten this)
-    let l:file_name = substitute(l:file_name,'Test\.','.','')
-    let l:file_name = substitute(l:file_name,'Tests\.','.','')
-  else
-    " Add test to filename
-    let l:file_name = substitute(l:file_name,'\.','Test.','')
-  endif
-
-  " Find file (should prob use find instead)
-  let l:file_name = system('fd' . ' ' . l:file_name)
-
-  " Grab first result if multiple
-  let l:is_multiple_results = l:file_name =~ '\n'
-  if l:is_multiple_results
-    let l:file_name = substitute(l:file_name,'\n.*','','')
-  endif
-
-  " Open file
-  let win = bufwinnr(l:file_name)
-  if l:win > 0
-    execute l:win . 'wincmd w'
-  else
-    execute ':e ' . l:file_name
-  endif
-
-endfunction
-command! Alternate call s:alternate_test()
-
-" ############ Open to current line in Xcode ###################
-function! s:open_in_xcode ()
-  let l:file_path = expand('%:p')
-  let l:line = line('.')
-
-  execute 'silent' . ' ' '!' . 'xed' . ' ' . '--line' . ' ' . l:line . ' ' . l:file_path
-endfunction
-command! Xline call s:open_in_xcode()
-
-" ############ vim-xcode ###################
-
-let g:xcode_default_simulator = 'iPhone 8'
-" Prefer schemes that don't have below pattern
-let g:xcode_scheme_ignore_pattern = '/Demo|Example|Package|AFNetworking|Bitlyzer|Kit|Bolts|GPUImage|Growthbeat|libwebp|View|lottie-ios/d'
-
-set title                   " Change the terminal's title
-set secure                  " Don't load autocmds from local .vimrc files
-
-" Open in Xcode
-nmap <Leader>xo :Xopen<CR>
-
-augroup swift
-  autocmd!
-  autocmd Filetype swift,m,h
-    \  nmap <Leader>r :silent !run_xcode.sh<CR>
-    \| nmap <Leader>b :silent !build_xcode.sh<CR>
-    \| nmap <Leader>sb :!swift %<CR> " Run current file in Swift (good for scripts)
-    \| nmap <Leader>t :silent !test_xcode.sh<CR>
-augroup END
 
 " ############ Golang Settings ##############
 
@@ -667,7 +501,6 @@ function CheckGoVersion ()
     :PlugUpdate()<cr>
   endif
 endfunction
-
 
 " ######## Netrw settings ############
 
@@ -743,41 +576,6 @@ function! s:root()
   endif
 endfunction
 command! Root call s:root()
-" ----------------------------------------------------------------------------
-" Todo
-" ----------------------------------------------------------------------------
-function! s:todo() abort
-  let entries = []
-  for cmd in ['git grep -niI -e TODO -e FIXME -e XXX 2> /dev/null',
-            \ 'grep -rniI -e TODO -e FIXME -e XXX * 2> /dev/null']
-    let lines = split(system(cmd), '\n')
-    if v:shell_error != 0 | continue | endif
-    for line in lines
-      let [fname, lno, text] = matchlist(line, '^\([^:]*\):\([^:]*\):\(.*\)')[1:3]
-      call add(entries, { 'filename': fname, 'lnum': lno, 'text': text })
-    endfor
-    break
-  endfor
-
-  if !empty(entries)
-    call setqflist(entries)
-    copen
-  endif
-endfunction
-command! Todo call s:todo()
-" ----------------------------------------------------------------------------
-" <Leader>?/! | Google it / Feeling lucky
-" ----------------------------------------------------------------------------
-function! s:goog(pat, lucky)
-  let q = '"'.substitute(a:pat, '["\n]', ' ', 'g').'"'
-  let q = substitute(q, '[[:punct:] ]',
-       \ '\=printf("%%%02X", char2nr(submatch(0)))', 'g')
-  call system(printf('open "https://www.google.com/search?%sq=%s"',
-                   \ a:lucky ? 'btnI&' : '', q))
-endfunction
-
-nnoremap <leader>? :call <SID>goog(expand("<cWORD>"), 0)<cr>
-nnoremap <leader>! :call <SID>goog(expand("<cWORD>"), 1)<cr>
 " ----------------------------------------------------------------------------
 " ?ii / ?ai | indent-object
 " ?io       | strictly-indent-object
