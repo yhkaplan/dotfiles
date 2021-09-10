@@ -45,7 +45,6 @@ bindkey '^[[B' history-substring-search-down
 # Spaceship
 SPACESHIP_PROMPT_ORDER=(
   user          # Username section
-  input_mode
   dir           # Current directory section
   host          # Hostname section
   git           # Git section (git_branch + git_status)
