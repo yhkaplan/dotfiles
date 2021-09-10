@@ -101,6 +101,7 @@ git config --global alias.amend 'commit --amend --no-edit'
 
 git config --global init.defaultBranch main
 git config --global core.excludesfile ~/.gitignore_global
+git config --global pull.rebase false # pre 2.27.0 pull behavior w/o warning
 # Set pager to delta, a nice Rust differ
 git config --global core.pager "delta --dark"
 
