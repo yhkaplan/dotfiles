@@ -108,8 +108,6 @@ git config --global core.pager "delta --dark"
 # Set GHQ
 git config --global ghq.root ~/dev
 
-git config --global init.defaultBranch main
-
 echo "Setting symlinks"
 python3 make_symlinks.py
 
