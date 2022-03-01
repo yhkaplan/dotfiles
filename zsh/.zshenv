@@ -46,3 +46,6 @@ eval "$(swiftenv init -)"
 
 # Direnv
 eval "$(direnv hook zsh)"
+
+# Nodenv
+eval "$(nodenv init -)"
