@@ -1,4 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env sh
+
+BREW="/opt/homebrew/bin/brew"
+
+#### Main ####
 
 # Ask for the administrator password upfront.
 sudo -v
@@ -11,57 +15,37 @@ while true; do
 done 2>/dev/null &
 
 echo "Starting bootstrapping"
+set -ex
 
 ############ Homebrew ###############
 
 # Check for Homebrew, install if we don't have it
-if test ! "$(command -v brew)"; then
+if test ! "$(command -v $BREW)"; then
   echo "Installing homebrew..."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
-
-brew install mas # Install Mac App Store Homebrew integration
 
 # If no CLI tools, then install
 if test ! "$(command -v gcc)"; then
-  sudo xcode-select --install
-  sudo xcodebuild -license accept
+  echo "Install Xcode!"
+  exit 1
 fi
-
-# If no xcode, then install
-if ! [ -d "/Applications/Xcode.app" ]; then
-  mas install 497799835 # Xcode ID
-  if ! [ -d "/Applications/Xcode.app" ]; then
-    echo "No Xcode installed"; exit 1
-  fi
-fi
-
-# If no ansible, then install
-if test ! "$(command -v ansible)"; then
-  brew install ansible
-fi
-
-# Ansible
-ansible-playbook ansible/main_playbook.yml --ask-become-pass
-
-# TODO: Move the below, then xcode stuff to ansible playbooks
 
 # Select directory and run brewfile
 # The Brewfile is generated automatically through 'brew bundle dump'
-mv ~/dotfiles ~/.dotfiles
 cd ~/.dotfiles/ || { echo "Could not cd dotfiles"; exit 1; }
 
 while true; do
   read -r -p "Do you want to install brew packages? " yn
   case $yn in
   [Yy]*)
-    brew update
-    brew upgrade
+    $BREW update
+    $BREW upgrade
 
     echo "Installing packages..."
 
-    brew bundle
-    brew cleanup
+    $BREW bundle
+    $BREW cleanup
     break
     ;;
   [Nn]*)
@@ -72,9 +56,14 @@ while true; do
   esac
 done
 
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
+
 ############ LLDB ###############
-mkdir -p ~/.lldb
-(cd ~/.lldb && git clone git@github.com:DerekSelander/LLDB.git)
+if [ -d "~/.lldb" ]; then
+  mkdir -p ~/.lldb
+  (cd ~/.lldb && git clone git@github.com:DerekSelander/LLDB.git)
+fi
 
 ########## Other ################
 
