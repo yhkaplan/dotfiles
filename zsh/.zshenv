@@ -48,7 +48,9 @@ eval "$(swiftenv init -)"
 eval "$(direnv hook zsh)"
 
 # Nodenv
-eval "$(nodenv init -)"
+if [ -x "$(command -v nodenv)" ]; then
+  eval "$(nodenv init -)"
+fi 
 
 # Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
