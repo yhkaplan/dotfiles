@@ -1,3 +1,0 @@
----
-BUNDLE_BUILD__MYSQL2: "--with-cflags=-I/usr/local/opt/openssl/include --with-ldflags=-L/usr/local/opt/openssl/lib --with-mysql-config=/usr/local/bin/mysql_config"
-BUNDLE_PATH: "vendor/bundle"
