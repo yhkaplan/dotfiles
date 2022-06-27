@@ -19,8 +19,8 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 export PATH="$PATH:${HOME}/.dotfiles/scripts"
 
 # Go
-export GOPATH="$HOME/go"
-export GOROOT="/usr/local/opt/go/libexec"
+export GOPATH="$HOME/dev"
+export GOROOT="/opt/homebrew/opt/go/libexec"
 export PATH="${PATH}:${GOROOT}/bin:${GOPATH}/bin"
 
 # Flutter
