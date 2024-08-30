@@ -23,9 +23,6 @@ export GOPATH="$HOME/go"
 export GOROOT="/usr/local/opt/go/libexec"
 export PATH="${PATH}:${GOROOT}/bin:${GOPATH}/bin"
 
-# Flutter
-export PATH="${PATH}:${HOME}/flutter/bin"
-
 # Set a default simulator for iOS
 export DEFAULT_SIM="platform=iOS Simulator,name=iPhone 8,OS=12.0"
 
@@ -50,9 +47,5 @@ eval "$(direnv hook zsh)"
 # Nodenv
 eval "$(nodenv init -)"
 
-# Android
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+# Rust
+. "$HOME/.cargo/env"
