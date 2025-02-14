@@ -67,3 +67,4 @@ if [ -f "$token_path" ]; then
   # shellcheck source=.secrets/tokens
   source "$token_path"
 fi
+. "$HOME/.cargo/env"
