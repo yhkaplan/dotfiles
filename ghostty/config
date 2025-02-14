@@ -1,0 +1,11 @@
+# Docs: https://ghostty.org/docs/config/reference
+font-family = Source Code Pro for Powerline
+font-size = 15
+# Check themes with command below
+# ls /Applications/Ghostty.app/Contents/Resources/ghostty/themes
+# or ghostty +list-themes
+theme = seoulbones_dark 
+title = " "
+macos-titlebar-style = tabs
+# blueprint, chalkboard, microchip, glass, holographic, paper, retro, xray
+# macos-icon = blueprint
