@@ -19,7 +19,7 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 export PATH="$PATH:${HOME}/.dotfiles/scripts"
 
 # Go
-export GOPATH="$HOME/go"
+export GOPATH="$HOME/dev"
 export PATH="${PATH}:${GOROOT}/bin:${GOPATH}/bin"
 
 # Set a default simulator for iOS
@@ -44,7 +44,9 @@ eval "$(swiftenv init -)"
 eval "$(direnv hook zsh)"
 
 # Nodenv
-eval "$(nodenv init -)"
+if [ -x "$(command -v nodenv)" ]; then
+  eval "$(nodenv init -)"
+fi 
 
 # Rust
 . "$HOME/.cargo/env"
