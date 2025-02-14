@@ -8,3 +8,5 @@
 ~/.dotfiles/zsh/.zshrc ~/
 ~/.dotfiles/zsh/.zshenv ~/
 ~/.dotfiles/lldb/.lldbinit ~/
+~/.dotfiles/zellij/config.kdl ~/.config/zellij/config.kdl
+~/.dotfiles/ghostty/config ~/.config/ghostty/config
