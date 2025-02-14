@@ -1,5 +1,3 @@
-~/.dotfiles/ctags/.ctags ~/
-~/.dotfiles/neovim/init.vim ~/.config/nvim/
 ~/.dotfiles/tmux/.tmux.conf ~/
 ~/.dotfiles/bash/.bash_profile ~/
 ~/.dotfiles/bash/.bashrc ~/

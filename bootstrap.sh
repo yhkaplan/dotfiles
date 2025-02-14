@@ -73,18 +73,10 @@ antibody bundle <~/.dotfiles/zsh/.zsh_plugins.txt >~/.zsh_plugins.sh
 # Tmux plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-# JS
-npm install -g prettier
-npm install -g remark-lint
-
 # Make iTerm/Terminal "Last login:" message from Login utility stop appearing
 touch ~/.hushlogin
 
 # Git aliases
-git config --global alias.unstage 'reset HEAD --'
-git config --global alias.last 'log -1 --stat HEAD'
-git config --global alias.shortlog 'log -4 --pretty --oneline'
-git config --global alias.current 'rev-parse --abbrev-ref HEAD'
 # amend w/ previous commit name
 git config --global alias.amend 'commit --amend --no-edit'
 
