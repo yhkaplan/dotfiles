@@ -93,7 +93,7 @@ git config --global core.pager "delta --dark"
 git config --global ghq.root ~/dev
 
 echo "Setting symlinks"
-python3 make_symlinks.py
+./make_symlinks.sh
 
 echo "Please update hosts file with contents of https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
 
