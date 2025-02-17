@@ -19,7 +19,7 @@ fi
 #   done
 # fi
 
-source ~/.zsh_plugins.sh
+source ~/.zsh_plugins.zsh
 source ~/.dotfiles/zsh/aliases.zsh
 
 # =============

@@ -68,7 +68,8 @@ fi
 ########## Other ################
 
 # Zsh plugins
-antibody bundle <~/.dotfiles/zsh/.zsh_plugins.txt >~/.zsh_plugins.sh
+source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+antidote bundle <~/.dotfiles/zsh/.zsh_plugins.txt >~/.zsh_plugins.zsh
 
 # Tmux plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
