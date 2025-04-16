@@ -35,11 +35,6 @@ eval "$(rbenv init - zsh)"
 # Make fastlane ...faster
 export FASTLANE_SKIP_UPDATE_CHECK=TRUE
 
-# swiftenv
-export SWIFTENV_ROOT="$HOME/.swiftenv"
-export PATH="$SWIFTENV_ROOT/bin:$PATH"
-eval "$(swiftenv init -)"
-
 # Direnv
 eval "$(direnv hook zsh)"
 
