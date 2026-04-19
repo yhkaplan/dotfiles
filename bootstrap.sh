@@ -247,7 +247,9 @@ if ((SKIP_MACOS == 0)); then
   info "Applying macOS settings"
   args=()
   ((RESTART_APPS)) && args+=(--restart-apps)
-  "$DOTFILES_DIR/mac-os_settings.sh" "${args[@]}"
+  # ${args[@]+"${args[@]}"} is the bash-3.2-safe form for expanding a
+  # possibly-empty array under `set -u`; CI uses system /bin/bash (3.2).
+  "$DOTFILES_DIR/mac-os_settings.sh" ${args[@]+"${args[@]}"}
 fi
 
 ############ Final notes ###############

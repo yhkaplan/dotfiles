@@ -18,7 +18,24 @@ Personal macOS dotfiles. Three provisioning scripts (`bootstrap.sh`, `make_symli
 brew bundle --file=Brewfile # package install only
 ```
 
-No test suite, no CI. Validation is "run it and see."
+No unit tests; CI validates end-to-end via `bootstrap.sh` on macos-latest — see **CI** below.
+
+## CI
+
+`.github/workflows/ci.yml` runs on push / PR to `master` and on `workflow_dispatch`. Single job on `macos-latest`:
+
+1. Symlinks the checkout to `$HOME/.dotfiles` (bootstrap hardcodes that path).
+2. `shellcheck bootstrap.sh make_symlinks.sh mac-os_settings.sh verify.sh`.
+3. First pass: `./bootstrap.sh --yes --skip-brew --skip-chsh`.
+4. `./verify.sh` — post-condition checks (symlinks, cloned repos, git config).
+5. Snapshots `~/.old_dotfiles/` directory count.
+6. Second pass: same bootstrap invocation again.
+7. Asserts the snapshot count is unchanged (idempotency: a re-run must not back anything up).
+8. Re-runs `verify.sh`.
+
+**Bash version gotcha.** Because CI uses `--skip-brew`, homebrew's bash is never installed during the job, so `/usr/bin/env bash` resolves to macOS system `/bin/bash` (3.2). Every tracked shell script must stay compatible with bash 3.2 + `set -u`. Most common trap: expanding an empty array as `"${arr[@]}"` is an unbound-variable error in 3.2 — use `${arr[@]+"${arr[@]}"}` instead.
+
+**What's not exercised.** `--skip-brew` skips Brewfile installation and `--skip-chsh` skips the default-shell change, so neither path is covered by CI; validate those manually when touching them. `mac-os_settings.sh` *does* run on the CI macOS image.
 
 ## Architecture
 
