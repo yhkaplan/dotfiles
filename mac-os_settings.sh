@@ -1,81 +1,117 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# macOS system preferences. Safe to re-run. Pass --restart-apps to kill
+# affected apps so changes take effect immediately (disruptive — off by default).
 
-# Close any open System Preferences panes, to prevent them from overriding
-# settings we’re about to change
-osascript -e 'tell application "System Preferences" to quit'
+set -Eeuo pipefail
 
-# Ask for the administrator password upfront
+if [[ "$(uname -s)" != "Darwin" ]]; then
+    echo "macOS only — skipping"
+    exit 0
+fi
+
+RESTART_APPS=0
+for arg in "$@"; do
+    case "$arg" in
+    --restart-apps) RESTART_APPS=1 ;;
+    -h | --help)
+        cat <<EOF
+Usage: $(basename "$0") [--restart-apps]
+  --restart-apps   Kill affected apps (Finder, Dock, etc) after applying settings
+EOF
+        exit 0
+        ;;
+    *)
+        echo "unknown flag: $arg" >&2
+        exit 1
+        ;;
+    esac
+done
+
+# Close any open System Preferences panes so they don't overwrite our settings.
+osascript -e 'tell application "System Preferences" to quit' >/dev/null 2>&1 || true
+
 sudo -v
 
-# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+SUDO_PID=""
+cleanup() {
+    [[ -n "$SUDO_PID" ]] && kill "$SUDO_PID" 2>/dev/null || true
+}
+trap cleanup EXIT
+
+(
+    while true; do
+        sudo -n true
+        sleep 60
+        kill -0 "$$" 2>/dev/null || exit
+    done
+) 2>/dev/null &
+SUDO_PID=$!
 
 # Show language menu in the top right corner of the boot screen
 sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
 
-# Make battery indicator show percent remaining
+# Menu bar: battery percent + date alongside time
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+defaults write com.apple.menuextra.clock DateFormat -string "EEE MMM d  h:mm a"
 
-# Don’t show recent applications in Dock
+# Dock: don't show recent apps
 defaults write com.apple.dock show-recents -bool false
 
-#Show date in menu bar alongside time
-# To add
-
-# Always open everything in Finder's list view.
-defaults write com.apple.Finder FXPreferredViewStyle clmv
-
-# Finder: show path bar
+# Finder: list view, path bar, all extensions, hidden files
+defaults write com.apple.Finder FXPreferredViewStyle -string "Nlsv"
 defaults write com.apple.finder ShowPathbar -bool true
-
-# Finder: show all filename extensions and hidden files
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-defaults write com.apple.finder AppleShowAllFiles TRUE
+defaults write com.apple.finder AppleShowAllFiles -bool true
 
-# Disable Dashboard
+# Dashboard: disabled, not shown as a space
 defaults write com.apple.dashboard mcx-disabled -bool true
-
-# Don’t show Dashboard as a Space
 defaults write com.apple.dock dashboard-in-overlay -bool true
 
-# Turn on app auto-update
+# App Store: auto-update
 defaults write com.apple.commerce AutoUpdate -bool true
 
-# Avoid creating .DS_Store files on network or USB volumes
+# Don't sprinkle .DS_Store files on network or USB volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-# Disable press-and-hold for keys in favor of key repeat
+# Keyboard: disable press-and-hold, fast initial key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-
-# Set a blazingly fast keyboard repeat rate
-# defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
-defaults write NSGlobalDomain InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
 ###############################################################################
 # Xcode                                                                       #
 ###############################################################################
 
-# Display build times
-defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
+defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool true
 
-# Add iOS Simulator to Launchpad
-sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" "/Applications/Simulator.app"
+if [[ -d /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app ]]; then
+    if [[ ! -e /Applications/Simulator.app ]]; then
+        sudo ln -s "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" \
+            "/Applications/Simulator.app"
+    fi
+else
+    echo "Xcode not installed — skipping Simulator symlink"
+fi
 
 ###############################################################################
-# Kill affected applications                                                  #
+# Apply changes                                                               #
 ###############################################################################
 
-for app in "Activity Monitor" \
-  "Calendar" \
-  "cfprefsd" \
-  "Dock" \
-  "Finder" \
-  "Google Chrome" \
-  "Spectacle" \
-  "SystemUIServer" \
-  "Xcode" \
-  "iCal"; do
-  killall "${app}" &>/dev/null
-done
-echo "Done. Note that some of these changes require a logout/restart to take effect."
+if (( RESTART_APPS )); then
+    echo "Restarting affected apps..."
+    for app in "Activity Monitor" \
+        "Calendar" \
+        "cfprefsd" \
+        "Dock" \
+        "Finder" \
+        "Google Chrome" \
+        "Spectacle" \
+        "SystemUIServer" \
+        "Xcode" \
+        "iCal"; do
+        killall "$app" &>/dev/null || true
+    done
+else
+    echo "Done. Some changes require logout/restart or an app relaunch to take effect."
+    echo "Re-run with --restart-apps to kill affected apps now."
+fi
