@@ -89,3 +89,6 @@ Carthage/Build
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/test_output
+
+# Claude Code
+settings.local.json
