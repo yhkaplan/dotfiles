@@ -9,12 +9,21 @@ font-size = 15
 # ls /Applications/Ghostty.app/Contents/Resources/ghostty/themes
 # or ghostty +list-themes
 # CobaltNext-Dark, Dracula, GitHub-Dark-High-Constrast, tokyonight_night, xcodedarkhc
-theme = carbonfox
+theme = TokyoNight Night
 
 title = " "
 macos-titlebar-style = tabs
 # blueprint, chalkboard, microchip, glass, holographic, paper, retro, xray
-# macos-icon = blueprint
+macos-icon = chalkboard
 
 window-padding-x = 6
 window-padding-y = 0
+
+cursor-style = block
+cursor-style-blink = false
+keybind = shift+enter=text:\x1b\r
+
+notify-on-command-finish = unfocused
+notify-on-command-finish-action = no-bell,notify
+notify-on-command-finish-after = 30s
+

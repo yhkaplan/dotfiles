@@ -74,15 +74,6 @@ cask "iterm2"
 cask "proxyman"
 cask "qlmarkdown"
 cask "visual-studio-code"
-mas "1Blocker", id: 1365531024
-mas "1Password for Safari", id: 1569813296
-mas "Bear", id: 1091189122
-mas "DevCleaner", id: 1388020431
-mas "Developer", id: 640199958
-mas "Slack", id: 803453959
-mas "Things", id: 904280696
-mas "ToothFairy", id: 1191449274
-mas "Vimari", id: 1480933944
 vscode "apollographql.vscode-apollo"
 vscode "bierner.markdown-mermaid"
 vscode "bung87.vscode-gemfile"
