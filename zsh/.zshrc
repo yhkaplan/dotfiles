@@ -19,6 +19,29 @@ fi
 #   done
 # fi
 
+# Spaceship configuration (must be set before loading plugins)
+SPACESHIP_PROMPT_ORDER=(
+  user          # Username section
+  dir           # Current directory section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+)
+SPACESHIP_PROMPT_ADD_NEWLINE=false
+SPACESHIP_PROMPT_SEPARATE_LINE=false
+SPACESHIP_PROMPT_ASYNC=false
+SPACESHIP_CHAR_SYMBOL="»" # ❯ 日本語の対応
+SPACESHIP_CHAR_SUFFIX=" "
+SPACESHIP_CHAR_PREFIX=""
+SPACESHIP_GIT_PREFIX=""
+SPACESHIP_GIT_BRANCH_PREFIX=""
+SPACESHIP_GIT_STATUS_STASHED=""
+# SPACESHIP_GIT_STATUS_PREFIX=""
+# SPACESHIP_GIT_STATUS_SUFFIX=""
+SPACESHIP_VI_MODE_COLOR="cyan"
+
 source ~/.zsh_plugins.zsh
 source ~/.dotfiles/zsh/aliases.zsh
 
@@ -41,29 +64,6 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # History substring
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-
-# Spaceship
-SPACESHIP_PROMPT_ORDER=(
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  line_sep      # Line break
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_PROMPT_SEPARATE_LINE=false
-SPACESHIP_CHAR_SYMBOL="»" # ❯ 日本語の対応
-SPACESHIP_CHAR_SUFFIX=" "
-SPACESHIP_CHAR_PREFIX=""
-SPACESHIP_GIT_PREFIX=""
-SPACESHIP_GIT_BRANCH_PREFIX=""
-SPACESHIP_GIT_STATUS_STASHED=""
-# SPACESHIP_GIT_STATUS_PREFIX=""
-# SPACESHIP_GIT_STATUS_SUFFIX=""
-SPACESHIP_VI_MODE_COLOR="cyan"
 
 autoload -Uz compinit
 typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
@@ -104,7 +104,7 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 export FZF_COMPLETION_TRIGGER=''
 
 bindkey '^T' fzf-completion
-bindkey '^I' $fzf_default_completion
+bindkey '^I' expand-or-complete
 
 # Useful iOS dev funcs
 source ~/.dotfiles/zsh/simctl-funcs.zsh
