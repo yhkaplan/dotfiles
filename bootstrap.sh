@@ -3,13 +3,14 @@
 # Safe to re-run: every step guards against its own prior success.
 #
 # Usage:
-#   ./bootstrap.sh [--yes] [--skip-brew] [--skip-symlinks] [--skip-macos] [--restart-apps]
+#   ./bootstrap.sh [--yes] [--skip-brew] [--skip-symlinks] [--skip-macos] [--skip-chsh] [--restart-apps]
 #
 # Flags:
 #   --yes / -y        Non-interactive; assume yes to prompts (also honored if CI=1)
 #   --skip-brew       Don't install or update Homebrew packages
 #   --skip-symlinks   Don't run make_symlinks.sh
 #   --skip-macos      Don't run mac-os_settings.sh
+#   --skip-chsh       Don't change the default shell (useful in CI)
 #   --restart-apps    Passed through to mac-os_settings.sh
 
 set -Eeuo pipefail
@@ -21,6 +22,7 @@ YES="${YES:-0}"
 SKIP_BREW=0
 SKIP_SYMLINKS=0
 SKIP_MACOS=0
+SKIP_CHSH=0
 RESTART_APPS=0
 
 while [[ $# -gt 0 ]]; do
@@ -29,9 +31,10 @@ while [[ $# -gt 0 ]]; do
   --skip-brew) SKIP_BREW=1 ;;
   --skip-symlinks) SKIP_SYMLINKS=1 ;;
   --skip-macos) SKIP_MACOS=1 ;;
+  --skip-chsh) SKIP_CHSH=1 ;;
   --restart-apps) RESTART_APPS=1 ;;
   -h | --help)
-    sed -n '2,14p' "$0"
+    sed -n '2,15p' "$0"
     exit 0
     ;;
   *)
@@ -230,12 +233,12 @@ register_shell "$BREW_PREFIX/bin/zsh"
 ############ Default shell ###############
 
 HOMEBREW_ZSH="$BREW_PREFIX/bin/zsh"
-if [[ -x "$HOMEBREW_ZSH" && "$SHELL" != "$HOMEBREW_ZSH" ]]; then
+if ((SKIP_CHSH == 0)) && [[ -x "$HOMEBREW_ZSH" && "$SHELL" != "$HOMEBREW_ZSH" ]]; then
   if confirm "Set $HOMEBREW_ZSH as your default shell?"; then
     chsh -s "$HOMEBREW_ZSH"
   fi
 else
-  echo "✓ default shell already homebrew zsh (or not installed)"
+  echo "✓ default shell already homebrew zsh (or chsh skipped)"
 fi
 
 ############ macOS settings ###############

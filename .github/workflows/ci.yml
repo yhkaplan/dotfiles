@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  verify:
+    name: Verify setup scripts
+    runs-on: macos-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Link workspace to ~/.dotfiles
+        # bootstrap.sh hard-codes $HOME/.dotfiles as its working root.
+        # Symlinking the checkout there lets the scripts run unchanged.
+        run: ln -s "$GITHUB_WORKSPACE" "$HOME/.dotfiles"
+
+      - name: Lint shell scripts
+        run: |
+          brew install --quiet shellcheck
+          shellcheck bootstrap.sh make_symlinks.sh mac-os_settings.sh verify.sh
+
+      - name: Bootstrap (first pass)
+        run: ./bootstrap.sh --yes --skip-brew --skip-chsh
+
+      - name: Verify post-conditions
+        run: ./verify.sh
+
+      - name: Snapshot backup-dir count
+        id: backup_snapshot
+        run: |
+          count=$(find "$HOME/.old_dotfiles" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "backup dirs after first pass: $count"
+
+      - name: Bootstrap (second pass — idempotency)
+        run: ./bootstrap.sh --yes --skip-brew --skip-chsh
+
+      - name: Assert no new backups
+        run: |
+          before="${{ steps.backup_snapshot.outputs.count }}"
+          after=$(find "$HOME/.old_dotfiles" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
+          echo "backup dirs before second pass: $before"
+          echo "backup dirs after  second pass: $after"
+          if [[ "$before" != "$after" ]]; then
+            echo "::error::Second bootstrap run created a new backup directory — idempotency broken"
+            find "$HOME/.old_dotfiles" -mindepth 1 -maxdepth 1 -type d
+            exit 1
+          fi
+
+      - name: Verify post-conditions (re-check)
+        run: ./verify.sh
