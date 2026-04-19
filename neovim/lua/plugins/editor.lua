@@ -17,7 +17,7 @@ return {
       quickfile   = { enabled = true },
       input       = { enabled = true },
       notifier    = { enabled = true, timeout = 3000, style = "compact" },
-      picker      = { enabled = true, layout = { preset = "default" } },
+      picker      = { enabled = true, layout = { preset = "default" }, sources = { explorer = { hidden = true } } },
       explorer    = { enabled = true },
       indent      = { enabled = true },
       scope       = { enabled = true },
