@@ -58,10 +58,4 @@ export PATH=$PATH:$GOPATH/bin
 # Rbenv support
 eval "$(rbenv init -)"
 
-# Envar secrets
-token_path="$HOME/.secrets/tokens"
-if [ -f "$token_path" ]; then
-  # shellcheck source=.secrets/tokens
-  source "$token_path"
-fi
 . "$HOME/.cargo/env"
