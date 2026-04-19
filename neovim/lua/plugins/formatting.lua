@@ -11,9 +11,7 @@ return {
       { "<leader>cf", function() require("conform").format({ async = true, lsp_format = "fallback" }) end,
         mode = { "n", "v" }, desc = "Format" },
     },
-    opts = function()
-      local conform_util = require("conform.util")
-      return {
+    opts = {
       default_format_opts = { timeout_ms = 3000, async = false, quiet = false, lsp_format = "fallback" },
       formatters_by_ft = {
         lua              = { "stylua" },
@@ -48,12 +46,14 @@ return {
           command = "swift-format",
           args = { "--configuration", ".swift-format", "--" },
           stdin = true,
-          cwd = conform_util.root_file({ ".swift-format" }),
+          cwd = function(_, ctx)
+            local found = vim.fs.find({ ".swift-format" }, { upward = true, path = ctx.dirname })[1]
+            return found and vim.fs.dirname(found) or nil
+          end,
           require_cwd = false,
         },
       },
-      }
-    end,
+    },
     init = function()
       -- Autoformat toggles
       vim.api.nvim_create_user_command("FormatDisable", function(args)

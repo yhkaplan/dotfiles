@@ -52,6 +52,7 @@ brew "tmux"
 brew "tokei"
 brew "trash", link: true
 brew "tree"
+brew "tree-sitter-cli"
 brew "uv"
 brew "xcbeautify"
 brew "xcode-build-server"
