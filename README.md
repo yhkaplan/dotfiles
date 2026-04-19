@@ -12,7 +12,7 @@ cd ~/.dotfiles
 ./bootstrap.sh
 ```
 
-All three setup scripts are idempotent — re-running is safe.
+All three setup scripts are idempotent.
 
 ### bootstrap.sh
 

@@ -5,26 +5,26 @@
 set -Eeuo pipefail
 
 if [[ "$(uname -s)" != "Darwin" ]]; then
-    echo "macOS only — skipping"
-    exit 0
+  echo "macOS only — skipping"
+  exit 0
 fi
 
 RESTART_APPS=0
 for arg in "$@"; do
-    case "$arg" in
-    --restart-apps) RESTART_APPS=1 ;;
-    -h | --help)
-        cat <<EOF
+  case "$arg" in
+  --restart-apps) RESTART_APPS=1 ;;
+  -h | --help)
+    cat <<EOF
 Usage: $(basename "$0") [--restart-apps]
   --restart-apps   Kill affected apps (Finder, Dock, etc) after applying settings
 EOF
-        exit 0
-        ;;
-    *)
-        echo "unknown flag: $arg" >&2
-        exit 1
-        ;;
-    esac
+    exit 0
+    ;;
+  *)
+    echo "unknown flag: $arg" >&2
+    exit 1
+    ;;
+  esac
 done
 
 # Close any open System Preferences panes so they don't overwrite our settings.
@@ -34,16 +34,16 @@ sudo -v
 
 SUDO_PID=""
 cleanup() {
-    [[ -n "$SUDO_PID" ]] && kill "$SUDO_PID" 2>/dev/null || true
+  [[ -n "$SUDO_PID" ]] && kill "$SUDO_PID" 2>/dev/null || true
 }
 trap cleanup EXIT
 
 (
-    while true; do
-        sudo -n true
-        sleep 60
-        kill -0 "$$" 2>/dev/null || exit
-    done
+  while true; do
+    sudo -n true
+    sleep 60
+    kill -0 "$$" 2>/dev/null || exit
+  done
 ) 2>/dev/null &
 SUDO_PID=$!
 
@@ -85,33 +85,33 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 10
 defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool true
 
 if [[ -d /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app ]]; then
-    if [[ ! -e /Applications/Simulator.app ]]; then
-        sudo ln -s "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" \
-            "/Applications/Simulator.app"
-    fi
+  if [[ ! -e /Applications/Simulator.app ]]; then
+    sudo ln -s "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" \
+      "/Applications/Simulator.app"
+  fi
 else
-    echo "Xcode not installed — skipping Simulator symlink"
+  echo "Xcode not installed — skipping Simulator symlink"
 fi
 
 ###############################################################################
 # Apply changes                                                               #
 ###############################################################################
 
-if (( RESTART_APPS )); then
-    echo "Restarting affected apps..."
-    for app in "Activity Monitor" \
-        "Calendar" \
-        "cfprefsd" \
-        "Dock" \
-        "Finder" \
-        "Google Chrome" \
-        "Spectacle" \
-        "SystemUIServer" \
-        "Xcode" \
-        "iCal"; do
-        killall "$app" &>/dev/null || true
-    done
+if ((RESTART_APPS)); then
+  echo "Restarting affected apps..."
+  for app in "Activity Monitor" \
+    "Calendar" \
+    "cfprefsd" \
+    "Dock" \
+    "Finder" \
+    "Google Chrome" \
+    "Spectacle" \
+    "SystemUIServer" \
+    "Xcode" \
+    "iCal"; do
+    killall "$app" &>/dev/null || true
+  done
 else
-    echo "Done. Some changes require logout/restart or an app relaunch to take effect."
-    echo "Re-run with --restart-apps to kill affected apps now."
+  echo "Done. Some changes require logout/restart or an app relaunch to take effect."
+  echo "Re-run with --restart-apps to kill affected apps now."
 fi

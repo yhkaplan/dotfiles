@@ -18,64 +18,64 @@ BACKUP_ROOT="${BACKUP_ROOT:-$HOME/.old_dotfiles}"
 BACKUP_DIR="$BACKUP_ROOT/$(date +%Y%m%d-%H%M%S)"
 
 if [[ ! -f "$SYMLINKS_FILE" ]]; then
-    echo "symlinks file not found: $SYMLINKS_FILE" >&2
-    exit 1
+  echo "symlinks file not found: $SYMLINKS_FILE" >&2
+  exit 1
 fi
 
 expand_tilde() {
-    local path="$1"
-    printf '%s' "${path/#\~/$HOME}"
+  local path="$1"
+  printf '%s' "${path/#\~/$HOME}"
 }
 
 backed_up=0
 ensure_backup_dir() {
-    if (( backed_up == 0 )); then
-        mkdir -p "$BACKUP_DIR"
-        backed_up=1
-    fi
+  if ((backed_up == 0)); then
+    mkdir -p "$BACKUP_DIR"
+    backed_up=1
+  fi
 }
 
 while IFS= read -r line || [[ -n "$line" ]]; do
-    # Skip blank lines and comments.
-    [[ -z "${line// /}" || "$line" =~ ^[[:space:]]*# ]] && continue
+  # Skip blank lines and comments.
+  [[ -z "${line// /}" || "$line" =~ ^[[:space:]]*# ]] && continue
 
-    # Split on the first whitespace run.
-    read -r raw_src raw_dst <<<"$line"
-    if [[ -z "${raw_src:-}" || -z "${raw_dst:-}" ]]; then
-        echo "malformed entry: $line" >&2
-        exit 1
-    fi
+  # Split on the first whitespace run.
+  read -r raw_src raw_dst <<<"$line"
+  if [[ -z "${raw_src:-}" || -z "${raw_dst:-}" ]]; then
+    echo "malformed entry: $line" >&2
+    exit 1
+  fi
 
-    src="$(expand_tilde "$raw_src")"
-    dst="$(expand_tilde "$raw_dst")"
+  src="$(expand_tilde "$raw_src")"
+  dst="$(expand_tilde "$raw_dst")"
 
-    # Resolve final link path: trailing slash => directory, use basename.
-    if [[ "$dst" == */ ]]; then
-        target="${dst%/}/$(basename "$src")"
-    else
-        target="$dst"
-    fi
+  # Resolve final link path: trailing slash => directory, use basename.
+  if [[ "$dst" == */ ]]; then
+    target="${dst%/}/$(basename "$src")"
+  else
+    target="$dst"
+  fi
 
-    if [[ ! -e "$src" ]]; then
-        echo "missing source: $src" >&2
-        exit 1
-    fi
+  if [[ ! -e "$src" ]]; then
+    echo "missing source: $src" >&2
+    exit 1
+  fi
 
-    if [[ -L "$target" && "$(readlink "$target")" == "$src" ]]; then
-        echo "✓ $target"
-        continue
-    fi
+  if [[ -L "$target" && "$(readlink "$target")" == "$src" ]]; then
+    echo "✓ $target"
+    continue
+  fi
 
-    mkdir -p "$(dirname "$target")"
+  mkdir -p "$(dirname "$target")"
 
-    if [[ -e "$target" || -L "$target" ]]; then
-        ensure_backup_dir
-        echo "→ backing up $target → $BACKUP_DIR/"
-        mv "$target" "$BACKUP_DIR/"
-    fi
+  if [[ -e "$target" || -L "$target" ]]; then
+    ensure_backup_dir
+    echo "→ backing up $target → $BACKUP_DIR/"
+    mv "$target" "$BACKUP_DIR/"
+  fi
 
-    ln -sfn "$src" "$target"
-    echo "+ $target → $src"
+  ln -sfn "$src" "$target"
+  echo "+ $target → $src"
 done <"$SYMLINKS_FILE"
 
 echo "symlinks ok"
