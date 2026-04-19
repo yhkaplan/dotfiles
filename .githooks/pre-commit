@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Pre-commit hook for the dotfiles repo. Wired via repo-local
+# `core.hooksPath = .githooks` (see bootstrap.sh).
+#
+# Scans the staged diff for secrets with gitleaks and blocks the commit
+# on any finding. Bypass with `git commit --no-verify` when you know the
+# match is a false positive (and consider adding it to a gitleaks
+# allowlist instead).
+
+set -Eeuo pipefail
+
+if ! command -v gitleaks >/dev/null 2>&1; then
+  echo "gitleaks not installed — skipping scan (run bootstrap.sh or brew install gitleaks)" >&2
+  exit 0
+fi
+
+if ! gitleaks git --staged --redact --verbose --no-banner .; then
+  cat >&2 <<'EOF'
+
+Pre-commit blocked: gitleaks found a potential secret in the staged diff.
+
+  - If this is a real secret, remove it, rotate it, and re-stage.
+  - If this is a false positive, add an allowlist entry to .gitleaks.toml
+    (preferred) or bypass once with:  git commit --no-verify
+
+EOF
+  exit 1
+fi
