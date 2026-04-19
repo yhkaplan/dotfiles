@@ -106,9 +106,6 @@ export FZF_COMPLETION_TRIGGER=''
 bindkey '^T' fzf-completion
 bindkey '^I' expand-or-complete
 
-# Useful iOS dev funcs
-source ~/.dotfiles/zsh/simctl-funcs.zsh
-
 root() {
   git_dir="$(git rev-parse --show-toplevel 2> /dev/null)"
 
