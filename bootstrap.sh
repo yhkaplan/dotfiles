@@ -141,7 +141,11 @@ if ((SKIP_BREW == 0)); then
     "$BREW" upgrade
 
     info "Installing packages from Brewfile"
-    "$BREW" bundle --file="$DOTFILES_DIR/Brewfile"
+    if "$BREW" bundle check --file="$DOTFILES_DIR/Brewfile" --verbose; then
+      echo "✓ Brewfile already satisfied"
+    else
+      "$BREW" bundle --file="$DOTFILES_DIR/Brewfile" --no-upgrade
+    fi
     "$BREW" cleanup
   fi
 fi
