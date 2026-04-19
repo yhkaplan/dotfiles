@@ -1,0 +1,83 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository. `AGENTS.md` in the repo root is a symlink to this file, so OpenAI Codex and other `AGENTS.md`-aware tools pick up the same guidance.
+
+## Repository purpose
+
+Personal macOS dotfiles. Three provisioning scripts (`bootstrap.sh`, `make_symlinks.sh`, `mac-os_settings.sh`) deploy config files from this repo into `$HOME` and its subdirectories. All scripts are idempotent and safe to re-run.
+
+## Common commands
+
+```sh
+./bootstrap.sh              # full provision (prompts at each step)
+./bootstrap.sh --yes        # non-interactive (CI=1 is also honored)
+./bootstrap.sh --skip-brew --skip-macos   # just refresh symlinks + zsh plugins
+./make_symlinks.sh          # re-apply symlinks from symlinks.txt
+./mac-os_settings.sh --restart-apps   # apply macOS defaults + restart Finder/Dock
+
+brew bundle --file=Brewfile # package install only
+```
+
+No test suite, no CI. Validation is "run it and see."
+
+## Architecture
+
+**Symlink-driven deployment.** `symlinks.txt` is the source of truth for what lands in `$HOME`. Each line is `<source> <destination>`; trailing `/` on the destination means "link into that directory using the source's basename." `make_symlinks.sh` reads this file, skips correctly-linked entries, and backs up real conflicts to `~/.old_dotfiles/<timestamp>/` before replacing them. **To add a new dotfile: drop it under a topical subdirectory and add one line to `symlinks.txt`.**
+
+**Two-layer shell init.** `zsh/.zshenv` runs for every zsh invocation (login, interactive, scripts) and owns `$PATH`, language toolchain init (rbenv, nodenv, cargo, direnv, mise indirectly), and sourcing the untracked `work_machine_setup.env`. `zsh/.zshrc` runs only for interactive shells and owns prompt (starship via `eval`), plugins (antidote-bundled into `~/.zsh_plugins.zsh` by bootstrap), history, completions, fzf, and `zsh/aliases.zsh`.
+
+**Antidote plugin bundling.** Plugins are declared in `zsh/.zsh_plugins.txt`. `bootstrap.sh` runs `antidote bundle` to generate `~/.zsh_plugins.zsh`, which `.zshrc` sources. Editing `.zsh_plugins.txt` requires re-running bootstrap (or re-running the antidote line) to regenerate the bundle.
+
+**Work-machine layering.** Anything Netflix-specific or secret lives in untracked overlay files, loaded only if present:
+- `work_machine_setup.env` — sourced at the end of `zsh/.zshenv` (gitignored)
+- `~/.lldbinit.local` — sourced from `lldb/.lldbinit` (also gitignored by convention)
+- `~/.sbn_aliases` — sourced from both `.zshrc` and `bash/.bashrc`
+
+Keep these pathways when adding work-only config; do not commit work-specific values into tracked files.
+
+**External repos cloned by bootstrap (not vendored):** `~/.lldb/LLDB` (DerekSelander), `~/.tmux/plugins/tpm`. These are fetched on first bootstrap and assumed present afterward.
+
+## Directory layout
+
+| Dir | Contents |
+|---|---|
+| `bash/` | `.bash_profile`, `.bashrc` — legacy, kept for scripts that default to bash |
+| `zsh/` | `.zshenv`, `.zshrc`, `.fzf.zsh`, `aliases.zsh`, `fzf-funcs.zsh`, `.zsh_plugins.txt` |
+| `git/` | `.gitignore_global` (git user config is applied imperatively by `bootstrap.sh` via `git config --global`) |
+| `tmux/` | `.tmux.conf` and `plugins/` (includes vendored `tmux-agent-sessions` helper) |
+| `neovim/` | `init.vim` → symlinked to `~/.config/nvim/init.vim` |
+| `starship/` | `starship.toml` → symlinked to `~/.config/starship.toml` |
+| `ghostty/` | `config` → symlinked to `~/.config/ghostty/config` |
+| `lldb/` | `.lldbinit` (imports chisel + DerekSelander LLDB helpers) |
+| `Brewfile` | Formulae, casks, and VS Code extensions installed by `brew bundle` |
+
+## Conventions
+
+**Shell formatting: always `shfmt -i 2` (2-space indent).** The existing scripts follow this; preserve it. Before committing shell changes, run:
+
+```sh
+shfmt -i 2 -w <file>       # format in place
+shfmt -i 2 -d <file>       # show diff without writing
+```
+
+**Shell linting: run `shellcheck` on any script you edit** and address all findings before committing. `shellcheck` is already installed via `Brewfile`.
+
+```sh
+shellcheck <file>                        # lint a single script
+shellcheck bootstrap.sh make_symlinks.sh mac-os_settings.sh   # lint all top-level scripts
+```
+
+A few `# shellcheck disable=SCxxxx` directives already exist (e.g., in `bootstrap.sh` around the antidote sourcing); add new ones sparingly and always with a justification comment.
+
+**Git config is managed by `bootstrap.sh`**, not by a checked-in `.gitconfig`. If you need a new global git setting, add a `git_set <key> <value>` line in the "Git config" block of `bootstrap.sh` — it diffs against the current value and only writes on change.
+
+**macOS defaults are managed by `mac-os_settings.sh`**, not by a plist. Add `defaults write` lines there. The script bails early on non-Darwin and keeps a sudo keep-alive loop while running.
+
+**`$PATH` order matters.** `.zshenv` sets `no_global_rcs` to prevent macOS's `path_helper` from reordering things; preserve that and prepend (not append) when something needs priority.
+
+## Gotchas
+
+- Editing `zsh/.zsh_plugins.txt` has no effect until bootstrap regenerates `~/.zsh_plugins.zsh`.
+- `.zshrc` ends with `eval "$(starship init zsh)"` and `eval "$(mise activate zsh)"` — anything you add after those runs after prompt/toolchain init. The SDKMAN block has a `MUST BE AT THE END` comment but is followed by later additions; when in doubt, put new inits before the starship line.
+- `make_symlinks.sh` fails fast if a source path listed in `symlinks.txt` does not exist. If you rename or delete a source file, update `symlinks.txt` in the same commit.
+- `bootstrap.sh` calls `sudo -v` early and spawns a background keep-alive; scripts that invoke it from CI should pass `--yes` or set `CI=1`.
