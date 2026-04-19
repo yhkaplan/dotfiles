@@ -8,7 +8,6 @@ return {
     ft = { "swift" },
     cmd = { "XcodebuildPicker", "XcodebuildBuild", "XcodebuildTest", "XcodebuildSetup" },
     dependencies = {
-      "nvim-telescope/telescope.nvim",  -- xcodebuild's pickers are Telescope-based
       "MunifTanjim/nui.nvim",
       "nvim-tree/nvim-web-devicons",
     },
@@ -29,7 +28,7 @@ return {
       { "<leader>Xs", "<cmd>XcodebuildSelectScheme<cr>", desc = "Select scheme",        ft = "swift" },
       { "<leader>Xd", "<cmd>XcodebuildSelectDevice<cr>", desc = "Select device",        ft = "swift" },
       { "<leader>Xp", "<cmd>XcodebuildPicker<cr>",       desc = "Show all actions",     ft = "swift" },
-      { "<leader>Xq", "<cmd>Telescope quickfix<cr>",     desc = "Show Quickfix",        ft = "swift" },
+      { "<leader>Xq", function() Snacks.picker.qflist() end, desc = "Show Quickfix",    ft = "swift" },
     },
   },
 }

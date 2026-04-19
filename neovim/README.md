@@ -113,7 +113,7 @@ Leader is `<Space>`.
 | `<leader>cd`  | Line diagnostics (float)   |
 | `[d / ]d`     | Prev/next diagnostic       |
 | `<leader>uh`  | Toggle inlay hints         |
-| `<leader>xx`  | Trouble diagnostics        |
+| `<leader>sd`  | Diagnostics picker         |
 
 ### Git
 
@@ -121,7 +121,6 @@ Leader is `<Space>`.
 |--------------|----------------------------------|
 | `<leader>gg` | Lazygit (via snacks)             |
 | `<leader>gB` | Open current line on GitHub/GitLab |
-| `<leader>gd` | Diffview                         |
 | `]h / [h`    | Next/prev git hunk               |
 | `<leader>ghs / <leader>ghr` | Stage / reset hunk |
 | `<leader>ghb`| Line blame                       |
@@ -196,8 +195,8 @@ ruff owns diagnostics, format, and imports. Formatter-on-save runs
 - **Pick blink.cmp keymap style** — change `keymap.preset` in
   `lua/plugins/completion.lua` to `"super-tab"` (Tab accepts) or `"enter"`
   (Enter accepts) if you prefer those.
-- **Swap snacks.picker for Telescope or fzf-lua** — replace the bindings in
-  `editor.lua`. The Telescope spec is already present for xcodebuild.nvim.
+- **Swap snacks.picker for Telescope or fzf-lua** — add a spec under
+  `lua/plugins/` and replace the `Snacks.picker.*` bindings in `editor.lua`.
 
 ## Troubleshooting
 

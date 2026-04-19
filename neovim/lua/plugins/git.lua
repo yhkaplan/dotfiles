@@ -1,6 +1,6 @@
 -- ~/.config/nvim/lua/plugins/git.lua
 -- gitsigns for gutter/inline UX. Lazygit is provided by snacks.nvim
--- (<leader>gg). diffview for PR-style review.
+-- (<leader>gg).
 
 return {
   {
@@ -36,16 +36,5 @@ return {
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Select hunk")
       end,
     },
-  },
-
-  {
-    "sindrets/diffview.nvim",
-    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles", "DiffviewFileHistory" },
-    keys = {
-      { "<leader>gd", "<cmd>DiffviewOpen<cr>",        desc = "Diffview open" },
-      { "<leader>gD", "<cmd>DiffviewFileHistory %<cr>", desc = "File history" },
-      { "<leader>gc", "<cmd>DiffviewClose<cr>",       desc = "Diffview close" },
-    },
-    opts = { enhanced_diff_hl = true },
   },
 }

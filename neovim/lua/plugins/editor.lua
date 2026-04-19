@@ -1,7 +1,7 @@
 -- ~/.config/nvim/lua/plugins/editor.lua
 -- Snacks is the kitchen-sink plugin: picker, explorer, dashboard, notifier,
 -- terminal, indent, lazygit, words, scroll, statuscolumn, bigfile, etc.
--- Plus: oil.nvim (buffer-style file editing), which-key v3, trouble v3.
+-- Plus: oil.nvim (buffer-style file editing), which-key v3, todo-comments.
 
 return {
   ---------------------------------------------------------------------------
@@ -76,6 +76,8 @@ return {
       { "<leader>sS",      function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP workspace symbols" },
       { "<leader>sr",      function() Snacks.picker.resume() end,               desc = "Resume" },
       { "<leader>sc",      function() Snacks.picker.command_history() end,      desc = "Command history" },
+      { "<leader>sC",      function() Snacks.picker.commands() end,             desc = "Commands" },
+      { "<leader>:",       function() Snacks.picker.commands() end,             desc = "Commands" },
       { "<leader>,",       function() Snacks.picker.buffers() end,              desc = "Buffers" },
 
       -- LSP navigation via picker (nicer than builtin tagstack UX)
@@ -176,28 +178,10 @@ return {
         { "<leader>gh", group = "hunks" },
         { "<leader>s", group = "search" },
         { "<leader>u", group = "ui/toggle" },
-        { "<leader>x", group = "diagnostics/quickfix" },
       },
     },
     keys = {
       { "<leader>?", function() require("which-key").show({ global = false }) end, desc = "Buffer keymaps (which-key)" },
-    },
-  },
-
-  ---------------------------------------------------------------------------
-  -- trouble v3 — diagnostics / references / symbols panel
-  ---------------------------------------------------------------------------
-  {
-    "folke/trouble.nvim",
-    cmd = { "Trouble" },
-    opts = { focus = true },
-    keys = {
-      { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>",              desc = "Diagnostics (Trouble)" },
-      { "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer diagnostics (Trouble)" },
-      { "<leader>xs", "<cmd>Trouble symbols toggle focus=false<cr>",      desc = "Symbols (Trouble)" },
-      { "<leader>xl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", desc = "LSP refs/defs (Trouble)" },
-      { "<leader>xL", "<cmd>Trouble loclist toggle<cr>",                  desc = "Location list (Trouble)" },
-      { "<leader>xQ", "<cmd>Trouble qflist toggle<cr>",                   desc = "Quickfix list (Trouble)" },
     },
   },
 
@@ -211,7 +195,7 @@ return {
     keys = {
       { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo" },
       { "[t", function() require("todo-comments").jump_prev() end, desc = "Prev todo" },
-      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todos" },
+      { "<leader>st", function() Snacks.picker.todo_comments() end, desc = "Todos" },
     },
   },
 }
