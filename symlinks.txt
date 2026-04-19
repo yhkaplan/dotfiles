@@ -7,5 +7,5 @@
 ~/.dotfiles/zsh/.zshenv ~/
 ~/.dotfiles/lldb/.lldbinit ~/
 ~/.dotfiles/ghostty/config ~/.config/ghostty/
-~/.dotfiles/neovim/init.vim ~/.config/nvim/init.vim
+~/.dotfiles/neovim ~/.config/nvim
 ~/.dotfiles/starship/starship.toml ~/.config/starship.toml

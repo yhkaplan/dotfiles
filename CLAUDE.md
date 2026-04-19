@@ -61,8 +61,9 @@ Keep these pathways when adding work-only config; do not commit work-specific va
 | `bash/` | `.bash_profile`, `.bashrc` — legacy, kept for scripts that default to bash |
 | `zsh/` | `.zshenv`, `.zshrc`, `.fzf.zsh`, `aliases.zsh`, `fzf-funcs.zsh`, `.zsh_plugins.txt` |
 | `git/` | `.gitignore_global` (git user config is applied imperatively by `bootstrap.sh` via `git config --global`) |
+| `.githooks/` | Repo-local git hooks wired via `core.hooksPath` by `bootstrap.sh`. Currently: `pre-commit` runs `gitleaks` on the staged diff. |
 | `tmux/` | `.tmux.conf` and `plugins/` (includes vendored `tmux-agent-sessions` helper) |
-| `neovim/` | `init.vim` → symlinked to `~/.config/nvim/init.vim` |
+| `neovim/` | Lua config tree (`init.lua`, `lua/config/`, `lua/plugins/`, `lsp/`) → the whole directory is symlinked to `~/.config/nvim`. Legacy `init.vim` archived under `neovim/.archive/`. |
 | `starship/` | `starship.toml` → symlinked to `~/.config/starship.toml` |
 | `ghostty/` | `config` → symlinked to `~/.config/ghostty/config` |
 | `lldb/` | `.lldbinit` (imports chisel + DerekSelander LLDB helpers) |
@@ -91,6 +92,8 @@ A few `# shellcheck disable=SCxxxx` directives already exist (e.g., in `bootstra
 **macOS defaults are managed by `mac-os_settings.sh`**, not by a plist. Add `defaults write` lines there. The script bails early on non-Darwin and keeps a sudo keep-alive loop while running.
 
 **`$PATH` order matters.** `.zshenv` sets `no_global_rcs` to prevent macOS's `path_helper` from reordering things; preserve that and prepend (not append) when something needs priority.
+
+**Secret scanning.** `gitleaks` runs on every commit (via the repo-local `pre-commit` hook in `.githooks/`) and in CI (the `secret-scan` job in `.github/workflows/ci.yml`). For a false positive, bypass with `git commit --no-verify` and consider adding an entry to a `.gitleaks.toml` allowlist rather than disabling the hook. The scope is repo-local — `core.hooksPath` is set with `git config --local` by `bootstrap.sh` so no other repo on the machine is affected.
 
 ## Gotchas
 

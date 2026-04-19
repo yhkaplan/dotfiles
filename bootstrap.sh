@@ -203,11 +203,36 @@ git_set push.autoSetupRemote true
 git_set core.pager "delta --dark"
 git_set ghq.root "$HOME/dev"
 
+############ Git hooks (dotfiles repo only) ###############
+
+info "Configuring repo-local git hooks"
+git_local_set() {
+  # git_local_set <key> <value> — repo-local, scoped to $DOTFILES_DIR.
+  local key="$1" value="$2"
+  local current
+  current="$(git -C "$DOTFILES_DIR" config --local --get "$key" 2>/dev/null || true)"
+  if [[ "$current" != "$value" ]]; then
+    git -C "$DOTFILES_DIR" config --local "$key" "$value"
+    echo "  set local $key = $value"
+  fi
+}
+
+git_local_set core.hooksPath .githooks
+
 ############ Symlinks ###############
 
 if ((SKIP_SYMLINKS == 0)); then
   info "Creating symlinks"
   "$DOTFILES_DIR/make_symlinks.sh"
+fi
+
+############ Neovim plugins ###############
+
+if command -v nvim >/dev/null 2>&1; then
+  info "Pre-installing Neovim plugins (lazy.nvim sync)"
+  nvim --headless "+Lazy! sync" +qa 2>/dev/null || true
+else
+  echo "nvim not installed — skipping lazy sync"
 fi
 
 ############ Register homebrew shells ###############

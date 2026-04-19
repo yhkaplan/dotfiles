@@ -200,6 +200,31 @@ else
   note "/etc/shells check skipped (brew missing)"
 fi
 
+#### git hooks ####
+
+section "git hooks"
+HOOK="$DOTFILES_DIR/.githooks/pre-commit"
+if [[ -x "$HOOK" ]]; then
+  ok ".githooks/pre-commit is executable"
+else
+  ci_meta="file=.githooks/pre-commit"
+  bad ".githooks/pre-commit missing or not executable"
+fi
+
+current_hooks_path="$(git -C "$DOTFILES_DIR" config --local --get core.hooksPath 2>/dev/null || true)"
+if [[ "$current_hooks_path" == ".githooks" ]]; then
+  ok "repo-local core.hooksPath = .githooks"
+else
+  ci_meta="$(locate_in_file bootstrap.sh 'git_local_set core.hooksPath')"
+  bad "repo-local core.hooksPath: expected '.githooks', got '$current_hooks_path'"
+fi
+
+if command -v gitleaks >/dev/null 2>&1; then
+  ok "gitleaks on PATH ($(command -v gitleaks))"
+else
+  note "gitleaks not installed (expected under --skip-brew)"
+fi
+
 #### macOS defaults ####
 
 section "macOS defaults"

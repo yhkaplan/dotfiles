@@ -25,7 +25,7 @@ jobs:
       - name: Lint shell scripts
         run: |
           brew install --quiet shellcheck
-          shellcheck bootstrap.sh make_symlinks.sh mac-os_settings.sh verify.sh
+          shellcheck bootstrap.sh make_symlinks.sh mac-os_settings.sh verify.sh .githooks/pre-commit
 
       - name: Bootstrap (first pass)
         run: ./bootstrap.sh --yes --skip-brew --skip-chsh
@@ -57,3 +57,19 @@ jobs:
 
       - name: Verify post-conditions (re-check)
         run: ./verify.sh
+
+  secret-scan:
+    name: Scan for secrets (gitleaks)
+    runs-on: macos-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install gitleaks
+        run: brew install --quiet gitleaks
+
+      - name: Scan
+        run: gitleaks git --no-banner --redact --verbose .
