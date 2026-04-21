@@ -30,18 +30,22 @@ export MYVIMRC="$HOME/.config/nvim/init.vim"
 
 # rbenv
 export PATH="${HOME}/.rbenv/shims:${PATH}"
-eval "$(rbenv init - zsh)"
+if [ -x "$(command -v rbenv)" ]; then
+  eval "$(rbenv init - zsh)"
+fi
 
 # Make fastlane ...faster
 export FASTLANE_SKIP_UPDATE_CHECK=TRUE
 
 # Direnv
-eval "$(direnv hook zsh)"
+if [ -x "$(command -v direnv)" ]; then
+  eval "$(direnv hook zsh)"
+fi
 
 # Nodenv
 if [ -x "$(command -v nodenv)" ]; then
   eval "$(nodenv init -)"
-fi 
+fi
 
 # Rust
-. "$HOME/.cargo/env"
+[[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"

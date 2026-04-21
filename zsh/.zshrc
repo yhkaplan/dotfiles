@@ -1,33 +1,12 @@
-# Create new Tmux session if not inside one
-# Using wildcards around screen because it could be screen-color256 or something
-if ! { [[ "$TERM" == *"screen"* ]] && [ -n "$TMUX" ]; } then
-  tmux new
-fi
-
-# Kill 2 oldest detached tmux sessions if more than 3 exist that are detached
-# sessions=$(tmux list-sessions | grep -E -v '\(attached\)$')
-# session_count=$(echo $sessions | wc -l | tr -d '[:space:]' || 0)
-# if [$session_count -gt 3]; then
-#   i=0
-#   # Kill first 2 detached sessions
-#   echo $sessions | while IFS='\n' read line; do
-#     if [$i -lt 2]; then
-#       echo "Killing ${line%%:*}"
-#       # tmux kill-session -t "${line%%:*}"
-#     fi
-#     i=$((i+1))
-#   done
-# fi
-
 # Spaceship configuration (must be set before loading plugins)
 SPACESHIP_PROMPT_ORDER=(
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
+  user      # Username section
+  dir       # Current directory section
+  host      # Hostname section
+  git       # Git section (git_branch + git_status)
+  jobs      # Background jobs indicator
+  exit_code # Exit code section
+  char      # Prompt character
 )
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_PROMPT_SEPARATE_LINE=false
@@ -80,18 +59,18 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000
 SAVEHIST=$HISTSIZE
 setopt hist_ignore_all_dups # remove older duplicate entries from history
-setopt hist_reduce_blanks # remove superfluous blanks from history items
-setopt inc_append_history # save history entries as soon as they are entered
-setopt share_history # share history between different instances of the shell
+setopt hist_reduce_blanks   # remove superfluous blanks from history items
+setopt inc_append_history   # save history entries as soon as they are entered
+setopt share_history        # share history between different instances of the shell
 
-setopt auto_cd # cd by typing directory name if it's not a command
-setopt correct_all # autocorrect commands
-setopt auto_list # automatically list choices on ambiguous completion
-setopt auto_menu # automatically use menu completion
+setopt auto_cd       # cd by typing directory name if it's not a command
+setopt correct_all   # autocorrect commands
+setopt auto_list     # automatically list choices on ambiguous completion
+setopt auto_menu     # automatically use menu completion
 setopt always_to_end # move cursor to end if word had one match
 
-zstyle ':completion:*' menu select # select completions with arrow keys
-zstyle ':completion:*' group-name '' # group results by category
+zstyle ':completion:*' menu select                                          # select completions with arrow keys
+zstyle ':completion:*' group-name ''                                        # group results by category
 zstyle ':completion:::::' completer _expand _complete _ignored _approximate # enable approximate matches for completion
 
 # FZF
@@ -107,10 +86,9 @@ bindkey '^T' fzf-completion
 bindkey '^I' expand-or-complete
 
 root() {
-  git_dir="$(git rev-parse --show-toplevel 2> /dev/null)"
+  git_dir="$(git rev-parse --show-toplevel 2>/dev/null)"
 
-  if [ -z $git_dir ]
-  then
+  if [ -z $git_dir ]; then
     cd ..
   else
     cd "$git_dir"
@@ -118,7 +96,7 @@ root() {
 }
 
 # Add ssh keys
-ssh-add -A > /dev/null 2>&1
+ssh-add -A >/dev/null 2>&1
 
 # Turn off autocorrect suggestions
 unsetopt correct
