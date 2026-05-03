@@ -26,7 +26,8 @@ opt.splitbelow = true
 opt.splitkeep = "screen"
 opt.scrolloff = 8
 opt.sidescrolloff = 8
-opt.wrap = false
+opt.wrap = true
+opt.linebreak = true            -- wrap at word boundaries (needs wrap)
 opt.list = true
 opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 opt.fillchars = { eob = " ", fold = " ", foldopen = "▾", foldclose = "▸" }
